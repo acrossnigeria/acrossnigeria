@@ -5,13 +5,13 @@ import img from "../../public/images/acn_landing.jpg";
 
 const Hero1 = () => {
   return (
-    <div className=" top-0 relative h-screen">
+    <div className=" top-0  h-screen mx-auto justify-center object-center">
   
-      <div className="relative h-full">
+      <div className="relative h-screen mx-auto">
         <Image
           src={img}
           alt="Hero Background"
-          layout="fill"
+          className='w-screen '
           objectFit="cover"
         />
         {/* Dark Overlay */}

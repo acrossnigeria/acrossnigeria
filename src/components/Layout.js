@@ -14,9 +14,9 @@ export default function Layout({ title, children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
        <ToastContainer position="top-center" limit={1} />
-      <div className="flex min-h-screen flex-col justify-between">
+      <div className="flex left-0 ml-0 w-full overflow-hidden min-h-screen flex-col justify-between">
    <StickyNavbar/>
-        <main className="h-full  mx-auto mt-0 px-4 min-h-full mb-4">{children}</main>
+        <main className="h-full w-screen overflow-hidden left-0 mx-auto mt-0 px-0 min-h-full mb-4">{children}</main>
         <Footer/>
       </div>
     </>)

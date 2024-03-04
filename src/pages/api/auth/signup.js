@@ -3,54 +3,48 @@ import db from "../../../../utils/db";
 import bcryptjs from 'bcryptjs'
 
 async function handler(req, res) {
-    if (req.method !== 'POST') {
+  console.log(req.body)
+       if (req.method !== 'POST') {
       return;
     }
-    const { name,
-        surname,
-        email,
-        phone,
-        residence,
-        reference,
-        password, } = req.body;
+    const {name,surname, email, phone, 
+      state, age, gender, password } = req.body;
+   const slug=name+surname+state+age;
     if (
       !name ||
-      !surname||
       !email||
       !phone||
-      !residence||
-      !reference||
+      !state||
       !email.includes('@') ||
       !password ||
-      password.trim().length < 5
-    ) {
+      password.trim().length < 8||age<18
+    ) {   
       res.status(422).json({
         message: 'Validation error',
       });
+      console.log("validation problem")
       return;
     }
   
-    await db.connect();
-  
-    const existingUser = await User.findOne({ email: email });
+  await db.connect();
+     const existingUser = await User.findOne({ email: email }).maxTimeMS(20000);
     if (existingUser) {
+      console.log("user exists")
       res.status(422).json({ message: 'User exists already!' });
       await db.disconnect();
       return;
     }
-  
+     
     const newUser = new User({
-        name,
-        surname,
-        phone,
-        residence,
-        email,
+      name,
+       surname, email, slug, phone, state, age, gender,
       password: bcryptjs.hashSync(password),
-      gender,
       isAdmin: false,
     });  
+     console.log("Progress");
     const user = await newUser.save();
     await db.disconnect();
+    console.log("Success");
     res.status(201).send({
       message: `Congratulations ${user.name}!`,
       _id: user._id,

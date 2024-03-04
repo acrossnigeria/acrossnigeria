@@ -8,6 +8,7 @@ import axios from "axios";
 import CustomDatePicker from "@/components/DatePicker";
 import { FaArrowRight } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { Datepicker } from "flowbite-react";
 
 
 
@@ -52,9 +53,7 @@ export default function Register(params) {
     setRepeatPassword(event.target.value);
     if (pass && event.target.value !== pass) {
       setPasswordMatchError("Passwords do not match");
-       setState((state)=>{
-        return {...state, password:""};
-      });
+       
     } else {
       setPasswordMatchError("");
        setState((state)=>{
@@ -85,21 +84,28 @@ const [agreedToTerms, setAgreedToTerms] = useState(false);
   const dob= new Date(selectedDate);
   const today=new Date();
   const age=today.getFullYear()-dob.getFullYear()
+  console.log(state, "age is ", age)
  
   const { name, surname, email, phone, residence, password , gender}= state;
   useEffect(()=>{
   const isEmpty = Object.values(state).some((value) => value.trim() === '');
-  if (isEmpty||age<18){
+  if (isEmpty||age<18||!agreedToTerms){
     setFormComplete(false)
   }
   else{setFormComplete(true)}
-  },[setFormComplete,age, state])
+  },[setFormComplete,age,agreedToTerms, state])
 
   const handleSubmit=()=>{
+    if (!formComplete){
+      console.log("some fields are missing")
+      return;
+    }
+
+
  async (event) => {
     event.preventDefault()
     if (!agreedToTerms) {
-      toast.error("Please agree to the terms.")
+     console.log("Please agree to the terms.")
       return;
     }
     try { 
@@ -253,7 +259,7 @@ const [agreedToTerms, setAgreedToTerms] = useState(false);
           >
             Date of Birth
           </label>
-         <CustomDatePicker selectedDate={selectedDate} onChange={setSelectedDate}/>
+         <Datepicker selecteddate={selectedDate} onChange={setSelectedDate}/>
         </div>
         <div className="mb-4">
           <label
@@ -324,11 +330,10 @@ const [agreedToTerms, setAgreedToTerms] = useState(false);
               I agree to the terms and conditions
             </label>
           </div>
-        {/* ... other form fields ... */}
-{state.password}
         <div
-          className="flex w-[100px] h-[30px] bg-green-500 my-auto text-white object-center justify-center font-semibold px-4 rounded-md hover:bg-green-600 focus:outline-none cursor-pointer focus:shadow-outline-green"
-          type="submit"> Proceed  {"   "} <FaArrowRight className="my-auto mr-0"/>
+          className="flex w-[100px] h-[30px] bg-green-500 my-auto text-white object-center justify-center font-semibold px-4 rounded-md
+           hover:bg-green-600 focus:outline-none cursor-pointer focus:shadow-outline-green"> <button type="submit"
+           ><span className="flex mx-auto my-auto object-contain">Proceed  {"   "} <FaArrowRight className="my-auto mr-0"/></span></button>
         </div>
         <div>If you already have an account, {" "} <Link href="/login"><span className="text-yellow-300 font-semibold"> Login Here</span></Link> </div>
         

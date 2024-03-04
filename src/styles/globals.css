@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+.swiper {
+ @apply h-screen;
+}
+
+.swiper-slide {
+ @apply flex justify-center items-center;
+}
+
+.swiper-pagination-bullet {
+ @apply  bg-white opacity-5;
+}
+
+.swiper-pagination-bullet-active {
+ @apply  bg-white opacity-100;
+}
+.primary-button {
+  @apply rounded items-center mx-auto justify-center font-bold text-2xl hover:text-gray-200 bg-amber-600 py-1 px-1 shadow-orange-400 shadow-xl outline-yellow-600 hover:bg-gray-900 active:bg-gray-900;
+}
+.arrowBtn {
+  @apply w-12 h-12 text-white text-2xl 
+  cursor-pointer bg-arrowbtn rounded-3xl p-3 mr-4 
+  select-none transition duration-100 ease-out 
+  hover:bg-cyan-950 hover:transform 
+  hover:scale-105 hover:ease-in hover:duration-100;
+}
+
+/* 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -31,3 +58,4 @@ body {
     text-wrap: balance;
   }
 }
+ */

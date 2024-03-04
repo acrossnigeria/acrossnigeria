@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
@@ -31,7 +30,7 @@
     "react-toastify": "^10.0.4",
     "sharp": "^0.33.2",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.0.6"
+    "swiper": "^11.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

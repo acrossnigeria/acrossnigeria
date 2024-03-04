@@ -7,7 +7,6 @@ import logo from "../../public/images/logo1.png";
 import SearchIcon from "@heroicons/react/24/outline/MagnifyingGlassIcon";
 import { CiUser } from "react-icons/ci";
 import DropdownLink from "./Dropdownlink";
-import { Menu } from "@headlessui/react";
 import { signOut, useSession } from "next-auth/react";
 
 
@@ -49,14 +48,14 @@ const StickyNavbar = () => {
   }, [prevScrollPos]);
 
   return (
-    <header className="mb-3 w-screen">
+    <header className={`w-screen overflow-hidden mb-14`}>
       {" "}
       <nav
-        className={`fixed top-0 h-24 left-0 right-0 p-4 bg-gray-900 backdrop-blur-3xl backdrop-opacity-90 bg-opacity-60 text-white transition duration-700 
+        className={`fixed top-0  h-24 left-0 right-0 p-4 bg-gray-950 backdrop-blur-3xl backdrop-opacity-5 bg-opacity-95 text-white transition duration-700 
         ease-in-out ${
           visible
-            ? "z-10 bg-gray-900 backdrop-blur-[1px] backdrop-opacity-0 transform translate-y-0"
-            : "opacity-0 transform -translate-y-full"
+            ? "z-10 backdrop-opacity-0 transform translate-y-0"
+            : "z-10 opacity-0 transform -translate-y-full "
         } border-b-4 border-yellow-600`}
       >
         <div className="flex items-center justify-between text-opacity-100 text-base font-semibold">
@@ -113,28 +112,14 @@ const StickyNavbar = () => {
                Loading...
               </div>
               ) : session?.user ? (
-                <Menu as="div" className="relative inline-block">
-                  <Menu.Button className="text-blue-600">
-                    {session.user.name}
-                  </Menu.Button>
-                  <Menu.Items className="absolute flex-row right-0 w-56 px-5 origin-top-right bg-gray-900 shadow-lg ">
-                    <Menu.Item>
-                      <DropdownLink className="dropdown-link flex" href="/profile">
-                       <p>Profile</p> 
-                      </DropdownLink>
-                    </Menu.Item>
-                   <Menu.Item>
-                    <DropdownLink className="dropdown-link flex" href="#" onClick={logoutClickHandler}>     
-                      <p>Logout</p>  
-                        </DropdownLink>
-                     {/* <div
+                <div>{session.user.name}</div>
+          
+                  /* <div
             className="flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
         justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]
         ease-in-out hover:bg-white hover:text-yellow-600 hover:border-2 hover:border-yellow-600 hover:scale-105 hover:rounded-sm "
-          > */}
-                    </Menu.Item>
-                  </Menu.Items>
-                </Menu>
+          > */
+        
               ) : (
 
                 <div

@@ -7,7 +7,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <script src="../path/to/flowbite/dist/flowbite.min.js" async/>
+        <script src="../../node_modules/flowbite/dist/flowbite.min.js" async/>
       </body>
     </Html>
   );

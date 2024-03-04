@@ -1,49 +1,62 @@
 import React, { useState, useRef, useEffect } from "react";
-import ImageOne from "../../public/images/img1.jpg";
-import ImageTwo from "../../public/images/img2.jpg";
-import ImageThree from "../../public/images/img3.jpg";
-import ImageFour from "../../public/images/img4.jpg";
+import ImageOne from "../../public/images/landing/image1.jpg";
+import ImageTwo from "../../public/images/landing/image2.jpg";
+import ImageThree from "../../public/images/landing/image3.jpg";
+import ImageFour from "../../public/images/landing/image4.jpg";
+import ImageFive from "../../public/images/landing/image5.jpg";
+import ImageSix from "../../public/images/landing/image6.jpg";
+import ImageSeven from "../../public/images/landing/image7.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdArrowRoundForward } from "react-icons/io";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
-import { debounce, throttle } from "lodash";
 export const sliderData = [
   {
-    title: "Game 1",
-    price: "N 1,000",
-    path: "#",
-    label: "Game One",
+    title: "An Adventure of a lifetime",
     image: ImageOne,
-    alt: "Game",
+    alt: "Across Nigeria",
   },
   {
-    title: "Game 2",
-    price: "N 1,000",
-    path: "#",
-    label: "Game Two",
-    image: ImageTwo,
-    alt: "Game",
-  },
+  title: "An Adventure of a lifetime",
+image: ImageTwo,
+    alt: "Across Nigeria",
+     },
   {
-    title: "Game 3",
-    price: "N 1,000",
-    path: "#",
-    label: "Game Three",
+   title: "An Adventure of a lifetime",
+ alt: "Across Nigeria",
     image: ImageThree,
-    alt: "Game ",
+  
   },
   {
-    title: "Game 4",
-    price: "N 1,000",
-    path: "#",
-    label: "Game four",
+   title: "An Adventure of a lifetime",
+ alt: "Across Nigeria",
     image: ImageFour,
-    alt: "Game",
+  },
+  {
+   title: "An Adventure of a lifetime",
+ alt: "Across Nigeria",
+    image: ImageFive,
+  },
+  {
+   title: "An Adventure of a lifetime",
+ alt: "Across Nigeria",
+    image: ImageSix,
+  },
+  {
+   title: "An Adventure of a lifetime",
+ alt: "Across Nigeria",
+    image: ImageSeven,
   },
 ];
 
-/* ${
+/* 
+${
+              index === current
+                ? "transform scale-100 opacity-100"
+                : "transform scale-150 opacity-50"
+            }
+            above does not support sliding
+${
   index < current
     ? isNext
       ? "-translate-x-full"
@@ -63,7 +76,7 @@ export default function Hero() {
   const timeout = useRef(null);
 
   useEffect(() => {
-    const slide = throttle(() => {
+    const slide = () => {
       if (isNext) {
         setCurrent(current === length - 1 ? 0 : current + 1);
         setIsNext(true);
@@ -71,7 +84,7 @@ export default function Hero() {
         setCurrent(current === 0 ? length - 1 : current - 1);
         setIsNext(false);
       }
-    }, 100);
+    };
     timeout.current = setTimeout(slide, 5000);
 
     return function () {
@@ -79,68 +92,61 @@ export default function Hero() {
         clearTimeout(timeout.current);
       }
     };
-  }, [current, length, isNext]);
-  const nextSlide = debounce(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current, length]);
+  const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
     setIsNext(true);
-  }, 200);
+  };
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
     setIsNext(false);
   };
   return (
-    <div className=" relative flex  bg-red-800 h-screen w-[98vw] max-h-1100 top-0 left-0 columns-1 overflow-hidden mb-4 items-center mx-0 content-center justify-center">
-      <div className="w-screen bg-gradient-to-r from-yellow-500 to-green-600 h-full flex justify-center items-center overflow-hidden relative">
+    <div className="h-screen w-screen max-h-1100 relative top-0 left-0 columns-1 overflow-hidden">
+      <div className="w-full bg-gradient-to-r from-green-950 to-yellow-500 h-full flex justify-center items-center overflow-hidden relative">
         {sliderData.map((slides, index) => (
           <div
-            className={`h-screen w-screen overflow-hidden absolute top-0 transition-all duration-1000 ${
+            className={`h-screen w-screen overflow-hidden absolute top-0 left-0 transition-all duration-1000 $${
               index === current
                 ? "transform scale-100 opacity-100"
-                : "transform scale-150 opacity-50"
-            }`}
+                : "transform scale-100 opacity-100"
+            } `}
             key={index}
           >
             {index === current && (
-              <div className="absolute top-0 left-0 w-screen h-full overflow-hidden flex items-center justify-center">
-                <Link href={slides.path} className=" cursor-pointer">
+              <div className="absolute top-0 left-0 w-screen h-full  overflow-hidden flex items-center justify-center">
+               
                   <Image
                     src={slides.image}
                     alt={slides.alt}
+                    sizes="100vh, 100vw"
                     className="absolute w-screen h-screen object-cover top-0 lg:top-10 left-0 overflow-hidden"
                     placeholder="blur"
                   />
 
-                  <div className="absolute p-5 bottom-28 mb-0 bg-gradient-to-r w-96 from-yellow-600  to-green-400 rounded-xl max-w-7xl ">
-                    <h1 className="text-4xl text-clampsize shadow-slate-50 mb-3 text-left uppercase">
+                  <div className=" relative top-0 shadow-lg m-auto mb-4 bg-opacity-20 p-10 bg-white rounded-xl max-w-7xl grid-cols-1">
+                        <Image className="mx-auto " alt="logo" width={300} height={300} src="/images/logo1.png"/>                   
+                    <h1 className="text-2xl font-semibold text-clampsize shadow-slate-50 mb-3 text-left uppercase">
                       {slides.title}
                     </h1>
-                    <div className=" w-40 cursor-pointer flex items-center content-between whitespace-nowrap primary-button">
-                      {" "}
-                      {slides.label}
-                      <IoMdArrowRoundForward />
-                    </div>
-                    <p>{slides.price}</p>
+                    <Link href={`/registr?redirect=${redirect || '/'}`} className=""> <div className=" w-full mx-auto mb-4 cursor-pointer flex items-center content-between whitespace-nowrap primary-button">
+                Register to get involved
+                    </div> </Link>
                   </div>
-                </Link>
+               
               </div>
             )}
           </div>
         ))}
       </div>
-      <div className="absolute w-36 p-0 text-white  font-extrabold text-4xl bottom-12 z-10 right-12 flex">
+      <div className="absolute bottom-96 z-10 left-5 flex">
         {" "}
-        <div
-          onClick={prevSlide}
-          className="p-0 rounded-full m-5 cursor-pointer bg-opacity-50 bg-yellow-600 backdrop-blur-[1px] backdrop-opacity-90 border-transparent hover:scale-150 hover:bg-opacity-100 border-4 hover:border-green-800 hover:rounded-sm"
-        >
+        <div onClick={prevSlide} className="arrowBtn">
           <IoArrowBack />
-        </div>
-        {"     "}
-        <div
-          onClick={nextSlide}
-          className="p-0 rounded-full m-5 cursor-pointer bg-opacity-50 bg-yellow-600 backdrop-blur-[1px] backdrop-opacity-90 border-transparent hover:scale-150  hover:bg-opacity-100 border-4 hover:border-green-800 hover:rounded-sm"
-        >
-          {" "}
+        </div></div>
+        <div className="absolute bottom-96 z-10 right-5 flex">
+        <div onClick={nextSlide} className="arrowBtn">
           <IoArrowForward />
         </div>
       </div>

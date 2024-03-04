@@ -1,10 +1,10 @@
 import { Inter } from "next/font/google";
 import Layout from "@/components/Layout";
-import Link from "next/link";
 import Testimonials from "@/components/Testimonials";
-import AvatarDrop from "@/components/AvatarDrop";
-import Hero1 from "@/components/Hero1";
 import Cards from "@/components/Cards"
+import Hero from "@/components/Hero";
+
+
 
 export const games=[
 {title:"GIVE AWAY QUIZZES",
@@ -20,8 +20,9 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <Layout title={"Home Page"}>
-       <Hero1/> <Testimonials/>
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3 mx-auto  items-center max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"> { games.map((card)=>(<Cards key={card.title} title={card.title} description={card.description}/>))}</div>
+<Hero/>
+   <div className="grid left-0 grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3 mx-auto  items-center max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"> { games.map((card)=>(<Cards key={card.title} title={card.title} description={card.description}/>))}</div>
+   <Testimonials/>
    </Layout>
   );
 }

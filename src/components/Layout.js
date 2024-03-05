@@ -16,8 +16,8 @@ export default function Layout({ title, children }) {
        <ToastContainer position="top-center" limit={1} />
       <div className="flex left-0 ml-0 w-full overflow-hidden min-h-screen flex-col justify-between">
    <StickyNavbar/>
-        <main className="h-full w-screen overflow-hidden left-0 mx-auto mt-0 px-0 min-h-full mb-4">{children}</main>
-        <Footer/>
-      </div>
+        <main className="h-full w-screen overflow-hidden left-0 mx-auto mt-0 min-h-full mb-4">{children}</main>
+       
+      </div> <Footer/>
     </>)
 }

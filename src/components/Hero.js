@@ -107,11 +107,7 @@ export default function Hero() {
       <div className="w-full bg-gradient-to-r from-green-950 to-yellow-500 h-full flex justify-center items-center overflow-hidden relative">
         {sliderData.map((slides, index) => (
           <div
-            className={`h-screen w-screen overflow-hidden absolute top-0 left-0 transition-all duration-1000 $${
-              index === current
-                ? "transform scale-100 opacity-100"
-                : "transform scale-100 opacity-100"
-            } `}
+            className={`h-screen w-screen overflow-hidden absolute top-0 left-0  transition  duration-300 ease-in `}
             key={index}
           >
             {index === current && (
@@ -130,8 +126,8 @@ export default function Hero() {
                     <h1 className="text-2xl font-semibold text-clampsize shadow-slate-50 mb-3 text-left uppercase">
                       {slides.title}
                     </h1>
-                    <Link href={`/registr?redirect=${redirect || '/'}`} className=""> <div className=" w-full mx-auto mb-4 cursor-pointer flex items-center content-between whitespace-nowrap primary-button">
-                Register to get involved
+                    <Link href="/registr" className=" cursor-pointer"> <div className=" w-full mx-auto mb-4 cursor-pointer flex items-center content-between whitespace-nowrap primary-button">
+                Register to get Involved
                     </div> </Link>
                   </div>
                
@@ -140,12 +136,12 @@ export default function Hero() {
           </div>
         ))}
       </div>
-      <div className="absolute bottom-96 z-10 left-5 flex">
+      <div className="absolute bottom-72 z-10 left-5 flex">
         {" "}
         <div onClick={prevSlide} className="arrowBtn">
           <IoArrowBack />
         </div></div>
-        <div className="absolute bottom-96 z-10 right-5 flex">
+        <div className="absolute bottom-72 z-10 right-5 flex">
         <div onClick={nextSlide} className="arrowBtn">
           <IoArrowForward />
         </div>

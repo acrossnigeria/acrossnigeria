@@ -2,12 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import img from "../../public/images/logo1.png"
 const BlogPostCard = (props) => {
-    const{title, description}=props;
+    const{title, description, link}=props;
    
   return (
-    <Link href="#" legacyBehavior><a 
-  className="flex mb-4 flex-row gap-4 items-center mx-auto bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl
-   hover:bg-gray-100 h-52 w-full lg:w-[400px] md:w-[400px] dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <Link href={link}legacyBehavior><a 
+  className="flex mb-4 flex-row gap-4 items-center mx-auto bg-white border border-gray-200 rounded-lg shadow-lg shadow-gray-700 md:flex-row md:max-w-xl
+   hover:bg-gray-100 h-52 w-full xl:w-[400px] lg:w-[300px] md:w-200px] dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
  <div className='p4'> <Image width={100} height={100} className="rounded-t-lg left-0 md:rounded-none md:rounded-s-lg"
     src={img} alt=""/></div>
   <div className="justify-between p-4 leading-normal">

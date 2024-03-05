@@ -19,6 +19,8 @@ const StickyNavbar = () => {
   const { status, data: session } = useSession();
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const[open,setOpen]=useState(false)
+
   const [query, setQuery] = useState("");
    const logoutClickHandler = () => {
     
@@ -111,9 +113,9 @@ const StickyNavbar = () => {
               >
                Loading...
               </div>
-              ) : session?.user ? (
-                <div>{session.user.name}</div>
-          
+              ) : session?.user ? (<div className={`grid grid-rows-1 cursor-pointer ${open&&"overflow-y-visible"} `}>
+                <div onClick={()=>(setOpen(!open))}>{session.user.name}</div>
+          <div className={`${!open&&"hidden"} ${open&&"translate-y-8 bg-slate-400 overflow-hidden"}`} onClick={logoutClickHandler}>Sign Out</div></div>
                   /* <div
             className="flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
         justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]

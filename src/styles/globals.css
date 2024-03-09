@@ -18,7 +18,7 @@
  @apply  bg-white opacity-100;
 }
 .primary-button {
-  @apply rounded items-center mx-auto justify-center font-bold text-2xl hover:text-gray-200 bg-amber-600 py-1 px-1
+  @apply rounded items-center mx-auto justify-center font-bold  hover:text-gray-200 bg-amber-600 py-1 px-1
    shadow-orange-400 shadow-lg outline-yellow-600 hover:bg-gray-900 active:bg-gray-900;
 }
 .arrowBtn {

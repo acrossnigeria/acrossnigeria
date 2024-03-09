@@ -8,34 +8,33 @@ const Info = ()=>{
             cater to different tastes and interests. Whether you want to win
             amazing prizes, test your skills and knowledge about Nigeria, or
             watch captivating stories unfold, we have something to entertain and
-            put a smile on everyone’s face. Our website is easy to use, secure,
-            and mobile-friendly. You can access our content anytime, anywhere,
-            on any device.`,
-  paragraphTwo:"HOWFA you!?",
+            put a smile on everyone’s face.`,
+  paragraphTwo:"Howfa?",
   buttonLabel:"Register to get Involved",
   reversed:true
     };
   return (
     <section
-      className={`relative overflow-hidden overflow-x-hidden items-center justify-center ease-in duration-700 flex mt-2 mb-3  h-full w-[100%] px-6 py-6`}
+      className={`relative overflow-x-hidden overflow-y-scroll items-center bg-slate-200 justify-center ease-in duration-700 flex mt-0 mb-3 rounded-md right-4 ml-4 h-[600px] md:h-[380px] w-[100%]`}
     >
-      <div className="p-[3rem calc((100vw-1300px)/2)] grid grid-cols-1 lg:grid-cols-2">
-        <div
-          className={`flex flex-col justify-evenly items-start leading-loose pr-3 pl-3 md:pl-24 lg:pl-24 ${
-            data.reversed ? "order-2" : "order-first"
-          } lg:${data.reversed ? "order-first" : "order-2"} text-lg`}
-        >
-          <h1 className="text-2xl font-bold uppercase mb-4">{data.heading}</h1>
-          <p className="text-2xl font-semibold text-justify">{data.paragraph}</p>
-       
-          <Link className="primary-button mt-4  pt-3 items-center text-center text-balance w-full h-14" href="/registr">
-            {data.buttonLabel}
-          </Link>
-        </div>
-        <div className={`flex rounded-lg text-center bg-green-500 font-bold text-6xl justify-center px-4 py-8 items-center transform -rotate-60`}>
+      <div className="absolute grid grid-cols-1 lg:grid-cols-2 mt-0 top-0 border border-yellow-500  md:px-16 p-4">
+
+         <div className="flex rounded-lg lg:w-full text-gray-900 text-centetext-gray-900r bg-gradient-to-br from-green-600 to-gray-800 font-bold text-4xl 
+         justify-center right-0 px-4 py-8 items-center text-pretty italic font-serif">
         <Link href="/registr">{data.paragraphTwo}</Link> 
         </div>
-      </div>
+        <blockquote className={`flex flex-col justify-evenly lg:w-full items-start leading-loose pr-3 pl-3 md:pl-24 lg:pl-24 rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8`}>
+
+         
+          <h1 className="text-xl text-center mx-auto font-bold uppercase mb-4 mt-0.5  text-gray-900">{data.heading}</h1>
+          <p className="font-semibold text-justify mt-4 text-gray-700">{data.paragraph}</p>
+       
+          <Link className="primary-button mt-4  pt-3 items-center text-center text-balance w-fit h-14" href="/registr">
+            {data.buttonLabel}
+          </Link>
+   
+        
+   </blockquote></div>
     </section>
   );
 };

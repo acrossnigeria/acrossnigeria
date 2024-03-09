@@ -8,7 +8,7 @@ async function handler(req, res) {
       return;
     }
     const {name,surname, email, phone, 
-      state, age, gender, password } = req.body;
+      state, age, gender, password, refInfo} = req.body;
    const slug=name+surname+state+age;
     if (
       !name ||
@@ -17,6 +17,7 @@ async function handler(req, res) {
       !state||
       !email.includes('@') ||
       !password ||
+      !refInfo||
       password.trim().length < 8||age<18
     ) {   
       res.status(422).json({
@@ -28,17 +29,21 @@ async function handler(req, res) {
   
   await db.connect();
      const existingUser = await User.findOne({ email: email }).maxTimeMS(20000);
-    if (existingUser) {
+    if (existingUser ) {
       console.log("user exists")
       res.status(422).json({ message: 'User exists already!' });
       await db.disconnect();
       return;
     }
-     
+   if(refInfo!=="" ){
+   const referencePay=refInfo;
+   const regPayment= true
+
+   }
     const newUser = new User({
       name,
        surname, email, slug, phone, state, age, gender,
-      password: bcryptjs.hashSync(password),
+      password: bcryptjs.hashSync(password),referencePay, regPayment,
       isAdmin: false,
     });  
      console.log("Progress");

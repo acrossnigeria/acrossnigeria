@@ -34,34 +34,21 @@ const [showPassword, setShowPassword] = useState(false);
 
   const watchPassword = watch('password', '');
   const onSubmit =async ({ name, surname, email, phone, state, dob, gender, password }) => {
-    console.log(name)
+  
      const today=new Date();
     const age=today.getFullYear()-dob.getFullYear();
- console.log(age)
+    
 
-    try {
-     
-      await axios.post('/api/auth/signup', {
-        name,
-       surname, email, phone, state, age, gender, password
-      });
-
-      const result = await signIn('credentials', {
-        redirect: false,
-        email,
-        password,
-      });
-      if (result.error) {
-        console.log(result.error);
-      }
-    } catch (err) {
-      console.log(getError(err))
-    }
+const data={ name: name,surname:surname,email: email,phone: phone,state: state, age:age ,gender: gender,password: password};
+sessionStorage.setItem("reginfo", JSON.stringify(data))
+  const storedData=window.sessionStorage.getItem("reginfo");
+console.log("Data is", storedData)
+     router.push(redirect || '/paystack');
   };
 
   return (
       <Layout title="Register">
-        <div className="mx-auto h-full">
+        <div className="mx-auto mt-8 h-full">
        <h1 className="text-3xl font-bold mb-4 text-center">New User Registration</h1>
        <p className='mb4 mx-auto text-center justify-center' ><span>All fields are compulsory</span></p>
       <form className="max-w-xl mx-auto  m-4  border border-yellow-500 p-10 rounded-md" onSubmit={handleSubmit(onSubmit)}>
@@ -110,7 +97,7 @@ const [showPassword, setShowPassword] = useState(false);
           </label>
           <input
             {...register('phone', { required: 'Phone Number is required',  minLength: { value: 11, message: 'Password must be at least 11 characters' },})}
-            type="number"
+            type="tel"
             id="phone"
             name='phone'
             className="w-full border rounded-md py-2 px-3"

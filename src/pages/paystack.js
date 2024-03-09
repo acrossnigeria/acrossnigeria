@@ -3,12 +3,45 @@ import PaystackBtn from "@/components/PaystackBtn";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { getError } from "../../utils/error";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 
- function payScreen(params){
-const paymentUpdate = async (ref) => {
- 
-    const{reference, transaction}=ref;
+ function PayScreen(){
+ const [data,setData]=useState()
+   const router = useRouter();
+useEffect(() => {
+    if (window.sessionStorage) {
+       const storedData=window.sessionStorage.getItem("reginfo");
+  setData(JSON.parse(storedData))
+ }
+    else{
+        router.push(redirect || '/registr');
+    }
+  }, [data, router]);
+console.log(data)
+
+const paymentUpdate = async (ref) => {   
+ try {
+  
+     const refInfo=ref.transaction
+      await axios.post('/api/auth/signup', {
+        name,
+       surname, email, phone, state, age, gender, password, refInfo
+      });
+
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+      if (result.error) {
+        console.log(result.error);
+      }
+    } catch (err) {
+      console.log(getError(err))
+    }
+   /*  const{reference, transaction}=ref;
      console.log(reference,transaction)
     try {
       await axios.post('/api/payUpdate', {
@@ -24,18 +57,18 @@ const paymentUpdate = async (ref) => {
      
     } catch (err) {
       toast.error(getError(err));
-    }
+    } */
   };
     return (
     <Layout>
-       <PaystackBtn pay={paymentUpdate} amount={1200} email="mail2chuka@gmail.com" purpose="Registration"/>
+       <PaystackBtn pay={paymentUpdate} amount={1200} email="" purpose="Registration"/>
 
       </Layout>
     
     );
   };
 
-  export default  payScreen;
+  export default  PayScreen;
 
  /*  axios.post('/api/regUser', data)
       .then((response) => {

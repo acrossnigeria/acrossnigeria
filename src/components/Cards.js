@@ -1,19 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import img from "../../public/images/logo1.png"
 const BlogPostCard = (props) => {
-    const{title, description, link}=props;
-   
-  return (
+    const{title, image, link}=props;
+     return (
     <Link href={link}legacyBehavior><a 
-  className="flex mb-4 flex-row gap-4 items-center mx-auto bg-white border border-gray-200 rounded-lg shadow-lg shadow-gray-700 md:flex-row md:max-w-xl
-   hover:bg-gray-100 h-52 w-full xl:w-[400px] lg:w-[300px] md:w-200px] dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
- <div className='p4'> <Image width={100} height={100} className="rounded-t-lg left-0 md:rounded-none md:rounded-s-lg"
-    src={img} alt=""/></div>
-  <div className="justify-between p-4 leading-normal">
-    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
-    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{description}</p>
-  </div>
+  className="relative flex mb-4 gap-0 items-center mx-auto bg-transparent border border-gray-200 rounded-lg shadow-lg shadow-gray-700 md:flex-row md:max-w-xl
+   hover:bg-gray-100 h-36 w-full xl:w-[400px] lg:w-[300px] md:w-200px] overflow-clip">
+ <Image className="rounded-t-lg relative md:rounded-none md:rounded-s-lg"
+    src={image} alt={title} layout="fill"
+        objectFit="cover"
+        quality={100}/>
+  
 </a></Link>
   );
 };

@@ -1,10 +1,11 @@
-"use client"
+
 // components/Navbar.js
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import logo from "../../public/images/logo1.png";
 import SearchIcon from "@heroicons/react/24/outline/MagnifyingGlassIcon";
+import Bars from "../../public/images/barsImage.svg"
 import { CiUser } from "react-icons/ci";
 import DropdownLink from "./Dropdownlink";
 import { signOut, useSession } from "next-auth/react";
@@ -15,7 +16,7 @@ export const menuData = [
   { title: "Products", link: "/products" },
   { title: "Contact Us", link: "/contact" },
 ];
-const StickyNavbar = () => {
+const StickyNavbar = ({toggle}) => {
   const { status, data: session } = useSession();
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -50,34 +51,34 @@ const StickyNavbar = () => {
   }, [prevScrollPos]);
 
   return (
-    <header className={`w-screen overflow-hidden mb-14`}>
-      {" "}
-      <nav
-        className={`fixed top-0  h-24 left-0 right-0 p-4 bg-gray-950 backdrop-blur-3xl backdrop-opacity-5 bg-opacity-95 text-white transition duration-700 
+    <header className={` w-full overflow-hidden px-8 mb-14`}>
+          <nav
+        className={`w-full fixed top-0 flex items-center align-middle h-24 left-0 right-0 px-0  py-8 bg-gray-950 backdrop-blur-3xl 
+        backdrop-opacity-5 bg-opacity-95 text-white transition duration-700 
         ease-in-out ${
           visible
             ? "z-10 backdrop-opacity-0 transform translate-y-0"
             : "z-10 opacity-0 transform -translate-y-full "
         } border-b-4 border-yellow-600`}
       >
-        <div className="flex items-center justify-between text-opacity-100 text-base font-semibold">
-          <div className="h-20 w-24 space-x-4 items-center opacity-100">
+        <div className="flex absolute py-0 px-4 
+outline-8 opacity-100  text-opacity-100 w-full">
+          <div className="absolute right-0 left-0 lg:ml-10 w-[100px] p-1 origin-center content-center  mx-auto   md:justify-between">
             <Link href="/">
               {" "}
               <Image
                 src={logo}
                 alt="Logo"
-                height={100}
-                width={80}
-                className="pl-2"
+                className="md:pl-2 w-[70px] mx-auto"
                 placeholder="blur"
               />
             </Link>
           </div>
-         
+          
             <form
               onSubmit={submitHandler}
-              className="mx-auto  hidden  justify-center md:flex "
+              className="mr-60 mb-6 mt-6 flex-auto collapse lg:visible md:flex md:items-center lg:align-center
+               h-10 md:justify-center md:flex-row  md:mx-auto"
             >
               <input
                 onChange={(e) => setQuery(e.target.value)}
@@ -93,7 +94,7 @@ const StickyNavbar = () => {
                 <SearchIcon className="h-5 w-5"></SearchIcon>
               </button>
             </form>
-            <div className="text-white flex cursor-pointer items-center font-semibold justify-center">
+            <div className="text-white flex cursor-pointer items-center font-semibold collapse lg:visible">
               {menuData.map((item) => (
                 <Link key={item.link} href={item.link}>
                   <div className="flex items-center py-0 px-4 h-full font-semibold justify-center uppercase transition duration-400 ease-in-out hover:text-green-400">
@@ -101,11 +102,8 @@ const StickyNavbar = () => {
                   </div>
                 </Link>
               ))}
-            </div>
-         
-          
-          
-            {status === 'loading' ? (
+           
+              {status === 'loading' ? (
                 <div
                 className="flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
             justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]
@@ -115,7 +113,7 @@ const StickyNavbar = () => {
               </div>
               ) : session?.user ? (<div className={`grid grid-rows-1 cursor-pointer ${open&&"overflow-y-visible"} `}>
                 <div onClick={()=>(setOpen(!open))}>{session.user.name}</div>
-          <div className={`${!open&&"hidden"} ${open&&"translate-y-8 bg-slate-400 overflow-hidden"}`} onClick={logoutClickHandler}>Sign Out</div></div>
+          <div className={`${!open&&"collapse"} ${open&&"translate-y-8 bg-slate-400 overflow-hidden"}`} onClick={logoutClickHandler}>Sign Out</div></div>
                   /* <div
             className="flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
         justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]
@@ -137,7 +135,17 @@ const StickyNavbar = () => {
                 
               )}
           </div>
-      
+            <Image
+        src={Bars}
+        height={50}
+        width={50}
+        alt="menu"
+        className="lg:collapse  bg-transparent flex absolute 
+        top-0 right-0 transform -translate-x-1/2 translate-y-1/4 
+         shadow-black shadow-xl outline-zinc-950 outline-8"
+        onClick={toggle}
+      />
+       </div>
       </nav>
     </header>
   );

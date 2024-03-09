@@ -112,23 +112,27 @@ export default function Hero() {
           >
             {index === current && (
               <div className="absolute top-0 left-0 w-screen h-full  overflow-hidden flex items-center justify-center">
-               
-                  <Image
+              <Image
                     src={slides.image}
                     alt={slides.alt}
                     sizes="100vh, 100vw"
                     className="absolute w-screen h-screen object-cover top-0 lg:top-10 left-0 overflow-hidden"
                     placeholder="blur"
                   />
+                  <div className="w-full h-full flex justify-center items-center bg-gray-800/30 backdrop-brightness-50"></div>
 
-                  <div className=" relative top-0 shadow-lg m-auto mb-4 bg-opacity-20 p-10 bg-white rounded-xl max-w-7xl grid-cols-1">
-                        <Image className="mx-auto " alt="logo" width={300} height={300} src="/images/logo1.png"/>                   
-                    <h1 className="text-2xl font-semibold text-clampsize shadow-slate-50 mb-3 text-left uppercase">
-                      {slides.title}
+                  <div className="absolute m-auto  flex-1 mb-4 bg-opacity-20  rounded-xl max-w-52 ">
+                      <div className=" relative mx-auto flex-1 w-32 h-32 md:w-60 md:h-60 "> <Image className="mx-auto backdrop-blur-sm opacity-60  shadow-lg" alt="logo" fill src="/images/logo1.png"/>      
+</div>               
+                    <h1 className="md:text-xl text-center flex-1 font-semibold text-sm text-white text-clampsize marker:shadow-lg shadow-slate-50 mb-3 italic">
+                    <span className="font-serif"> {slides.title}</span> 
                     </h1>
-                    <Link href="/registr" className=" cursor-pointer"> <div className=" w-full mx-auto mb-4 cursor-pointer flex items-center content-between whitespace-nowrap primary-button">
-                Register to get Involved
-                    </div> </Link>
+                    <Link href="/registr" className=" flex-1 relative z-50 w-fit p-2 mb-1 text-base md:text-xl cursor-pointer flex 
+                   font-serif whitespace-nowrap bg-green-500  rounded items-center opacity-85
+                   mx-auto justify-center font-bold hover:bg-yellow-600  hover:text-gray-200 text-center shadow-slate-900 shadow-lg" > 
+                    Register to get Involved
+              
+                </Link>
                   </div>
                
               </div>
@@ -136,12 +140,12 @@ export default function Hero() {
           </div>
         ))}
       </div>
-      <div className="absolute bottom-72 z-10 left-5 flex">
+      <div className="absolute bottom-20 md:bottom-72 z-10 left-5 flex">
         {" "}
         <div onClick={prevSlide} className="arrowBtn">
           <IoArrowBack />
         </div></div>
-        <div className="absolute bottom-72 z-10 right-5 flex">
+        <div className="absolute bottom-20 md:bottom-72 z-10 right-0 lg:right-5 flex">
         <div onClick={nextSlide} className="arrowBtn">
           <IoArrowForward />
         </div>

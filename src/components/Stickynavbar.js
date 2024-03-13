@@ -34,44 +34,27 @@ const StickyNavbar = ({toggle}) => {
     console.log(query);
   };
  
-  useEffect(() => { const handleScroll = () => {
-    var currentScrollPos = window.scrollY;
 
-    // Check if scrolling down
-    setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 5);
-
-    setPrevScrollPos(currentScrollPos);
-    return currentScrollPos;
-  };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [prevScrollPos]);
 
   return (
-    <header className={` w-full overflow-hidden px-8 mb-14`}>
+    <header className={` w-full overflow-hidden px-0`}>
           <nav
-        className={`w-full fixed top-0 flex items-center align-middle h-24 left-0 right-0 px-0  py-8 bg-gray-950 backdrop-blur-3xl 
+        className={`w-full top-0 flex items-center align-middle h-24 left-0 right-0 py-0 bg-gray-950 backdrop-blur-3xl 
         backdrop-opacity-5 bg-opacity-95 text-white transition duration-700 
-        ease-in-out ${
-          visible
-            ? "z-10 backdrop-opacity-0 transform translate-y-0"
-            : "z-10 opacity-0 transform -translate-y-full "
-        } border-b-4 border-yellow-600`}
+        ease-in-out border-b-4 border-yellow-600 px-4 `}
       >
         <div className="flex absolute py-0 px-4 
 outline-8 opacity-100  text-opacity-100 w-full">
-          <div className="absolute right-0 left-0 lg:ml-10 w-[100px] p-1 origin-center content-center  mx-auto   md:justify-between">
+          <div className="absolute right-0 left-0 lg:ml-10 w-[110px] p-1 text-center leading-tight origin-center content-center  mx-auto  h-full  md:justify-between">
             <Link href="/">
               {" "}
               <Image
                 src={logo}
                 alt="Logo"
-                className="md:pl-2 w-[70px] mx-auto"
+                className="md:pl-2 w-[50px] mx-auto"
                 placeholder="blur"
               />
+               <span className="font-serif text-xs italic content-center text-center">An Adventure of a lifetime</span> 
             </Link>
           </div>
           

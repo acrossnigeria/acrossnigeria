@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
 
 .swiper {
  @apply h-screen;
@@ -18,8 +25,9 @@
  @apply  bg-white opacity-100;
 }
 .primary-button {
-  @apply rounded items-center mx-auto justify-center font-bold  hover:text-gray-200 bg-amber-600 py-1 px-1
-   shadow-orange-400 shadow-lg outline-yellow-600 hover:bg-gray-900 active:bg-gray-900;
+  @apply mb-1  cursor-pointer flex 
+font-serif bg-green-500  rounded items-center opacity-85
+mx-auto justify-center font-bold hover:bg-gray-800 py-2 px-1 outline-none  hover:text-gray-200 text-center shadow-slate-900 shadow-lg;
 }
 .arrowBtn {
   @apply w-12 h-12 text-white text-2xl 

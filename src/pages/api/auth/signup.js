@@ -7,8 +7,17 @@ async function handler(req, res) {
        if (req.method !== 'POST') {
       return;
     }
-    const {name,surname, email, phone, 
-      state, age, gender, password, refInfo} = req.body;
+    const detail = req.body;
+  const{ name,
+  surname,
+  email,
+  phone,
+  state,
+  age,
+  gender,
+  password,
+  refInfo}=detail;
+
    const slug=name+surname+state+age;
     if (
       !name ||
@@ -29,17 +38,22 @@ async function handler(req, res) {
   
   await db.connect();
      const existingUser = await User.findOne({ email: email }).maxTimeMS(20000);
-    if (existingUser ) {
+    console.log("progress one")
+     if (existingUser ) {
       console.log("user exists")
       res.status(422).json({ message: 'User exists already!' });
       await db.disconnect();
       return;
     }
-   if(refInfo!=="" ){
-   const referencePay=refInfo;
+   if(refInfo==="" ){
+     res.status(422).json({
+        message: 'Validation error',
+      });
+      console.log("validation problem")
+      return;
+     }
+      const referencePay=refInfo;
    const regPayment= true
-
-   }
     const newUser = new User({
       name,
        surname, email, slug, phone, state, age, gender,

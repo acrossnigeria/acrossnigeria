@@ -1,13 +1,15 @@
 import "@/styles/globals.css";
 import { SessionProvider, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { StoreProvider } from "../../utils/Store";
 
 export default function App({ Component, pageProps:{session,...pageProps}, }) {
   return ( 
   
   <SessionProvider session={session}>
+    <StoreProvider>
 {Component.auth?(<Auth> <Component {...pageProps} /></Auth>):(<Component {...pageProps} />)}
-</SessionProvider>);
+</StoreProvider></SessionProvider>);
   
 }
 

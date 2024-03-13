@@ -3,13 +3,13 @@
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useEffect, useState } from 'react';
-import { signIn, useSession } from 'next-auth/react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { getError } from '../../utils/error';
-
-import axios from 'axios';
 import Layout from '@/components/Layout';
+import { Store } from '../../utils/Store';
+import Cookies from 'js-cookie';
 
 const Register = () => {
    const states = [
@@ -18,32 +18,44 @@ const Register = () => {
     'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara', 'Lagos', 'Nasarawa',
     'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau', 'Rivers', 'Sokoto', 'Taraba', 'Yobe', 'Zamfara'
   ];
-   const { data: session } = useSession();
-
+  const { data: session } = useSession();
+  const { state, dispatch } = useContext(Store);
+  const{user}=state;
+  const {userDetails}=user;
   const router = useRouter();
+  const {query}=useRouter();
+  console.log("The Query is :", query)
   const { redirect } = router.query;
-
   useEffect(() => {
     if (session?.user) {
       router.push(redirect || '/');
     }
   }, [router, session, redirect]);
-  const { handleSubmit, control, register, watch, formState: { errors } } = useForm();
+  const { handleSubmit, control, register, watch, formState: { errors }, setValue } = useForm();
 const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const watchPassword = watch('password', '');
+  useEffect(()=>{
+    setValue('name',userDetails.name);
+    setValue('surname',userDetails.surname);
+    setValue('email',userDetails.name);
+    setValue('phone',userDetails.name);
+    setValue('state',userDetails.name);
+    setValue('gender',userDetails.name);
+   
+  })
   const onSubmit =async ({ name, surname, email, phone, state, dob, gender, password }) => {
-  
-     const today=new Date();
+    const today=new Date();
     const age=today.getFullYear()-dob.getFullYear();
-    
+ const data={ name: name,surname:surname,email: email,phone: phone,state: state, age:age ,gender: gender,password: password};   
+dispatch({type:'ADD_USER', payload: data })
+Cookies.set(
+  'user', JSON.stringify({...user,userDetails:data})
+  );
+  console.log(user,data)
+  router.push('/regDetails')
 
-const data={ name: name,surname:surname,email: email,phone: phone,state: state, age:age ,gender: gender,password: password};
-sessionStorage.setItem("reginfo", JSON.stringify(data))
-  const storedData=window.sessionStorage.getItem("reginfo");
-console.log("Data is", storedData)
-     router.push(redirect || '/paystack');
   };
 
   return (
@@ -136,11 +148,10 @@ console.log("Data is", storedData)
                 scrollableMonthYearDropdown
                 isClearable
                 maxDate={new Date(new Date().setFullYear(new Date().getFullYear() - 18))}
-                onChange={(date) => field.onChange(date)}
+                onChange={(dob) => field.onChange(dob)}
                 showYearDropdown
                 showMonthDropdown
                 showIcon
-                yearDropdownItemNumber={60}
                style={{ width: '100%', borderRadius: '0.375rem' }}
               /></div>
             )}

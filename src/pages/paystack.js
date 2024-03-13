@@ -1,36 +1,34 @@
-
 import Layout from "@/components/Layout";
 import PaystackBtn from "@/components/PaystackBtn";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { getError } from "../../utils/error";
 import { useRouter } from "next/router";
-import { useContext, useEffect} from "react";
-import { Store } from "../../utils/Store";
+import { useEffect, useState } from "react";
 
 
- export default function PayScreen(){
-
-  /*  const router = useRouter();
-   const {state}= useContext(Store);
-    const{user}=state;
-    const {userDetails}=user;
-   console.log("Before if statement")   
- const details = userDetails ? userDetails[0] : undefined;
-useEffect(()=>{
-  console.log("Before if statement")
-  if (details.length===0) {
-    router.push('/registr')
-    }},[router, details]) */
-
- 
+ function PayScreen(){
+ const [data,setData]=useState()
+   const router = useRouter();
+useEffect(() => {
+    if (window.sessionStorage) {
+       const storedData=window.sessionStorage.getItem("reginfo");
+  setData(JSON.parse(storedData))
+ }
+    else{
+        router.push(redirect || '/registr');
+    }
+  }, [data, router]);
+console.log(data)
 
 const paymentUpdate = async (ref) => {   
  try {
   
      const refInfo=ref.transaction
-     const detail={...details, refInfo:refInfo}
-      await axios.post('/api/auth/signup', detail);
+      await axios.post('/api/auth/signup', {
+        name,
+       surname, email, phone, state, age, gender, password, refInfo
+      });
 
       const result = await signIn('credentials', {
         redirect: false,
@@ -63,14 +61,15 @@ const paymentUpdate = async (ref) => {
   };
     return (
     <Layout>
-       <PaystackBtn pay={paymentUpdate} amount={1200} email="mail@dkd.com" purpose="Registration"/>
+       <PaystackBtn pay={paymentUpdate} amount={1200} email="" purpose="Registration"/>
 
       </Layout>
     
     );
   };
 
- 
+  export default  PayScreen;
+
  /*  axios.post('/api/regUser', data)
       .then((response) => {
         // Handle success

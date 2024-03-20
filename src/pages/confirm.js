@@ -6,11 +6,17 @@ const Confirm = () => {
   const { state, dispatch } = useContext(Store);
   const {user:{userDetails},}= state;
   const router=useRouter();
-  useEffect(()=>{
-    if(!userDetails[0]?.name){
-      router.push("/reg")
-    }} )
-
+ useEffect(()=>{
+    if(!userDetails[0]?.name){setFormData({...formData,  name: "",
+        surname:"",
+    dob:"",
+    email: "",
+    password: "",
+    phone:"",
+    residence:"",
+    gender:"",
+    confirmPassword: "",
+     acceptTerms: false, });}})
 
 
   return (
@@ -26,7 +32,7 @@ const Confirm = () => {
       <p>{userDetails[0].residence}</p> 
       
       <p>Please verify your details above.</p>
-     <div onClick={()=>(router.push('/reg'))}> Back to edit</div> <div onClick={()=>(router.push('/paystack'))}>Proceed to Pay</div> 
+     <div className='primary-button' onClick={()=>(router.push('/reg'))}> Back to edit</div> <div className='primary-button' onClick={()=>(router.push('/paystack'))}>Proceed to Pay</div> 
       
     </div>
   );

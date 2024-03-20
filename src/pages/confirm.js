@@ -1,3 +1,4 @@
+import React from 'react'; 
 import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Store } from '../../utils/Store';
@@ -24,7 +25,6 @@ const Confirm = () => {
       <h1 className="text-2xl font-bold mb-4">Confirm Details</h1>
     <p>{userDetails[0].name}</p>
     <p>{userDetails[0].surname}</p>
-
         <p>{userDetails[0].dob}</p>
       <p>{userDetails[0].email}</p>
       <p>{userDetails[0].gender}</p>

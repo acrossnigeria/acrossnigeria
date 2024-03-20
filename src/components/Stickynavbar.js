@@ -14,12 +14,11 @@ import { signOut, useSession } from "next-auth/react";
 export const menuData = [
   { title: "About", link: "/about" },
   { title: "Products", link: "/products" },
-  { title: "Contact Us", link: "/contact" },
+  { title: "Contact-Us", link: "/contact" },
 ];
 const StickyNavbar = ({toggle}) => {
   const { status, data: session } = useSession();
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(true);
   const[open,setOpen]=useState(false)
 
   const [query, setQuery] = useState("");
@@ -37,50 +36,50 @@ const StickyNavbar = ({toggle}) => {
 
 
   return (
-    <header className={` w-full overflow-hidden px-0`}>
+    <header className={` w-full overflow-hidden mb-1 px-0`}>
           <nav
-        className={`w-full top-0 flex items-center align-middle h-24 left-0 right-0 py-0 bg-gray-950 backdrop-blur-3xl 
-        backdrop-opacity-5 bg-opacity-95 text-white transition duration-700 
-        ease-in-out border-b-4 border-yellow-600 px-4 `}
+        className={`w-full top-0 flex items-center align-middle h-20 left-0 right-0 py-0 bg-gray-950 backdrop-blur-3xl 
+        backdrop-opacity-5 bg-opacity-95 text-white border-b-4 border-yellow-600 px-1 mt-0`}
       >
-        <div className="flex absolute py-0 px-4 
-outline-8 opacity-100  text-opacity-100 w-full">
-          <div className="absolute right-0 left-0 lg:ml-10 w-[110px] p-1 text-center leading-tight origin-center content-center  mx-auto  h-full  md:justify-between">
-            <Link href="/">
-              {" "}
-              <Image
+        <div className="flex relative py-0 px-1
+outline-8 opacity-100  text-opacity-100 w-full mt-0">
+          <div className="absolute w-[40px] h-[50px] p-7 text-center md:ml-5 leading-tight origin-center content-center ml-0 left-0 top-0 justify-between mt-0">
+            <Link href="/" legacyBehavior>
+                  <Image
                 src={logo}
                 alt="Logo"
-                className="md:pl-2 w-[50px] mx-auto"
+                fill
+                className="pl-0 ml-0"
                 placeholder="blur"
+
               />
-               <span className="font-serif text-xs italic content-center text-center">An Adventure of a lifetime</span> 
             </Link>
           </div>
           
             <form
               onSubmit={submitHandler}
-              className="mr-60 mb-6 mt-6 flex-auto collapse lg:visible md:flex md:items-center lg:align-center
-               h-10 md:justify-center md:flex-row  md:mx-auto"
+              className="flex items-center h-10 w-auto ml-20  justify-center md:ml-28 lg:ml-auto mx-auto"
             >
               <input
                 onChange={(e) => setQuery(e.target.value)}
                 type="text"
-                className="rounded-tr-none text-gray-900 font-mono border-blue-400 border-1 w-60 rounded-br-none p-1 text-sm focus:ring-0"
+                className="rounded-tr-none rounded-l-md text-gray-900 font-mono border-blue-400 border-1 w-20 md:w-auto rounded-br-none p-1 text-[7px] md:text-sm 
+                focus:ring-0"
                 placeholder="Search products"
               />
               <button
                 className="rounded rounded-tl-none rounded-bl-none hover:bg-yellow-600 bg-green-600 p-1 text-sm dark:text-black"
-                type="submit"
+                type="submit" 
                 id="button-addon2"
               >
-                <SearchIcon className="h-5 w-5"></SearchIcon>
+                <SearchIcon className="h-[8px] w[-8px] md:h-5 md:w-5"></SearchIcon>
               </button>
             </form>
-            <div className="text-white flex cursor-pointer items-center font-semibold collapse lg:visible">
+            <div className="text-white flex cursor-pointer items-center md: ">
               {menuData.map((item) => (
                 <Link key={item.link} href={item.link}>
-                  <div className="flex items-center py-0 px-4 h-full font-semibold justify-center uppercase transition duration-400 ease-in-out hover:text-green-400">
+                  <div className="flex items-center py-0 px-1 md:px-9 h-full font-mono text-[8px] md:text-sm md:font-semibold justify-center
+                   uppercase transition duration-400 ease-in-out hover:text-green-400">
                     {item.title}
                   </div>
                 </Link>
@@ -118,17 +117,7 @@ outline-8 opacity-100  text-opacity-100 w-full">
                 
               )}
           </div>
-            <Image
-        src={Bars}
-        height={50}
-        width={50}
-        alt="menu"
-        className="lg:collapse  bg-transparent flex absolute 
-        top-0 right-0 transform -translate-x-1/2 translate-y-1/4 
-         shadow-black shadow-xl outline-zinc-950 outline-8"
-        onClick={toggle}
-      />
-       </div>
+             </div>
       </nav>
     </header>
   );

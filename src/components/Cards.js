@@ -4,11 +4,13 @@ const BlogPostCard = (props) => {
     const{title, image, link}=props;
      return (
     <Link href={link}legacyBehavior><a 
-  className="relative h-24 container flex mb-4 gap-0 items-center mx-auto bg-transparent border border-gray-200 rounded-lg shadow-lg shadow-gray-700 md:flex-row md:max-w-xl
-   hover:bg-gray-100 w-full xl:w-[300px] lg:w-[300px] md:w-200px] overflow-clip">
- <Image className="rounded-t-lg relative md:rounded-none md:rounded-s-lg"
-    src={image} alt={title} layout="fill"
-        objectFit="cover"
+  className="relative px-6 h-24 md:h-52 container flex mb-4 gap-0 items-center mx-auto
+   bg-transparent border border-gray-200 rounded-lg shadow-lg
+    shadow-gray-700 md:flex-row md:max-w-xl
+   hover:bg-gray-100 w-full 
+ md:w-200px] overflow-clip">
+ <Image className="rounded-t-lg object-cover relative md:rounded-none md:rounded-s-lg"
+    src={image} alt={title} fill
         quality={100}/>
   
 </a></Link>

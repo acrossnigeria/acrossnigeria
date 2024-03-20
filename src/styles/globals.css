@@ -29,6 +29,9 @@ body {
 font-serif bg-green-500  rounded items-center opacity-85
 mx-auto justify-center font-bold hover:bg-gray-800 py-2 px-1 outline-none  hover:text-gray-200 text-center shadow-slate-900 shadow-lg;
 }
+.animate-bounce-short {
+    animation: bounce 10ms 3s;
+}
 .arrowBtn {
   @apply w-12 h-12 text-white text-2xl 
   cursor-pointer bg-arrowbtn rounded-3xl p-3 mr-4 

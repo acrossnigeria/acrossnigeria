@@ -16,8 +16,8 @@ const PersonCard = ({ imageUrl, name, age, occupation }) => {
         <h2 className="text-xl font-bold">{name}</h2>
         <p>{`Age: ${age}`}</p>
         <div className="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-2">
-  <p class="text-lg font-bold mb-4 italic">{'"Whatever a woman would like to say to the world."'}</p>
-  <p class="text-sm">-Amina Yusuf</p>
+  <p className="text-lg font-bold mb-4 italic">{'"Whatever a woman would like to say to the world."'}</p>
+  <p className="text-sm">-Amina Yusuf</p>
 </div>
 
       </div>

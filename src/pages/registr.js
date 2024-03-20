@@ -10,6 +10,8 @@ import { getError } from '../../utils/error';
 import Layout from '@/components/Layout';
 import { Store } from '../../utils/Store';
 import Cookies from 'js-cookie';
+import PhoneInput from 'react-phone-input-2';
+import "react-phone-input-2/lib/bootstrap.css";
 
 const Register = () => {
    const states = [
@@ -24,7 +26,7 @@ const Register = () => {
   const {userDetails}=user;
   const router = useRouter();
   const {query}=useRouter();
-  console.log("The Query is :", query)
+  const {phone, setPhone}=useState();
   const { redirect } = router.query;
   useEffect(() => {
     if (session?.user) {
@@ -49,6 +51,8 @@ const [showPassword, setShowPassword] = useState(false);
     const today=new Date();
     const age=today.getFullYear()-dob.getFullYear();
  const data={ name: name,surname:surname,email: email,phone: phone,state: state, age:age ,gender: gender,password: password};   
+ Cookies.remove('user');
+ dispatch({type:'RESET'})
 dispatch({type:'ADD_USER', payload: data })
 Cookies.set(
   'user', JSON.stringify({...user,userDetails:data})
@@ -107,6 +111,7 @@ Cookies.set(
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
            Phone
           </label>
+          
           <input
             {...register('phone', { required: 'Phone Number is required',  minLength: { value: 11, message: 'Password must be at least 11 characters' },})}
             type="tel"

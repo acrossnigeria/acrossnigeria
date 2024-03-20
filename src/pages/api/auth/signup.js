@@ -12,22 +12,22 @@ async function handler(req, res) {
   surname,
   email,
   phone,
-  state,
-  age,
+  residence,
+  dob,
   gender,
   password,
   refInfo}=detail;
 
-   const slug=name+surname+state+age;
+   const slug=name+surname+residence;
     if (
       !name ||
       !email||
       !phone||
-      !state||
+      !residence||
       !email.includes('@') ||
       !password ||
       !refInfo||
-      password.trim().length < 8||age<18
+      password.trim().length < 6
     ) {   
       res.status(422).json({
         message: 'Validation error',
@@ -56,7 +56,7 @@ async function handler(req, res) {
    const regPayment= true
     const newUser = new User({
       name,
-       surname, email, slug, phone, state, age, gender,
+       surname, email, slug, phone, residence, dob, gender,
       password: bcryptjs.hashSync(password),referencePay, regPayment,
       isAdmin: false,
     });  

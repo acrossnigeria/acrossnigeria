@@ -13,7 +13,7 @@ import image6 from "../../public/images/mega_cashout.jpg";
 import image7 from "../../public/images/across_naija_tv.jpg";
 import image8 from "../../public/images/naija_vibes.jpg";
 import PersonCard from "@/components/ModelCard";
-import flameimg from "../../public/images/flame1.svg"
+import flameimg from "../../public/images/flame2.svg"
 import Image from "next/image";
 
 
@@ -34,12 +34,21 @@ export default function Home() {
   return (
     <Layout title={"Home Page"}>
 <Hero/>
-<PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
 <Info/>
-  <div className=""> <p className="grid  mx-auto text-center text-2xl font-sans"><span className="flex text-center mx-auto p-8"><Image src={flameimg} height={30} width={30} alt="hot"/> Our Hottest Products</span></p><div className="grid left-0 grid-cols-2 gap-4  md:grid-cols-2 lg:grid-cols-4 md:gap-4 mx-auto 
-   items-center md:max-w-screen-xl px-4 sm:px-3 lg:px-2"> { games.map((card)=>(<Cards key={card.title} title={card.title} 
-   link={card.link} image={card.image}/>))}</div></div>
- 
+
+<div className=""> 
+<p className="grid w-full  mx-auto text-center bg-gray-950 text-2xl text-gray-300 font-sans">
+  <span className="flex text-center mx-auto p-8">
+    <Image src={flameimg} height={30} width={30} alt="hot"/> 
+    {"  ..."} Our Amazing Products{"  ..."}<Image src={flameimg} height={30} width={30} alt="hot"/></span></p>
+    <div className="grid left-0 grid-cols-2 gap-4  md:grid-cols-2 lg:grid-cols-3 md:gap-4 mx-auto 
+  items-center md:max-w-screen-xl px-4 sm:px-3 lg:px-20">
+     { games.map((card)=>(<Cards key={card.title} title={card.title} 
+   link={card.link} image={card.image}/>))}
+   </div>
+   
+   <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
+   </div>
    </Layout>
   );
 }

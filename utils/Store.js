@@ -4,7 +4,6 @@ import Cookies from "js-cookie";
 export const Store = createContext();
 
 const initialState={
-
   user:{userDetails:[]},
 };
 function reducer(state, action){
@@ -15,6 +14,11 @@ function reducer(state, action){
      Cookies.set('user',JSON.stringify({...state.user, userDetails}))
      return {...state, user:{...state.user,userDetails}}
     };
+    case 'RESET':{
+      return{...state, user:{
+        userDetails:[]
+      }}
+    }
     default: return state;
   }
 }

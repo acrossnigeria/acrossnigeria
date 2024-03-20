@@ -47,7 +47,7 @@ export default function LoginScreen() {
   return (
     <Layout title="Login">
      
-      <div className="h-screen w-screen mb-4 mx-auto p-24  border border-yellow-500 rounded-md">
+      <div className="h-screen w-screen mb-4 mx-auto p-24 bg-gray-200 border border-yellow-500 rounded-md">
       <form className=" mx-auto border sm:w-full md:w-[600px] lg:w-[600px] xl:w-[600px] 2xl:w-[600px] border-yellow-500 p-3 rounded-md" onSubmit={handleSubmit(submitHandler)}>
         <h1 className="mb-4 font-bold text-xl">Login</h1>
         <div className="mb-4">
@@ -89,7 +89,7 @@ export default function LoginScreen() {
         </div>
         <div className="mb-4 font-semibold ">
           Don&apos;t have an account? &nbsp;
-          <Link className="text-yellow-300 cursor-pointer hover:text-green-500"  href={`/registr?redirect=${redirect || '/'}`}>Register</Link>
+          <Link className="text-yellow-300 cursor-pointer hover:text-green-500"  href={`/reg?redirect=${redirect || '/'}`}>Register</Link>
         </div>
       </form></div>
     </Layout>

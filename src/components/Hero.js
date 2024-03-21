@@ -134,7 +134,7 @@ export default function Hero() {
                       <div className=""> <Image className="mx-auto backdrop-blur-sm  mb-4 shadow-lg" alt="logo" 
                       fill src="/images/logo1.png"/>   </div>     
                
-                    <div className="relative text-[8px] w-full p-[2px] lg:text-[12px] mt-28 mx-auto tracking-tighter h-5 primary-button"> <Link href="/registr" > 
+                    <div className="relative text-[8px] w-full p-[2px] lg:text-[12px] mt-28 mx-auto tracking-tighter h-5 primary-button"> <Link href="/reg" > 
                     Register to get Involved
               
                 </Link></div></div> 

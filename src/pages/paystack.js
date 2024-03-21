@@ -18,16 +18,24 @@ useEffect(() => {
        }
       
   }, [router, userDetails]);
-  
+    const name=userDetails[0]?.name?? 'Unknownn';
  const paymentUpdate = async (ref) => {   
-   const name=userDetails[0].name
-   const surname=userDetails[0].surname
- const email=userDetails[0].email
- const phone= userDetails[0].phone
- const residence=userDetails[0].residence
- const dob=userDetails[0].dob;
- const gender= userDetails[0].gender;
- const password=userDetails[0].password;
+   const name=userDetails[0]?.name?? null;
+   const surname=userDetails[0]?.surname?? null;
+ const email=userDetails[0]?.email?? null;
+ const phone= userDetails[0]?.phone?? null;
+ const residence=userDetails[0]?.residence?? null;
+ const dob=userDetails[0]?.dob?? null;
+ const gender= userDetails[0]?.gender?? null;
+ const password=userDetails[0]?.password?? null;
+ if(name===null||surname===null||phone===null||residence===null||dob===null||password===null||gender===null){
+  router.push(
+    {
+        pathname: '/reg',
+        query:"Fill in all required parameters"
+      }
+  )
+ }
  try {
   
      const refInfo=ref.transaction
@@ -50,7 +58,7 @@ useEffect(() => {
     }   };
     return (
     <Layout>
-       <PaystackBtn pay={paymentUpdate} amount={1000} email={userDetails[0].email} purpose="Registration to use Our Products"/>
+       <PaystackBtn pay={paymentUpdate} amount={1000} email={userDetails[0]?.email?? null} purpose="Registration to use Our Products"/>
 
       </Layout>
     

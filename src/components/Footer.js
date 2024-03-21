@@ -36,7 +36,7 @@ function Footer() {
                           <a href="https://acrossnig.com/" className="hover:underline">Across Nigeria™</a>
                       </li>
                       <li>
-                          <a href="https://tailwindcss.com/" className="hover:underline">Tailwind CSS</a>
+                          <a href="#" className="hover:underline">Reality TV show</a>
                       </li>
                   </ul>
               </div>

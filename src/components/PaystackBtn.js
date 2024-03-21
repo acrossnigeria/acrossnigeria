@@ -9,7 +9,7 @@ export default function PaystackBtn(props) {
     reference: new Date().getTime().toString(),
     email: email,
     amount: amount * 100, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
-    publicKey: "pk_test_258dd6714519378dec10c40f602f6ab49c966f4d",
+    publicKey: "pk_test_cbdf33dbafe37c266634416e1b99f1f6b87e709a",
   };
 const handlePaystackSuccessAction = async (ref) => {
     props.pay(ref);

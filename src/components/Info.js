@@ -20,10 +20,9 @@ const Info = ()=>{
   return (
       <div className="relative h-full wfull  grid grid-cols-1 lg:grid-cols-2 mt-0 top-0 border border-yellow-500  md:px-16 p-4">
 
-         <div className="flex rounded-lg lg:w-full text-gray-900 text-centetext-gray-900r bg-gradient-to-br
-          from-green-600 to-gray-800 font-bold text-4xl 
+         <div className="flex rounded-lg lg:w-full text-gray-100 text-center w-full bg-gray-800 font-bold text-4xl 
          justify-center right-0 px-4 py-8 items-center text-pretty italic font-serif">
-        <Link href="/registr">{data.paragraphTwo}</Link> 
+        <Link href="/reg">{data.paragraphTwo}</Link> 
         </div>
         <blockquote className={`flex flex-col justify-evenly lg:w-full items-start leading-loose
          pr-3 pl-3 md:pl-24 lg:pl-24 rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8`}>

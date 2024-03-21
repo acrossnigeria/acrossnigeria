@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 const questions = [
   {
-    question: 'What is the capital of France?',
-    options: ['London', 'Paris', 'Berlin', 'Rome'],
-    answer: 1, // Index of the correct answer option
+    question: `What is the nickname given to Nigeria's men national football team?`,
+    options: ['A) Green Eagles', 'B) Lions', 'C) Super Eagles', 'D) Falcons'],
+    answer: 2, // Index of the correct answer option
   },
   // ... add more questions here
 ];
+
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);

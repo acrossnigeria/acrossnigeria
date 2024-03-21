@@ -13,35 +13,37 @@ import image6 from "../../public/images/mega_cashout.jpg";
 import image7 from "../../public/images/across_naija_tv.jpg";
 import image8 from "../../public/images/naija_vibes.jpg";
 import PersonCard from "@/components/ModelCard";
-import flameimg from "../../public/images/flame2.svg"
+import flameimg from "../../public/images/flame2.png"
 import Image from "next/image";
+import ReviewSlider from "@/components/ReviewSlider";
 
 
 
 export const games=[
 {title:"GIVE AWAY QUIZZES",
 image:image1,link:"/giveaway"},
-{title:"SKITS ACROSS NIGERIA",image:image2,link:"/skit"},
-{title:"KING AND QUEEN",image:image3,link:"/king_queen"},
-{title:"MYSTERY BOXES",image:image4,link:"/mystery"},
-{title:"STATE TREASURE HUNT SHOW",image:image5,link:"treasures"},
-{title:"MEGA CASH OUT",image:image6,link:"cashout"},
-{title:"ACROSS NIGERIA REALITY SHOW",image:image7,link:"acn_show"},
-{title:"NAIJA VIBES", image:image8,link:"vibes"}]
+{title:"SKITS ACROSS NIGERIA",image:image2,link:"/soon"},
+{title:"KING AND QUEEN",image:image3,link:"/soon"},
+{title:"MYSTERY BOXES",image:image4,link:"/soon"},
+{title:"STATE TREASURE HUNT SHOW",image:image5,link:"/soon"},
+{title:"MEGA CASH OUT",image:image6,link:"/soon"},
+{title:"ACROSS NIGERIA REALITY SHOW",image:image7,link:"/soon"},
+{title:"NAIJA VIBES", image:image8,link:"/soon"}]
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <Layout title={"Home Page"}>
-<Hero/>
+      
+      <ReviewSlider/>
 <Info/>
 
 <div className=""> 
-<p className="grid w-full  mx-auto text-center bg-gray-950 text-2xl text-gray-300 font-sans">
-  <span className="flex text-center mx-auto p-8">
-    <Image src={flameimg} height={30} width={30} alt="hot"/> 
-    {"  ..."} Our Amazing Products{"  ..."}<Image src={flameimg} height={30} width={30} alt="hot"/></span></p>
-    <div className="grid left-0 grid-cols-2 gap-4  md:grid-cols-2 lg:grid-cols-3 md:gap-4 mx-auto 
+<p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
+  <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
+    <Image src={flameimg} height={10} width={30} alt="hot"/> 
+     Our Amazing Products<Image src={flameimg} height={10} width={30} alt="hot"/></span></p>
+    <div className=" mt-6 grid left-0 grid-cols-2 gap-4  md:grid-cols-2 lg:grid-cols-3 md:gap-4 mx-auto 
   items-center md:max-w-screen-xl px-4 sm:px-3 lg:px-20">
      { games.map((card)=>(<Cards key={card.title} title={card.title} 
    link={card.link} image={card.image}/>))}
@@ -49,6 +51,7 @@ export default function Home() {
    
    <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
    </div>
+   
    </Layout>
   );
 }

@@ -11,6 +11,7 @@ import DropdownLink from "./Dropdownlink";
 import { signOut, useSession } from "next-auth/react";
 
 
+
 export const menuData = [
   { title: "About", link: "/about" },
   { title: "Products", link: "/products" },
@@ -93,9 +94,11 @@ outline-8 opacity-100  text-opacity-100 w-full mt-0">
               >
                Loading...
               </div>
-              ) : session?.user ? (<div className={`grid grid-rows-1 cursor-pointer ${open&&"overflow-y-visible"} `}>
+              ) : session?.user ? (<div className={`flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
+            justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]`}>
                 <div onClick={()=>(setOpen(!open))}>{session.user.name}</div>
-          <div className={`${!open&&"collapse"} ${open&&"translate-y-8 bg-slate-400 overflow-hidden"}`} onClick={logoutClickHandler}>Sign Out</div></div>
+          <div className={`${!open&&"hidden"} ${open&&"translate-y-8 bg-slate-400 overflow-hidden"}`} 
+          onClick={logoutClickHandler}>Sign Out</div></div>
                   /* <div
             className="flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
         justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]

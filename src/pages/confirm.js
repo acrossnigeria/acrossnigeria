@@ -19,13 +19,13 @@ const Confirm = () => {
   return (
     <div className="max-w-md mx-auto">
       <h1 className="text-2xl font-bold mb-4">Confirm Details</h1>
-    <p>{name}</p>
-    <p>{surname}</p>
-        <p>{dob}</p>
-      <p>{email}</p>
-      <p>{gender}</p>
-      <p>{phone}</p>
-      <p>{residence}</p> 
+    <span>Name</span><p className='mb4 p-3 text-lg font-semibold text-center'>{name}</p>
+  <span>Name</span>  <p className='mb4 p-3 text-lg font-semibold text-center'>{surname}</p>
+    <span>Name</span>    <p className='mb4 p-3 text-lg font-semibold text-center'>{dob}</p>
+     <span>Name</span> <p className='mb4 p-3 text-lg font-semibold text-center'>{email}</p>
+      <span>Name</span><p className='mb4 p-3 text-lg font-semibold text-center'>{gender}</p>
+      <span>Name</span><p className='mb4 p-3 text-lg font-semibold text-center'>{phone}</p>
+      <span>Name</span><p className='mb4 p-3 text-lg font-semibold text-center'>{residence}</p> 
       
       <p>Please verify your details above.</p>
      <div className='primary-button' onClick={()=>(router.push('/reg'))}> Back to edit</div> <div className='primary-button' onClick={()=>(router.push('/paystack'))}>Proceed to Pay</div> 

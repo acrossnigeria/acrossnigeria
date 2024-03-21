@@ -17,11 +17,13 @@ export const menuData = [
   { title: "Products", link: "/products" },
   { title: "Contact-Us", link: "/contact" },
 ];
-const StickyNavbar = ({toggle}) => {
+const StickyNavbar = () => {
   const { status, data: session } = useSession();
-    const [visible, setVisible] = useState(true);
-  const[open,setOpen]=useState(false)
 
+  const[open,setOpen]=useState(false)
+const toggleMenu=()=>{
+  setOpen(!open);
+}
   const [query, setQuery] = useState("");
    const logoutClickHandler = () => {
     
@@ -95,10 +97,15 @@ outline-8 opacity-100  text-opacity-100 w-full mt-0">
                Loading...
               </div>
               ) : session?.user ? (<div className={`flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
-            justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]`}>
-                <div onClick={()=>(setOpen(!open))}>{session.user.name}</div>
-          <div className={`${!open&&"hidden"} ${open&&"translate-y-8 bg-slate-400 overflow-hidden"}`} 
-          onClick={logoutClickHandler}>Sign Out</div></div>
+            justify-center uppercase text-white border-2 border-green-600  transition duration-100  rounded-lg text-[10px]`}>
+                <div className="inline-flex justify-center w-full" onClick={toggleMenu}>{session.user.name}</div>
+           {open && (
+        <div className="absolute mr-8 mt-16 z-[999] w-fit origin-top-right bg-green-600 text-[10px] divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+          <div className="py-2" role="none">
+            <a onClick={logoutClickHandler} className="text-gray-700 block px-6 text-sm" role="menuitem">LogOut</a>
+            </div>
+        </div>
+      )}</div>
                   /* <div
             className="flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
         justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]

@@ -13,13 +13,17 @@ export default function LoginScreen() {
 
   const router = useRouter();
   const { redirect } = router.query;
+  const sessionName=session?.user?? null
 
   useEffect(() => {
-    if (session!==null) {
-        console.log(session)
-      router.push(redirect || '/');
-    }
-  }, [router, session, redirect]);
+    if (sessionName===null) {
+        console.log(sessionName)
+          }
+          else{
+            console.log(sessionName)
+            router.push(redirect || '/');
+          }
+  }, [router, sessionName, redirect]);
 
   const {
     handleSubmit,

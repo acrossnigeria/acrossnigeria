@@ -26,8 +26,9 @@ const CustomBanner = () => {
       isEnableLoop
       autoPlayTime={3000}
       isEnableAutoPlay
+
       isEnablePagination
-     className="bg-green-700 text-green-700"
+     
       height={{ widthRatio: 21, heightRatio: 18 }}
     />
   );

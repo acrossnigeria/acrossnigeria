@@ -9,7 +9,7 @@ import { signIn } from "next-auth/react";
 export default function PayScreen (){
    const { state, dispatch } = useContext(Store);
   const {user:{userDetails},}= state;
-
+const [loading, setLoading]=useState(false)
   const router=useRouter();
 
 useEffect(() => {
@@ -36,8 +36,9 @@ useEffect(() => {
       }
   )
  }
+  setLoading(true);
  try {
-  
+
      const refInfo=ref.transaction
       await axios.post('/api/auth/signup', {
         name,
@@ -52,12 +53,14 @@ useEffect(() => {
       if (result.error) {
         console.log(result.error);
       }
+      setLoading(false)
       router.push('/success')
     } catch (err) {
       console.log(getError(err))
     }   };
     return (
     <Layout>
+       {loading&&<div className="z-50 bg-white text-black text-center h-screen w-screen font-sans font-bold text-5xl bg-opacity-90">Submiting your Details, please wait</div>}
        <PaystackBtn pay={paymentUpdate} amount={1000} email={userDetails[0]?.email?? null} purpose="Registration to use Our Products"/>
 
       </Layout>

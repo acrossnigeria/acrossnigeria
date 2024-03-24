@@ -33,25 +33,24 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <Layout title={"Home Page"}>
-      
-      <ReviewSlider/>
-<Info/>
-
-<div className=""> 
-<p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
-  <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
-    <Image src={flameimg} height={10} width={30} alt="hot"/> 
-     Our Amazing Products<Image src={flameimg} height={10} width={30} alt="hot"/></span></p>
-    <div className=" mt-6 grid left-0 grid-cols-2 gap-4  md:grid-cols-2 lg:grid-cols-3 md:gap-4 mx-auto 
-  items-center md:max-w-screen-xl px-4 sm:px-3 lg:px-20">
-     { games.map((card)=>(<Cards key={card.title} title={card.title} 
-   link={card.link} image={card.image}/>))}
-   </div>
+        <Layout title={"Home Page"}>
+        <ReviewSlider/>
+        <Info/>
+        <div className=""> 
+            <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
+              <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
+                 <Image src={flameimg} height={10} width={30} alt="hot"/> 
+                  Our Amazing Products
+                 <Image src={flameimg} height={10} width={30} alt="hot"/>
+              </span>
+            </p>
+        <div className=" mt-6 grid left-0 grid-cols-2 gap-4  md:grid-cols-2 lg:grid-cols-3 md:gap-4 mx-auto items-center md:max-w-screen-xl px-4 sm:px-3 lg:px-20">
+            { games.map((card)=>(<Cards key={card.title} title={card.title} 
+            link={card.link} image={card.image}/>))}
+        </div>
+      <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
+      </div>
    
-   <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
-   </div>
-   
-   </Layout>
+      </Layout>
   );
 }

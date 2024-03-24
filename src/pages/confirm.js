@@ -17,18 +17,25 @@ const Confirm = () => {
 
 
   return (
-    <div className="max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Confirm Details</h1>
-    <span>Name</span><p className='mb4 p-3 text-lg font-semibold text-center'>{name}</p>
-  <span>Name</span>  <p className='mb4 p-3 text-lg font-semibold text-center'>{surname}</p>
-    <span>Name</span>    <p className='mb4 p-3 text-lg font-semibold text-center'>{dob}</p>
-     <span>Name</span> <p className='mb4 p-3 text-lg font-semibold text-center'>{email}</p>
-      <span>Name</span><p className='mb4 p-3 text-lg font-semibold text-center'>{gender}</p>
-      <span>Name</span><p className='mb4 p-3 text-lg font-semibold text-center'>{phone}</p>
-      <span>Name</span><p className='mb4 p-3 text-lg font-semibold text-center'>{residence}</p> 
+    <div className="max-w-md lg:mx-auto ml-4">
+      <h1 className="text-2xl font-bold mb-4 underline mt-4">Confirm Details</h1>
+    <p className='mb4 p-3 text-lg font-semibold'><span className='pr-2 font-bold'>Name: </span>{name}</p>
+  <p className='mb4 p-3 text-lg font-semibold'><span className='pr-2 font-bold'>Surname: </span>{surname}</p>
+    <p className='mb4 p-3 text-lg font-semibold'><span className='pr-2 font-bold'>Date of Birth: </span>{dob}</p>
+     <p className='mb4 p-3 text-lg font-semibold'><span className='pr-2 font-bold'>Email: </span>{email}</p>
+      <p className='mb4 p-3 text-lg font-semibold'><span className='pr-2 font-bold'>Phone Number: </span>{phone}</p>
+      <p className='mb4 p-3 text-lg font-semibold'><span className='pr-2 font-bold'>Residence: </span>{residence}</p> 
+      <p className='mb4 p-3 text-lg font-semibold'><span className='pr-2 font-bold'>Gender: </span>{gender}</p>
       
-      <p>Please verify your details above.</p>
-     <div className='primary-button' onClick={()=>(router.push('/reg'))}> Back to edit</div> <div className='primary-button' onClick={()=>(router.push('/paystack'))}>Proceed to Pay</div> 
+      <p className='mb-16 font-semibold ml-4 lg:text-left text-large'>Please verify your details above.</p>
+     <div className='w-36 ml-4 mb-8 cursor-pointer flex 
+font-serif bg-green-500  rounded items-center opacity-85
+justify-center font-bold hover:bg-gray-800 py-2 px-1 outline-none
+hover:text-gray-200 text-center shadow-slate-900 shadow-lg' onClick={()=>(router.push('/reg'))}> Back to edit</div> 
+     <div className='w-36 ml-4 mb-8 cursor-pointer flex 
+font-serif bg-green-500  rounded items-center opacity-85
+justify-center font-bold hover:bg-gray-800 py-2 px-1 outline-none
+hover:text-gray-200 text-center shadow-slate-900 shadow-lg' onClick={()=>(router.push('/paystack'))}>Proceed to Pay</div> 
       
     </div>
   );

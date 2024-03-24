@@ -1,12 +1,15 @@
 
 import Link from "next/link";
 import React from "react";
+import { SocialIcon } from 'react-social-icons'
 import { BsTwitterX } from "react-icons/bs";
-import { FaFacebookF, FaLinkedin } from "react-icons/fa";
+import {FaLinkedin } from "react-icons/fa";
 import { ImFacebook2, ImInstagram } from "react-icons/im";
 import { RiTiktokLine } from "react-icons/ri";
+import { useSession } from "next-auth/react";
 
 const Info = ()=>{
+    const { status, data: session } = useSession();
   const data={
   paragraph: ` We offer a variety of giveaways, game show and reality shows that
             cater to different tastes and interests. Whether you want to win
@@ -29,14 +32,15 @@ const Info = ()=>{
 
           <p className="font-semibold text-justify mt-4 text-gray-700">{data.paragraph}</p>
        
-          <Link className="primary-button mt-4  pt-3 items-center text-center text-balance w-fit h-14" href="/registr">
+          <Link className={`mt-4 ${session?.user ? ("hidden"):("primary-button ")} pt-3 items-center text-center text-balance w-fit h-14`} href="/reg">
             {data.buttonLabel}
           </Link>
-   <div className="text-5xl mt-4 mx-auto rounded-md justify-between bg-gray-900 flex">
-    <ImFacebook2 className="text-blue-800 mr-4" />
-         <BsTwitterX  className="text-white mr-4"/>
-<ImInstagram className="text-orange-500 mr-4"/> <FaLinkedin className="text-blue-500 mr-4"/> 
-<RiTiktokLine className="text-white outline-2 drop-shadow-sm shadow-pink-400 outline-pink-400 mr-4"/>
+   <div className="text-5xl mt-4 mx-auto rounded-md justify-between bg-gray-100 flex">
+    <SocialIcon className="mx-auto px-4" bgColor="white" fgColor="red" network="youtube"/>
+    <SocialIcon className="mx-auto px-4" bgColor="white"  fgColor="blue" network="facebook"/>
+    <SocialIcon className="mx-auto px-4" network="instagram"/>
+    <SocialIcon className="mx-auto px-4" fgColor="black" bgColor="white" network="x"/>
+    <SocialIcon className="mx-auto px-4" network="tiktok" />
 
    </div>
         

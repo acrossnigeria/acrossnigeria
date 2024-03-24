@@ -27,7 +27,8 @@ body {
 .primary-button {
   @apply mb-1  cursor-pointer flex 
 font-serif bg-green-500  rounded items-center opacity-85
-mx-auto justify-center font-bold hover:bg-gray-800 py-2 px-1 outline-none  hover:text-gray-200 text-center shadow-slate-900 shadow-lg;
+mx-auto justify-center font-bold hover:bg-gray-800 py-2 px-1 outline-none
+hover:text-gray-200 text-center shadow-slate-900 shadow-lg;
 }
 .animate-bounce-short {
     animation: bounce 10ms 3s;

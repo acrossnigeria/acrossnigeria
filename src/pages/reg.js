@@ -53,7 +53,7 @@ setFormData({...formData,  name: userDetails[0].name,
     gender:userDetails[0].gender,
     residence:userDetails[0].residence,
     confirmPassword: userDetails[0].password,
-     acceptTerms: false, });
+     acceptTerms: userDetails[0].acceptTerms, });
      }
 
   }, [])
@@ -273,8 +273,26 @@ Cookies.set(
             className="mr-2"
           />
           <label htmlFor="acceptTerms">Accept our terms</label>
+        </div><div className="flex justify-between px-4 py-2">
+          {formData.name.length && formData.phone.length&&formData.surname.length&&formData.dob.length&&formData.email.length&&
+            formData.password.length&&formData.phone.length&&formData.gender.length&&formData.residence.length&&formData.password.length? (
+            <button
+              type="submit"
+              className="text-slate-100 px-4 py-2 rounded-full bg-green-700 hover:bg-green-800 active:bg-green-950"
+            >
+              {' '}
+              Register
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={true}
+              className="text-slate-100 text-3xl px-4 py-2 rounded-full bg-slate-400"
+            >
+              Register
+            </button>
+          )}
         </div>
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Register</button>
       </form>
     </div></Layout>
   );

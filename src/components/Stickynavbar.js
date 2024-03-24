@@ -9,6 +9,7 @@ import Bars from "../../public/images/barsImage.svg"
 import { CiUser } from "react-icons/ci";
 import DropdownLink from "./Dropdownlink";
 import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 
 
@@ -22,8 +23,8 @@ const StickyNavbar = () => {
 
   const[open,setOpen]=useState(false)
 const toggleMenu=()=>{
-  setOpen(!open);
-}
+  setOpen(!open);}
+  const router=useRouter();
   const [query, setQuery] = useState("");
    const logoutClickHandler = () => {
     
@@ -100,9 +101,12 @@ outline-8 opacity-100  text-opacity-100 w-full mt-0">
             justify-center uppercase text-white border-2 border-green-600  transition duration-100  rounded-lg text-[10px]`}>
                 <div className="inline-flex justify-center w-full" onClick={toggleMenu}>{session.user.name}</div>
            {open && (
-        <div className="absolute mr-8 mt-16 z-[999] w-fit origin-top-right bg-green-600 text-[10px] divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+        <div className="absolute mr-8 mt-16 z w-fit origin-top-right bg-green-600 text-[10px] divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
           <div className="py-2" role="none">
             <a onClick={logoutClickHandler} className="text-gray-700 block px-6 text-sm" role="menuitem">LogOut</a>
+            </div>
+          <div className="py-2" role="none">
+            <a onClick={()=>(router.push("/profile"))} className="text-gray-700 block px-6 text-sm" role="menuitem">Profile</a>
             </div>
         </div>
       )}</div>

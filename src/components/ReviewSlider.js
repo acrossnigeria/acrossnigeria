@@ -36,7 +36,7 @@ console.log(isMobile, navigator.userAgent)
       autoPlayTime={3000}
       isEnableAutoPlay
       isEnablePagination
-      height={ isMobile?{ widthRatio: 10, heightRatio: 11 }:{widthRatio:16, heightRatio:7}}
+      height={ isMobile?{ widthRatio: 12, heightRatio: 15 }:{widthRatio:16, heightRatio:7}}
       //look for logic to make it work differently on pc and phone
     />
   );

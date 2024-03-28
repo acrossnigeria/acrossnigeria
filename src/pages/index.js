@@ -12,6 +12,8 @@ import image5 from "../../public/images/state_treasure.jpg";
 import image6 from "../../public/images/mega_cashout.jpg";
 import image7 from "../../public/images/across_naija_tv.jpg";
 import image8 from "../../public/images/naija_vibes.jpg";
+import image9 from "../../public/images/shopping_hustle.jpg";
+import image10 from "../../public/images/i_don_hamma.jpg";
 import PersonCard from "@/components/ModelCard";
 import flameimg from "../../public/images/flame2.png"
 import Image from "next/image";
@@ -28,6 +30,8 @@ image:image1,link:"/giveaway"},
 {title:"STATE TREASURE HUNT SHOW",image:image5,link:"/soon"},
 {title:"MEGA CASH OUT",image:image6,link:"/soon"},
 {title:"ACROSS NIGERIA REALITY SHOW",image:image7,link:"/soon"},
+{title:"SHOPPING HUSTLE",image:image9,link:"/soon"},
+{title:"I DON HAMMA",image:image10,link:"/soon"},
 {title:"NAIJA VIBES", image:image8,link:"/soon"}]
 const inter = Inter({ subsets: ["latin"] });
 

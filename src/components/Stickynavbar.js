@@ -40,14 +40,14 @@ const toggleMenu=()=>{
 
 
   return (
-    <header className={` w-full overflow-hidden mb-1 px-0`}>
+    <header className={`top-0 w-full  z-[9999] overflow-x-hidden px-0`}>
           <nav
-        className={`w-full top-0 flex items-center align-middle h-20 left-0 right-0 py-0 bg-gray-950 backdrop-blur-3xl 
-        backdrop-opacity-5 bg-opacity-95 text-white border-b-4 border-yellow-600 px-1 mt-0`}
+        className={`w-full pt-3 top-0 flex ${open?"h-32":"h-20"} left-0 right-0 py-0 bg-gray-950 backdrop-blur-3xl 
+        backdrop-opacity-5 bg-opacity-95 text-white border-b-4 border-yellow-600 px-1`}
       >
-        <div className="flex relative py-0 px-1
-outline-8 opacity-100  text-opacity-100 w-full mt-0">
-          <div className="absolute w-[40px] h-[50px] p-7 text-center md:ml-5 leading-tight origin-center content-center ml-0 left-0 top-0 justify-between mt-0">
+        <div className="flex mt-0 top-0 py-0 px-1
+outline-8 opacity-100 text-opacity-100 w-full ">
+          <div className="absolute w-[40px] h-[50px] p-7 text-center md:ml-5 leading-tight content-center left-0 top-0 justify-between mt-3 ml-3">
             <Link href="/" legacyBehavior>
                   <Image
                 src={logo}
@@ -62,7 +62,7 @@ outline-8 opacity-100  text-opacity-100 w-full mt-0">
           
             <form
               onSubmit={submitHandler}
-              className="flex items-center h-10 w-auto ml-20  justify-center md:ml-28 lg:ml-auto mx-auto"
+              className="flex items-center h-10 w-auto ml-20 mt-0 justify-center md:ml-28 lg:ml-auto mx-auto"
             >
               <input
                 onChange={(e) => setQuery(e.target.value)}
@@ -79,11 +79,11 @@ outline-8 opacity-100  text-opacity-100 w-full mt-0">
                 <SearchIcon className="h-[8px] w[-8px] md:h-5 md:w-5"></SearchIcon>
               </button>
             </form>
-            <div className="text-white flex cursor-pointer items-center md: ">
+            <div className="text-white flex cursor-pointer w-auto mt-3 ">
               {menuData.map((item) => (
                 <Link key={item.link} href={item.link}>
-                  <div className="flex items-center py-0 px-1 md:px-9 h-full font-mono text-[8px] md:text-sm md:font-semibold justify-center
-                   uppercase transition duration-400 ease-in-out hover:text-green-400">
+                  <div className="flex mt-0 py-0 px-1 md:px-9 h-full font-mono text-[8px] md:text-sm md:font-semibold
+                   uppercase hover:text-green-400">
                     {item.title}
                   </div>
                 </Link>
@@ -97,16 +97,17 @@ outline-8 opacity-100  text-opacity-100 w-full mt-0">
               >
                Loading...
               </div>
-              ) : session?.user ? (<div className={`flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
+              ) : session?.user ? (<div className={`flex relative flex-1 top-0 w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
             justify-center uppercase text-white border-2 border-green-600  transition duration-100  rounded-lg text-[10px]`}>
-                <div className="inline-flex justify-center w-full" onClick={toggleMenu}>{session.user.name}</div>
+                <div className="flex justify-center w-full" onClick={toggleMenu}>{session.user.name}</div>
            {open && (
-        <div className="absolute mr-8 mt-16 z w-fit origin-top-right bg-green-600 text-[10px] divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-          <div className="py-2" role="none">
-            <a onClick={logoutClickHandler} className="text-gray-700 block px-6 text-sm" role="menuitem">LogOut</a>
+        <div className="fixed block top-12 flex-1 mr-3 w-16 origin-top-right bg-green-600 text-[8px] lg:text-sm divide-y divide-gray-100 rounded-md shadow-lg ring-1
+         ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+          <div className="py-1 flex" role="none">
+            <a onClick={logoutClickHandler} className="text-gray-700 block px-3" role="menuitem">LogOut</a>
             </div>
-          <div className="py-2" role="none">
-            <a onClick={()=>(router.push("/profile"))} className="text-gray-700 block px-6 text-sm" role="menuitem">Profile</a>
+          <div className="py-2 flex" role="none">
+            <a onClick={()=>(router.push("/profile"))} className="text-gray-700 block px-6 " role="menuitem">Profile</a>
             </div>
         </div>
       )}</div>

@@ -60,7 +60,7 @@ useEffect(() => {
     }   };
     return (
     <Layout>
-       {loading&&<div className="z-50 bg-white text-black text-center h-screen w-screen font-sans font-bold text-5xl bg-opacity-90">Submiting your Details, please wait</div>}
+       {loading&&<div className="absolute z-50 bg-white text-black text-center h-screen w-screen font-sans font-bold text-5xl bg-opacity-90">Submiting your Details, please wait</div>}
        <PaystackBtn pay={paymentUpdate} amount={1000} email={userDetails[0]?.email?? null} purpose="Registration to use Our Products"/>
 
       </Layout>

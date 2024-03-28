@@ -3,15 +3,15 @@ import mongoose from 'mongoose';
 const quizSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    userId:{type:String, required},
-    referencePay: { type: String, default:""},
-    
- 
-  },
+    userId:{type:String, required:true},
+    email:{type:String, required:true},
+    referencePay: { type: String, default:"", required:false},
+    correctAnswer:{type:Boolean, default:false, required:true},
+   },
   {
     timestamps: true,
   }
 );
 
-const User = mongoose.models.User || mongoose.model('User', userSchema);
-export default User;
+const Quiz = mongoose.models.Quiz || mongoose.model('Quiz', quizSchema);
+export default Quiz;

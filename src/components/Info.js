@@ -2,11 +2,12 @@
 import Link from "next/link";
 import React from "react";
 import { SocialIcon } from 'react-social-icons'
-import { BsTwitterX } from "react-icons/bs";
-import {FaLinkedin } from "react-icons/fa";
-import { ImFacebook2, ImInstagram } from "react-icons/im";
-import { RiTiktokLine } from "react-icons/ri";
+import tiktok from "../../public/images/soc_media/icons8-tiktok-188.png";
+import youtube from "../../public/images/soc_media/icons8-youtube-188.png";
+import linkedin from "../../public/images/soc_media/icons8-linkedin-188.png";
+import instagram from "../../public/images/soc_media/icons8-instagram-94.png";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const Info = ()=>{
     const { status, data: session } = useSession();
@@ -36,12 +37,13 @@ const Info = ()=>{
             {data.buttonLabel}
           </Link>
    <div className="text-5xl mt-4 mx-auto rounded-md justify-between bg-gray-100 flex">
-    <SocialIcon className="mx-auto px-4" bgColor="white" fgColor="red" network="youtube"/>
-    <SocialIcon className="mx-auto px-4" bgColor="white"  fgColor="blue" network="facebook"/>
-    <SocialIcon className="mx-auto px-4" network="instagram"/>
-    <SocialIcon className="mx-auto px-4" fgColor="black" bgColor="white" network="x"/>
-    <SocialIcon className="mx-auto px-4" network="tiktok" />
-
+     <SocialIcon className="mx-auto px-4" bgColor="transparent"  fgColor="blue" network="facebook"/>
+    <SocialIcon className="mx-auto px-4" fgColor="black" bgColor="transparent" network="x"/>
+ <Image  quality={100}  className="mx-4" src={tiktok} height={20} width={30} alt="tiktok"/>
+ <Image quality={100} className="mx-4"  src={instagram} height={20} width={30} alt="Instagram"/>
+ <Image  quality={100} className="mx-4" src={youtube} height={20} width={30} alt="youtube"/>
+ <Image  quality={100} className="mx-4" src={linkedin} height={20} width={30} alt="linkedin"/>
+   
    </div>
         
    </blockquote> </div>

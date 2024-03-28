@@ -36,6 +36,7 @@ export default function Home() {
         <Layout title={"Home Page"}>
         <ReviewSlider/>
         <Info/>
+        <div className="h-40 cursor-pointer bg-green-500">Winners for the Week</div>
         <div className=""> 
             <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
               <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">

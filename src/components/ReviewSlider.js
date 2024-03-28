@@ -1,6 +1,7 @@
 
 import BearCarousel, { BearSlideImage } from "bear-react-carousel";
 import "bear-react-carousel/dist/index.css";
+import { useEffect, useState } from "react";
 
 const images = [
   { id: 1, image: "/images/landing/image1.jpg" },
@@ -20,16 +21,23 @@ const bearSlideItemData = images.map((row) => {
 });
 
 const CustomBanner = () => {
+  const[isMobile, setIsMobile]=useState(false);
+  useEffect(()=>{
+    if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&window.matchMedia("(max-width: 600px)").matches){
+ setIsMobile(true)
+} else{setIsMobile(false)}
+console.log(isMobile, navigator.userAgent)
+  },[isMobile])
   return (
     <BearCarousel
+    className="z-10"
       data={bearSlideItemData}
       isEnableLoop
       autoPlayTime={3000}
       isEnableAutoPlay
-
       isEnablePagination
-     
-      height={{ widthRatio: 21, heightRatio: 18 }}
+      height={ isMobile?{ widthRatio: 10, heightRatio: 11 }:{widthRatio:16, heightRatio:7}}
+      //look for logic to make it work differently on pc and phone
     />
   );
 };

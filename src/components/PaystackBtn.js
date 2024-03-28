@@ -32,7 +32,7 @@ const componentProps = {
     return (
 
        
-<div className="p-6 bg-opacity-70 m-auto top-0 bottom-0 h-screen">
+<div className="fixed transform ease-in-out duration-1000 inset-0 p-6 opacity-100 bg-neutral-400 bg-opacity-100 m-auto top-0 bottom-0 h-screen">
       <h1 className="text-3xl font-bold mb-4 text-center">{`You need to Pay ${amount}NGN for ${purpose}`}</h1>
     <div className="border-yellow-500 border h-8 w-40 rounded-lg bg-gray-900 text-white italic mx-auto text-center">
                            

@@ -26,7 +26,7 @@ const CustomBanner = () => {
     if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)&&window.matchMedia("(max-width: 600px)").matches){
  setIsMobile(true)
 } else{setIsMobile(false)}
-console.log(isMobile, navigator.userAgent)
+// console.log(isMobile, navigator.userAgent)
   },[isMobile])
   return (
     <BearCarousel

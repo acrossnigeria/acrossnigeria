@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import Layout from "@/components/Layout";
-import Testimonials from "@/components/Testimonials";
 import Cards from "@/components/Cards"
 import Hero from "@/components/Hero";
 import Info from "@/components/Info";
@@ -18,6 +17,8 @@ import PersonCard from "@/components/ModelCard";
 import flameimg from "../../public/images/flame2.png"
 import Image from "next/image";
 import ReviewSlider from "@/components/ReviewSlider";
+import Carousel from "@/components/Carousel";
+import Testimonials from "@/components/Testimonials";
 
 
 
@@ -55,15 +56,20 @@ export default function Home() {
         <div className=""> 
             <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
               <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
-                 <Image quality={10} src={flameimg} height={10} width={30} alt="hot"/> 
+                 <Image quality={10} src={flameimg} height={5} width={20} alt="hot"/> 
                   Our Amazing Products
-                 <Image quality={10} src={flameimg} height={10} width={30} alt="hot"/>
+                 <Image quality={10} src={flameimg} height={5} width={20} alt="hot"/>
               </span>
             </p>
         <div className=" mt-6 grid left-0 grid-cols-2 gap-4  md:grid-cols-2 lg:grid-cols-3 md:gap-4 mx-auto items-center md:max-w-screen-xl px-4 sm:px-3 lg:px-20">
             { games.map((card)=>(<Cards key={card.title} title={card.title} 
             link={card.link} image={card.image}/>))}
         </div>
+   <div className="bg-green-700 w-full overflow-hidden">
+    <div className={`container mx-auto`}>
+      <div className={`xl:max-w-[1280px] w-full`}>
+        <Testimonials/>
+        </div></div></div>
       <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
       </div>
    

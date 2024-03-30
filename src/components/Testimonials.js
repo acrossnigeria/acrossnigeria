@@ -15,17 +15,17 @@ const feedback = [
   {
     id: "feedback-2",
     content:
-      "Money makes your life easier. If you're lucky to have it, you're lucky.",
-    name: "Steve Mark",
-    title: "Founder & Leader",
+      "Money makes your life easier. Its exciting how Across Nigeria has helped me have a steady income stream.",
+    name: "Ayo Ifeanyi",
+    title: "Content Creator",
     img: "https://i.imgur.com/fk8eEvW.png",
   },
   {
     id: "feedback-3",
     content:
-      "It is usually people in the money business, finance, and international trade that are really rich.",
-    name: "Kenn Gallagher",
-    title: "Founder & Leader",
+      "My content has had more follows thanks to Across nigeria",
+    name: "Sabinus prodigee",
+    title: "Entertainer",
     img: "https://i.imgur.com/dLxxRDy.png",
   },
 ];

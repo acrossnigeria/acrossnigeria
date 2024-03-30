@@ -65,12 +65,16 @@ export default function Home() {
             { games.map((card)=>(<Cards key={card.title} title={card.title} 
             link={card.link} image={card.image}/>))}
         </div>
-   <div className="bg-green-700 w-full overflow-hidden">
+   <div className="w-full border-b-2 border-yellow-600 rounded-lg overflow-hidden">
     <div className={`container mx-auto`}>
       <div className={`xl:max-w-[1280px] w-full`}>
         <Testimonials/>
         </div></div></div>
-      <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
+        <div className="">
+          <p className="w-full mx-auto text-center flex bg-gray-800 justify-between items-center 
+          md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
+           text-white xs:leading-[76.8px] leading-[66.8px]">Model for the Week</p>
+      <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/></div>
       </div>
    
       </Layout>

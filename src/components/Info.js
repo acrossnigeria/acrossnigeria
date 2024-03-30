@@ -26,7 +26,7 @@ const Info = ()=>{
 
          <div className="flex rounded-lg lg:w-full text-gray-100 text-center w-full bg-gray-800 font-bold text-4xl 
          justify-center right-0 px-4 py-8 items-center text-pretty italic font-serif">
-        <Link href="/reg">{data.paragraphTwo}</Link> 
+        <p>{data.paragraphTwo}</p> 
         </div>
         <blockquote className={`flex flex-col justify-evenly lg:w-full items-start leading-loose
          pr-3 pl-3 md:pl-24 lg:pl-24 rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8`}>

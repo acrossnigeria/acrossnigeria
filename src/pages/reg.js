@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import { Store } from '../../utils/Store';
 import Layout from '@/components/Layout';
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 const Register = () => {
    const nigeriaStates = [
@@ -99,8 +99,8 @@ Cookies.set(
 
   return (
     <Layout>
-    <div className="max-w-md mx-auto bg-gray-200">
-      <h1 className="text-2xl font-bold mb-4">Register</h1>
+    <div className="max-w-4xl mx-auto bg-gray-200">
+      <h1 className="text-2xl text-center font-bold mb-4">Register</h1>
       <form onSubmit={handleSubmit} className="max-w-xl mx-auto  m-4  border border-yellow-500 p-10 rounded-md">
         <div className="mb-4">
           <label htmlFor="name" className="block mb-2">Name</label>
@@ -150,17 +150,19 @@ Cookies.set(
             required
           />
         </div>
+        
         <div className="mb-4">
           <label htmlFor="phone" className="block mb-2">Phone Number</label>
-          <input
-            type="phone"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="border rounded px-4 py-2 w-full"
-            required
-          />
+          <div className='w-full'>
+          <PhoneInput 
+          defaultCountry='ng'
+          className="border rounded px-0 py-0 h-fit w-fit"
+          required
+          onChange={(phone)=>{
+    setFormData((prevFormData) => ({ ...prevFormData, phone: phone }));
+  }}
+          name='phone'
+          value={formData.phone}/></div>
         </div>
        <div className="mb-4">
           <label htmlFor="state" className="block mb-2">State of Residence</label>
@@ -169,7 +171,7 @@ Cookies.set(
             name="residence"
             value={formData.residence}
             onChange={handleChange}
-            className="border rounded px-4 py-2 w-56"
+            className="border rounded px-4 py-2 w-full"
             required
           >
             <option value="">Select State</option>
@@ -238,7 +240,7 @@ Cookies.set(
             </button>
             {formData.password &&
             formData.password.length<6 && (
-              <p className="animate-bounce text-red-500 font-thin text-[8px]">Passwords must have Six(6) or more characters</p>
+              <p className="text-red-500 font-thin ">Passwords must have Six(6) or more characters</p>
           )}
         </div>
          <div className="mb-4">
@@ -261,7 +263,7 @@ Cookies.set(
         </div>
         <div> {formData.confirmPassword &&
             formData.password !== formData.confirmPassword && (
-              <p className="animate-bounce text-red-500 font-thin text-[8px]">Passwords don&apos;t match</p>
+              <p className="animate-bounce text-red-700 font-thin">Passwords don&apos;t match</p>
           )}</div>
            <div className="mb-4">
           <input

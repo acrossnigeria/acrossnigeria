@@ -128,7 +128,9 @@ const Quiz = () => {
               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 mt-4" onClick={() =>setIsChecked(true)}>
                Accept Our Terms 
               </button></div>
-            {isChecked&&(<PaystackBtn pay={paySuccesAction} amount={100} email={session?.user.email?? null} purpose="Payment for Giveaway Quiz"/>)}
+            {isChecked&&(<PaystackBtn pay={paySuccesAction} 
+            amount={100} email={session?.user.email?? null} 
+            purpose="Payment for Giveaway Quiz"/>)}
            </div>
 
         </div>
@@ -136,11 +138,12 @@ const Quiz = () => {
                           {Congratulations && (
                     <div className="transform ease-in-out duration-1000 fixed inset-0 bg-gray-500/50 flex justify-center items-center z-50">
                       <div className="bg-white p-4 rounded-md shadow-md">
-                        <p>Kindly wait for our quiz draw, Winners will be contacted</p>
+                        <p className='font-semibold text-lg'>Thank you <span className='font-bold'>{session?.user.name}</span> for participating in the quiz, Kindly wait for our quiz draw, Winners will be contacted</p>
                         <div className="flex justify-end space-x-2 mt-4">
-                          <button className='w-fit border border-yellow-500 bg-green-700 font-semibold'
-                          onClick={()=>{router.push('/')}}
-                          > Click Here to continue</button>
+                          <div className="border-yellow-500 border h-fit py-1 w-40 rounded-lg cursor-pointer bg-green-700 text-white text-xl
+     font-semibold italic mx-auto text-center" onClick={()=>{router.push('/')}}>
+                         Click Here to continue
+                          </div>
                         </div>
                       </div>
                     </div>

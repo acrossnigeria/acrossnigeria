@@ -36,9 +36,9 @@ const Info = ()=>{
           <Link className={`mt-4 ${session?.user ? ("hidden"):("primary-button ")} pt-3 items-center text-center text-balance w-fit h-14`} href="/reg">
             {data.buttonLabel}
           </Link>
-   <div className="text-5xl mt-4 mx-auto rounded-md justify-between bg-gray-100 flex">
-     <SocialIcon className="mx-auto px-4" bgColor="transparent"  fgColor="blue" network="facebook"/>
-    <SocialIcon className="mx-auto px-4" fgColor="black" bgColor="transparent" network="x"/>
+   <div className="text-8xl mt-4 mx-auto rounded-md justify-between bg-gray-100 flex">
+     <SocialIcon className="mx-auto px-0" bgColor="transparent"  fgColor="blue" network="facebook"/>
+    <SocialIcon className="mx-auto px-0" fgColor="black" bgColor="transparent" network="x"/>
  <Image  quality={100}  className="mx-4" src={tiktok} height={20} width={30} alt="tiktok"/>
  <Image quality={100} className="mx-4"  src={instagram} height={20} width={30} alt="Instagram"/>
  <Image  quality={100} className="mx-4" src={youtube} height={20} width={30} alt="youtube"/>

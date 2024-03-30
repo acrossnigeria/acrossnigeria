@@ -32,9 +32,11 @@ const componentProps = {
     return (
 
        
-<div className="fixed transform ease-in-out duration-1000 inset-0 p-6 opacity-100 bg-neutral-400 bg-opacity-100 m-auto top-0 bottom-0 h-screen">
-      <h1 className="text-3xl font-bold mb-4 text-center">{`You need to Pay ${amount}NGN for ${purpose}`}</h1>
-    <div className="border-yellow-500 border h-8 w-40 rounded-lg bg-gray-900 text-white italic mx-auto text-center">
+<div className="fixed transform ease-in-out duration-1000 
+inset-0 p-6  bg-white m-auto top-40 bottom-0 h-screen">
+      <h1 className="text-3xl mt-72 font-bold mb-4 text-center">{`You need to Pay ${amount}NGN as ${purpose}`}</h1>
+    <div className="border-yellow-500 border h-14 py-4 w-40 rounded-lg bg-green-700 text-white text-xl
+     font-semibold italic mx-auto text-center">
                            
                               <PaystackButton {...componentProps} />
                           

@@ -8,7 +8,7 @@ export default function Success() {
     const router =useRouter()
     const { state, dispatch } = useContext(Store);
   const {user:{userDetails},}= state;
-  const name=userDetails[0]?.name?? 'Unknownn';
+  const name=userDetails[0]?.name?? 'Unknown';
   return (
     <Layout><div className="bg-gray-300">
      <div >Congratulations {name}</div>

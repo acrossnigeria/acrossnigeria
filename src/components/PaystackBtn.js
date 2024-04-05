@@ -4,7 +4,7 @@ import { PaystackButton } from "react-paystack";
 
 export default function PaystackBtn(props) {
 //provide props for amount email key is proc.env.PAYSTACK
-    const {amount, email, purpose}=props;
+    const {amount, email,paystackKey, purpose}=props;
   
    const config = {
     reference: new Date().getTime().toString(),
@@ -12,7 +12,7 @@ export default function PaystackBtn(props) {
     amount: amount * 100, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
     publicKey: "pk_test_cbdf33dbafe37c266634416e1b99f1f6b87e709a",
   };
-const handlePaystackSuccessAction = async (ref) => {
+  const handlePaystackSuccessAction = async (ref) => {
     props.pay(ref);
         // Implementation for whatever you want to do with reference and after success call.
    

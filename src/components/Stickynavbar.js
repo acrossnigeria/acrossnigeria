@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 
 export const menuData = [
   { title: "About", link: "/about" },
-  { title: "Products", link: "/products" },
+  { title: "Skits", link: "/skitsPage" },
   { title: "Contact-Us", link: "/contact" },
 ];
 const StickyNavbar = () => {

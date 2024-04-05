@@ -1,6 +1,5 @@
 import Quiz from "@/models/Quiz";
 import db from "../../../utils/db";
-import { RiContactsBookFill } from "react-icons/ri";
 
 async function handler (req,res) {
     if(req.method !=='POST') {

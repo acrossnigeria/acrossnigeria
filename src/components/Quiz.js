@@ -53,14 +53,12 @@ const Quiz = () => {
 };
     const newData={name:session?.user.name?? null, userId:session?.user._id?? null,email:session?.user.email?? null}
       const paySuccesAction= async(ref)=>{
-        console.log (newData)
-        const oldData={...newData,referencePay:ref.reference}
+       const oldData={...newData,referencePay:ref.reference}
    
         if(selectedAnswer===question.answer){
-         console.log(true) 
          const data={...oldData, correctAnswer:true}
           await axios.post('/api/quiz',data);
-          }else{console.log(false)
+          }else{
              const data={...oldData, correctAnswer:false}
            await axios.post('/api/quiz',data);
           }

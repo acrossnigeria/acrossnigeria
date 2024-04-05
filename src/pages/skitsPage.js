@@ -6,6 +6,7 @@ import SkitDisp from '@/components/SkitDisp';
 import { CldVideoPlayer } from 'next-cloudinary';
 import 'next-cloudinary/dist/cld-video-player.css';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function SkitsPage({skits}) {
     console.log(skits)
@@ -17,8 +18,8 @@ export default function SkitsPage({skits}) {
     }
   return (
     <Layout>
-      <div className='top-3 right-0 mt-6 w-32 rounded-md cursor-pointer bg-slate-500 text-center mx-auto'
-       onClick={router.push("/upload")} >UPload a Skit</div>
+      <Link href="/upload" className='top-3 right-0 mt-6 w-32 rounded-md cursor-pointer bg-slate-500 text-center mx-auto'
+       >UPload a Skit</Link>
       <h2 className="h2 my-4">Latest Skits</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {skits.map((skit) => (

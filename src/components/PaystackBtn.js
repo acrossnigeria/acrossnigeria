@@ -18,10 +18,8 @@ export default function PaystackBtn(props) {
    
   };
 const handlePaystackCloseAction = () => {
-   if(props.fail()){
-    props.fail()
-   } else{ alert("The transaction was not completed");
-    console.log("closed");}
+    alert("The transaction was not completed");
+    console.log("closed");
   };
 const componentProps = {
     ...config,
@@ -36,8 +34,7 @@ const componentProps = {
        
 <div className="fixed transform ease-in-out duration-1000 
 inset-0 p-6  bg-white m-auto top-40 bottom-0 h-screen">
-  <div className="cursor-pointer bg-red-500 w-8 h-10 p-3 text-2xl" onClick={handlePaystackCloseAction()}> {`<`} Back</div>
-      <h1 className="text-3xl mt-72 font-bold mb-4 text-center">{`You need to Pay ${amount.toLocaleString()}NGN as ${purpose}`}</h1>
+      <h1 className="text-3xl mt-72 font-bold mb-4 text-center">You need to Pay &#8358;{`${amount.toLocaleString()} as ${purpose}`}</h1>
     <div className="border-yellow-500 border h-14 py-4 w-40 rounded-lg bg-green-700 text-white text-xl
      font-semibold italic mx-auto text-center">
                            

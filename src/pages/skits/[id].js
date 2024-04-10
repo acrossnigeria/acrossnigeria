@@ -21,6 +21,7 @@ export default function SkitScreen(props){
   const [payment, setPayment] = useState(0);
   const [email, setEmail] = useState('');
   const[loadPay, setLoadPay]=useState(false);
+  const[loadVote, setLoadVote]=useState(false);
 if (!skit){
         return<Layout title="Skit not Found"><div>Skit not found</div></Layout>;
               }
@@ -49,13 +50,16 @@ if (!skit){
   };
     const voteHandler=async()=>{
  try{
+  setLoadVote(true)
   const id=skit._id;
       const result=await axios.post('/api/vote',{ id,amount});
       console.log("Result is:", result)
-       setLoadPay(false)
-       toast.success("success")
+      toast.success("success")
+      setLoadPay(false)
       setEmail('');
       setAmount("");
+      setLoadVote(false);
+      router.push("/skitsPage")
    }
    catch (err){
     toast.error(getError(err));
@@ -100,12 +104,14 @@ pip={true}
         title="Please enter only numbers"
         required
       />
-    {amount&& <button className="bg-yellow-300 text-black font-semibold py-2 cursor-pointer px-4 mx-auto rounded" type="submit">Pay &#8358;{payment.toLocaleString()}</button>} 
+    {amount&& <button className="bg-yellow-300 text-black font-semibold py-2 cursor-pointer px-4 mx-auto rounded" type="submit">Pay &#8358;{payment.toLocaleString()} Naira</button>} 
 </form>
 <div>
-   {loadPay&&(<PaystackBtn pay={voteHandler} 
+   {loadPay&&(<><div className="fixed top-28 z-50 left-0 bg-slate-950 text-gray-200 w-fit rounded-lg p-3" onClick={()=>(setLoadPay(false))}>Click to go back</div><PaystackBtn pay={voteHandler} 
             amount={payment} email={email}
-            purpose={`Vote for ${skit.title}`}/>)}
+            purpose={`Vote for ${skit.title}`}/></>)}
+
+        {loadVote&&(<div className="fixed inset-0 top-0 h-screen px-20  w-screen z-50 left-0 bg-opacity-85 bg-slate-950 text-gray-200 rounded-lg pt-56">wait while we collate your votes</div>)}
 </div>
         
         </div>

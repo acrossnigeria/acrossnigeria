@@ -71,8 +71,8 @@ const [description,setDescription]=useState("");
  const { data: session } = useSession();
   
   const uploadHandler = async (e, imageField = 'image') => {
-     if (!e.target.files || e.target.files.length === 0) {
-    toast.error('Please select a file to upload.');
+     if (!e.target.files || e.target.files.length === 0 || e.target.files.type.includes('video/mp4')) {
+    toast.error('Please select a VIDEO file to upload.');
     return;
   }
    // Check file size

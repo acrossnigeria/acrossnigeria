@@ -7,10 +7,11 @@ export default async function handler(req, res) {
             return res.status(400).send('Bad Request!');
         }
 
-        const { title, userId, email, url, description, referencePay, payment } = req.body;
+        const {name, title, userId, email, url, description, referencePay, payment } = req.body;
 
         await db.connect();
         const newSkit = new Skits({
+            name,
             title,
             userId,
             email,

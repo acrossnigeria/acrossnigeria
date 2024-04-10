@@ -8,7 +8,7 @@ import { getError } from "../../utils/error";
 import { toast } from "react-toastify";
 
 export default function LoginScreen() {
-    
+    const[loading,setLoading]=useState(false);
  const { data: session } = useSession();
 
   const router = useRouter();
@@ -31,6 +31,7 @@ export default function LoginScreen() {
     formState: { errors },
   } = useForm();
   const submitHandler = async ({ email, password }) => {
+   setLoading(true)
     try {
       const result = await signIn('credentials', {
         redirect: false,
@@ -43,9 +44,10 @@ export default function LoginScreen() {
     } catch (err) {
       toast.error(getError(err));
     }
+    setLoading(false)
     if (session) {
       console.log(session)
-      router.push("/"); // Replace "/dashboard" with your desired page
+      router.push(redirect || '/'); // Replace "/dashboard" with your desired page
     }
   };
   return (
@@ -89,7 +91,7 @@ export default function LoginScreen() {
           )}
         </div>
         <div className="mb-4 ">
-          <button className="primary-button">Login</button>
+         {loading?(<button disabled className="primary-button">Please Wait</button>):(<button className="primary-button">Login</button>)} 
         </div>
         <div className="mb-4 font-semibold ">
           Don&apos;t have an account? &nbsp;

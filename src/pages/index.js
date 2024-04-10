@@ -41,18 +41,7 @@ export default function Home() {
         <Layout title={"Home Page"}>
         <ReviewSlider/>
         <Info/>
-        <div className="h-80">
-           <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
-              <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
-                Winners for the Week  
-              </span>
-            </p>
-            <ol className="h-80 pl-8">
-              <li>List</li>
-              <li>of</li>
-              <li>Winners</li>
-            </ol>
-         </div>
+        
         <div className=""> 
             <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
               <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
@@ -69,6 +58,19 @@ export default function Home() {
     <div className={`container mx-auto`}>
       <div className={`xl:max-w-[1280px] w-full`}>
         <Testimonials/>
+
+        <div className="h-80">
+           <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
+              <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
+                Winners for the Week  
+              </span>
+            </p>
+            <ol className="h-80 pl-8">
+              <li>List</li>
+              <li>of</li>
+              <li>Winners</li>
+            </ol>
+         </div>
         </div></div></div>
         <div className="">
           <p className="w-full mx-auto text-center flex bg-gray-800 justify-between items-center 

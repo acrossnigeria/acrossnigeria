@@ -170,6 +170,7 @@ const newData={name:session?.user.name?? null,
               <div className="mb-4">
                 <label htmlFor="imageFile">Upload image</label>
                 <input
+                accept=".mp4"
                   type="file"
                   className="w-full"
                   id="imageFile"

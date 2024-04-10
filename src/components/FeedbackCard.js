@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 const FeedbackCard = ({ content, name, title, img }) => (
-  <div className="flex justify-between  flex-col  px-10 pb-12 rounded-[20px]  max-w-[370px]  mx-auto my-0 feedback-card">
+  <div className="flex justify-between  flex-col  px-16 pb-12 rounded-[20px]  max-w-[370px]  mx-auto my-0 feedback-card">
     {/* <Image 
         src={"https://i.imgur.com/rx3eOUo.png"}
       alt="double_quotes"
@@ -14,9 +14,9 @@ const FeedbackCard = ({ content, name, title, img }) => (
       {content}
     </p>
 
-    <div className="flex mb-0 flex-row">
+    <div className="flex mb-0 bottom-0 mt-10 flex-row">
     {/*   <Image width={50} height={50} src={img} alt={name} className=" rounded-full" /> */}
-      <div className="flex flex-col ml-4">
+      <div className="flex flex-col mb-0 ml-4">
         <h4 className="font-poppins font-semibold text-[20px] leading-[32px] text-gray-900">
           {name}
         </h4>

@@ -58,8 +58,16 @@ export default function Home() {
     <div className={`container mx-auto`}>
       <div className={`xl:max-w-[1280px] w-full`}>
         <Testimonials/>
+        </div>
+        </div>
+        </div>
+        <div className="">
+          <p className="w-full mx-auto text-center flex bg-gray-800 justify-between items-center 
+          md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
+           text-white xs:leading-[76.8px] leading-[66.8px]">Model for the Week</p>
+      <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/></div>
 
-        <div className="h-80">
+         <div className="h-80">
            <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
               <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
                 Winners for the Week  
@@ -71,12 +79,6 @@ export default function Home() {
               <li>Winners</li>
             </ol>
          </div>
-        </div></div></div>
-        <div className="">
-          <p className="w-full mx-auto text-center flex bg-gray-800 justify-between items-center 
-          md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
-           text-white xs:leading-[76.8px] leading-[66.8px]">Model for the Week</p>
-      <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/></div>
       </div>
    
       </Layout>

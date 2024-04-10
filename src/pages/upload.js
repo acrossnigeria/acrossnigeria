@@ -177,7 +177,8 @@ const newData={name:session?.user.name?? null,
                   onChange={uploadHandler}
                 />
 
-                {loadingUpload && <div>Uploading....</div>}
+                {loadingUpload && <div className=" bg-orange-400">Please wait while we upload your File....
+                <p>`Don&apos;t Navigate from this Page </p></div>}
               </div>
               <div className="mb-4">
                 Skits should not exceed 100MB
@@ -207,7 +208,7 @@ const newData={name:session?.user.name?? null,
               </div>
             </form>
               {loadingPay&&(<PaystackBtn pay={paySuccesAction} 
-            amount={1000} email={session?.user.email?? null} 
+            amount={10000} email={session?.user.email?? null} 
             purpose="Payment for Skits Across Nigeria"/>)}</div>  
           )}
         </div>

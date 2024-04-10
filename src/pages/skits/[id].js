@@ -52,8 +52,8 @@ if (!skit){
   const id=skit._id;
       const result=await axios.post('/api/vote',{ id,amount});
       console.log("Result is:", result)
-      toast.success("success")
-      setLoadPay(false)
+       setLoadPay(false)
+       toast.success("success")
       setEmail('');
       setAmount("");
    }
@@ -100,7 +100,7 @@ pip={true}
         title="Please enter only numbers"
         required
       />
-    {amount&& <button className="bg-yellow-300 text-black font-semibold py-2 cursor-pointer px-4 mx-auto rounded" type="submit">Pay &#8358;{payment.toLocaleString()} Naira</button>} 
+    {amount&& <button className="bg-yellow-300 text-black font-semibold py-2 cursor-pointer px-4 mx-auto rounded" type="submit">Pay &#8358;{payment.toLocaleString()}</button>} 
 </form>
 <div>
    {loadPay&&(<PaystackBtn pay={voteHandler} 

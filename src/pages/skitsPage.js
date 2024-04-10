@@ -47,7 +47,8 @@ export default function SkitsPage({skits}) {
         <thead>
           <tr>
             <th className='text-left px-2' >Title</th>
-            <th className='text-left px-2'>Votes</th><th className='text-left px-2'>Creator</th>
+            {/* <th className='text-left px-2'>Votes</th> */}
+            <th className='text-left px-2'>Creator</th>
             {/* Add more table headers for other skit properties as needed */}
           </tr>
         </thead>

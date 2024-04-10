@@ -55,7 +55,7 @@ export default function SkitsPage({skits}) {
           {sortedSkits.map((skit, index) => (
             <tr key={index}>
               <td className='text-left px-3'>{skit.title}</td>
-              <td className='text-left px-3'>{skit.votes}</td>
+              {/* {<td className='text-left px-3'>{skit.votes}</td>} */}
               <td className='text-left px-3'>{skit?.name?? "No Name"}</td>
               {/* Add more table cells for other skit properties as needed */}
             </tr>

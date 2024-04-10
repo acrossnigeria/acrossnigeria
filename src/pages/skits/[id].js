@@ -77,7 +77,7 @@ pip={true}
       <form onSubmit={handleSubmit} className="border border-gray-300 p-4 max-w-md mx-auto">
         <h1 className="text-3xl font-semibold">{skit.title.toUpperCase()} is contesting for best Skit in <span className="font-bold italic">Skits Across Naija </span></h1>
         <h2 className="text-2xl font-semibold">You can help it win by voting</h2>
-        <h2 className="text-2xl font-semibold mb-6">Each Vote costs N100, you can send as many Votes as possible</h2>
+        <h2 className="text-2xl font-semibold mb-6">Each Vote costs &#8358;100, you can send as many Votes as possible</h2>
    <label htmlFor="email" className="block text-xl font-semibold mb-2">Kindly enter your email:</label>
       <input 
         type="email"
@@ -88,7 +88,7 @@ pip={true}
         className="border border-gray-300 p-2 mb-4 w-full" // Apply Tailwind classes for input styling
         required
       />
-  <label className="block text-xl font-semibold mb-2" htmlFor="amount">Enter amount:</label>
+  <label className="block text-xl font-semibold mb-2" htmlFor="amount">Enter Number of Votes:</label>
       <input
         type="text"
         id="amount"
@@ -100,7 +100,7 @@ pip={true}
         title="Please enter only numbers"
         required
       />
-    {amount&& <button className="bg-yellow-300 text-black font-semibold py-2 cursor-pointer px-4 mx-auto rounded" type="submit">Pay {payment} Naira</button>} 
+    {amount&& <button className="bg-yellow-300 text-black font-semibold py-2 cursor-pointer px-4 mx-auto rounded" type="submit">Pay &#8358;{payment.toLocaleString()} Naira</button>} 
 </form>
 <div>
    {loadPay&&(<PaystackBtn pay={voteHandler} 

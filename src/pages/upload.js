@@ -207,9 +207,11 @@ const newData={name:session?.user.name?? null,
                 </button>
               </div>
             </form>
-              {loadingPay&&(<PaystackBtn pay={paySuccesAction} 
+              {loadingPay&&(<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                 <div className="w-fit h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 top-20 z-50 bg-yellow-700" 
+                 onClick={()=>(dispatch({type:'PAY_SUCCESS'}))}>Close</div><PaystackBtn pay={paySuccesAction} 
             amount={10000} email={session?.user.email?? null} 
-            purpose="Payment for Skits Across Nigeria"/>)}</div>  
+            purpose="Payment for Skits Across Nigeria"/></div>)}</div>  
           )}
         </div>
       </div>

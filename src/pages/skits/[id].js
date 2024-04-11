@@ -104,12 +104,17 @@ pip={true}
         title="Please enter only numbers"
         required
       />
-    {amount&& <button className="bg-yellow-300 text-black font-semibold py-2 cursor-pointer px-4 mx-auto rounded" type="submit">Pay &#8358;{payment.toLocaleString()} Naira</button>} 
+    {amount&& <button className="bg-yellow-300 text-black font-semibold py-2 cursor-pointer px-4 mx-auto rounded" 
+    type="submit">Pay &#8358;{payment.toLocaleString()} Naira
+    </button>} 
 </form>
 <div>
-   {loadPay&&(<><div className="fixed top-28 z-50 left-0 bg-slate-950 text-gray-200 w-fit rounded-lg p-3" onClick={()=>(setLoadPay(false))}>Click to go back</div><PaystackBtn pay={voteHandler} 
+   {loadPay&&(<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                 <div className="w-fit h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 top-20 z-50 bg-yellow-700" 
+                onClick={()=>(setLoadPay(false))}>Close</div>
+    <PaystackBtn pay={voteHandler} 
             amount={payment} email={email}
-            purpose={`Vote for ${skit.title}`}/></>)}
+            purpose={`Vote for ${skit.title}`}/></div>)}
 
         {loadVote&&(<div className="fixed inset-0 top-0 h-screen px-20  w-screen z-50 left-0 bg-opacity-85 bg-slate-950 text-gray-200 rounded-lg pt-56">wait while we collate your votes</div>)}
 </div>
@@ -134,3 +139,5 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
+

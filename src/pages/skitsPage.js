@@ -20,14 +20,14 @@ export default function SkitsPage({skits}) {
     const watch=()=>{
       setDisplay(true)
     }
-    console.log(url)
+  
   return (
     <Layout>
       <Link href="/upload" className='top-3 right-0 mt-6 w-32 rounded-md 
       cursor-pointer bg-slate-500 text-center mx-auto'
        >UPload a Skit</Link>
       <h2 className="h2 my-4">Latest Skits</h2>
-      <div className="grid grid-cols-3 gap-4 md:grid-cols-5 lg:grid-cols-4" 
+      <div className="px-10 grid grid-cols-3 gap-4 md:grid-cols-5 lg:grid-cols-4" 
       onClick={()=>{setDisplay(true)
       console.log(url)}}>
         {skits.map((skit) => (
@@ -40,11 +40,12 @@ export default function SkitsPage({skits}) {
         ))}
          
       </div>
-      <div className=' mx-auto w-2/3'>
+      <div className=' mx-auto w-3/4'>
+        <p className='font-bold text-xl underline mb-4 w-fit'><span className='shadow-md shadow-gray-600'>Leader Board</span></p>
          <table>
         <thead>
           <tr>
-            <th className='text-left px-2' >Title</th>
+            <th className='text-left px-1' >Title</th>
             {/* <th className='text-left px-2'>Votes</th> */}
             <th className='text-left px-2'>Creator</th>
             {/* Add more table headers for other skit properties as needed */}

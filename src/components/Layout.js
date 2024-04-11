@@ -17,13 +17,13 @@ export default function Layout({ title, children }) {
     return(
 <>
       <Head>
-        <title>{title ? title + "Across Nigeria TV" : "Across Nigeria TV show"}</title>
+        <title>{title ? title + "-Across Nigeria TV" : "Across Nigeria TV show"}</title>
         <meta name="description" content="App Description" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
        <ToastContainer position="top-center" limit={1} />
 <StickyNavbar/>
- <div className="flex left-0 ml-0 w-full overflow-hidden min-h-screen flex-col justify-between">
+ <div className="flex left-0 ml-0 w-full overflow-hidden min-h-fit flex-col justify-between">
         <main className="h-full w-screen overflow-hidden left-0 mx-auto  min-h-full">{children}</main>
        
       </div> <Footer/>

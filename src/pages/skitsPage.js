@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import db from '../../utils/db';
 import Skits from '@/models/Skits';
 import SkitDisp from '@/components/SkitDisp';
-import { CldVideoPlayer } from 'next-cloudinary';
-import 'next-cloudinary/dist/cld-video-player.css';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 

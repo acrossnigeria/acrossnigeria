@@ -37,8 +37,9 @@ const Info = ()=>{
             {data.buttonLabel}
           </Link>
    <div className="text-8xl mt-4 mx-auto rounded-md justify-between bg-gray-100 flex">
-     <SocialIcon className="mx-auto px-0" bgColor="transparent"  fgColor="blue" network="facebook"/>
-    <SocialIcon className="mx-auto px-0" fgColor="black" bgColor="transparent" network="x"/>
+     <SocialIcon className="mx-auto  w-9 h-7 px-0" bgColor="transparent"  fgColor="blue" network="facebook"/>
+     <SocialIcon className="mx-auto w-9 h-7 px-0" bgColor="transparent"  fgColor="green" network="whatsapp"/>
+    <SocialIcon className="mx-auto w-9 h-7 px-0" fgColor="black" bgColor="transparent" network="x"/>
  <Image  quality={100}  className="mx-4" src={tiktok} height={20} width={30} alt="tiktok"/>
  <Image quality={100} className="mx-4"  src={instagram} height={20} width={30} alt="Instagram"/>
  <Image  quality={100} className="mx-4" src={youtube} height={20} width={30} alt="youtube"/>

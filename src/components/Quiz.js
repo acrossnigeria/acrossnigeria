@@ -112,7 +112,7 @@ const Quiz = () => {
       )}
       
        {showTerms && (
-        <div className="fixed transform ease-in-out duration-1000 inset-0 bg-gray-500/50 flex justify-center items-center z-50">
+        <div className="fixed transform ease-in-out duration-1000 inset-0 bg-gray-500/50 flex justify-center items-center">
           <div className="bg-white p-4 rounded-md shadow-md">
             <p>Please accept our terms and conditions to submit your answer.</p>
            

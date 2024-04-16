@@ -5,6 +5,7 @@ import Skits from '@/models/Skits';
 import SkitDisp from '@/components/SkitDisp';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import WelcomeScreen2 from '@/components/WelcomScreen2';
 
 export default function SkitsPage({skits}) {
     const router=useRouter()
@@ -23,6 +24,7 @@ export default function SkitsPage({skits}) {
   
   return (
     <Layout>
+    
       <Link href="/upload" className='top-3 right-0 mt-6 w-32 rounded-md 
       cursor-pointer bg-slate-500 text-center mx-auto'
        >UPload a Skit</Link>

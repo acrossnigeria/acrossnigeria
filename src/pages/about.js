@@ -1,12 +1,16 @@
 import Layout from "@/components/Layout";
+import WelcomeScreen2 from "@/components/WelcomScreen2";
+import { useEffect } from "react";
 
-export default function about() {
-    
+export default function About() {
+    useEffect(() => {
+     const currentUrl = window.location.href;
+    console.log("Current URL:", currentUrl);
+  }, []);
     return(
-        <Layout title="About Us"><div className="font-black text-yellow-800 text-lg">
-
-            How are you
-        </div></Layout>
+        <Layout title="About Us">
+            <WelcomeScreen2/>
+            </Layout>
         
     )
 };

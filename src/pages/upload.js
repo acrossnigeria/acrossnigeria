@@ -9,7 +9,7 @@ import { Textarea } from "@nextui-org/react";
 import PaystackBtn from "@/components/PaystackBtn";
 import { useSession } from "next-auth/react";
 import { constant } from "lodash";
-
+import WelcomeScreen2 from "@/components/WelcomScreen2";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -66,7 +66,8 @@ const [description,setDescription]=useState("");
     formState: { errors },
     setValue,
   } = useForm();
-
+    const[ postUrl, setPostUrl]=useState("")
+      const[ showPreview, setShowPreview]=useState(false)
   const router = useRouter();
  const { data: session } = useSession();
   
@@ -84,7 +85,7 @@ const [description,setDescription]=useState("");
      e.target.files[0].value = "";  
        return;
   }
-  const result = window.confirm('Do you want to proceed?');
+  const result = window.confirm(`Do you want to proceed with uploading ${e.target.files[0].name}?`);
     if (result) {
       const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/upload`;
     try {
@@ -128,18 +129,32 @@ const newData={name:session?.user.name?? null,
         description:description, payment: true}
       dispatch({ type: 'UPDATE_REQUEST' });
       const data= oldData;
-      await axios.post(`/api/skits`,data);
+      const response=await axios.post(`/api/skits`,data);
+      console.log (response.data.id)
       dispatch({ type: 'UPDATE_SUCCESS' });
       toast.success('Product updated successfully');
-      router.push('/skitsPage');
+      const baseUrl=window.location.origin;
+      const url=baseUrl+`/skits/`+response.data.id;
+      setPostUrl(url)
+      setShowPreview(true);
     } catch (err) {
       dispatch({ type: 'UPDATE_FAIL', payload: getError(err) });
       toast.error(getError(err));
     }
   };
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(postUrl)
+      .then(() => {
+       toast.success('Link copied to clipboard!');
+      })
+      .catch((error) => {
+        console.error('Unable to copy link: ', error);
+      });
+  };
 
   return (
     <Layout title={`Upload Skit`}>
+      <WelcomeScreen2 section="Skits Across Nigeria" toc="Coming soon" />
       <div className="grid p-10 md:grid-cols-4 md:gap-5">
         <div className="md:col-span-3">
           {error ? (
@@ -154,7 +169,7 @@ const newData={name:session?.user.name?? null,
                 <label htmlFor="title">Skit Title</label>
                 <input
                   type="text"
-                  className="w-full"
+                  className="w-full border border-yellow-400 accent-slate-950"
                   id="title"
                   placeholder="Enter title of your Skit"
                   autoFocus
@@ -202,8 +217,8 @@ const newData={name:session?.user.name?? null,
                 )}
               </div>
               <div className="mb-4">
-                <button disabled={loadingUpdate} className="primary-button">
-                  {loadingUpdate ? 'Loading' : 'Update'}
+                <button disabled={loadingUpdate||loadingUpload} className="primary-button">
+                  {loadingUpdate||loadingUpload ? 'Loading' : 'Update'}
                 </button>
               </div>
             </form>
@@ -211,7 +226,27 @@ const newData={name:session?.user.name?? null,
                  <div className="w-fit h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 top-20 z-50 bg-yellow-700" 
                  onClick={()=>(dispatch({type:'PAY_SUCCESS'}))}>Close</div><PaystackBtn pay={paySuccesAction} 
             amount={10000} email={session?.user.email?? null} 
-            purpose="Payment for Skits Across Nigeria"/></div>)}</div>  
+            purpose="Payment for Skits Across Nigeria"/></div>)}
+            {showPreview&&(<div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-200">
+                 <div className="w-fit flex flex-col justify-start h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 top-20 z-50 bg-yellow-700" 
+                 onClick={()=>(router.push("/skitsPage"))}>Close</div>
+                 <p className="flex w-full">Copy the Link below and send it to your friends to view and vote for your skit</p>
+                  <div className="flex items-center space-x-2">
+      <input
+        type="text"
+        value={postUrl}
+        readOnly
+        className="border border-gray-300 rounded-md px-2 py-1 w-48"
+      />
+      <button
+        onClick={copyToClipboard}
+        className="bg-yellow-700 text-white px-4 py-1 rounded-md"
+      >
+        Copy
+      </button>
+    </div>
+                 </div>)}  </div>  
+              
           )}
         </div>
       </div>
@@ -219,4 +254,4 @@ const newData={name:session?.user.name?? null,
   );
 }
 
-AdminProductEditScreen.auth = { adminOnly: true };
+AdminProductEditScreen.auth=true;

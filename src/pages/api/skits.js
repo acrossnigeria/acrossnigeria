@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         await db.disconnect();
 
         res.status(201).send({
-            message: "Congratulations, your Skit has been uploaded!"
+            message: "Congratulations, your Skit has been uploaded!",id:skit._id
         });
     } catch (error) {
         console.error("Error:", error);

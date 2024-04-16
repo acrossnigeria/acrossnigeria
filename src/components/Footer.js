@@ -18,7 +18,7 @@ function Footer() {
   return (
     
 
-<footer className="relative bg-gray-950 backdrop-blur-3xl backdrop-opacity-0 bg-opacity-100 text-white transition duration-700 
+<footer className="relative bg-gray-950 backdrop-blur-3xl mb-0 bottom-0 backdrop-opacity-0 bg-opacity-100 text-white transition duration-700 
         ease-in-out border-t-4 border-yellow-600">
     <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">

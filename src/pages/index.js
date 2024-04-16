@@ -26,6 +26,7 @@ export const games=[
 {title:"GIVE AWAY QUIZZES",
 image:image1,link:"/giveaway"},
 {title:"SKITS ACROSS NIGERIA",image:image2,link:"/skitsPage"},
+{title:"NAIJA VIBES", image:image8,link:"/soon"},
 {title:"KING AND QUEEN",image:image3,link:"/soon"},
 {title:"MYSTERY BOXES",image:image4,link:"/soon"},
 {title:"STATE TREASURE HUNT SHOW",image:image5,link:"/soon"},
@@ -33,7 +34,7 @@ image:image1,link:"/giveaway"},
 {title:"ACROSS NIGERIA REALITY SHOW",image:image7,link:"/soon"},
 {title:"SHOPPING HUSTLE",image:image9,link:"/soon"},
 {title:"I DON HAMMA",image:image10,link:"/soon"},
-{title:"NAIJA VIBES", image:image8,link:"/soon"}]
+]
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {

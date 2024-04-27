@@ -14,9 +14,9 @@ export default function WelcomeScreen2(props) {
   };
 
   return (
-    <div className={`${hidden?"hidden":"flex absolute w-screen h-screen z-50 top-20"} `}>
+    <div className={`${hidden?"hidden":"flex absolute w-screen h-screen z-50 top-44 lg:top-20"} `}>
       {/* Left Sidebar */}
-      <div className="w-1/4 bg-gray-200 p-4">
+      <div className="lg:w-1/4 w-1/3 bg-gray-200 p-4">
         <button
           className={`w-full p-2 mb-2 rounded ${
             selectedSection === 'about' ? 'bg-yellow-700 text-white' : 'bg-gray-300'
@@ -31,7 +31,7 @@ export default function WelcomeScreen2(props) {
           }`}
           onClick={() => handleSectionClick('howToPlay')}
         >
-          How to Play
+          How to participate
         </button>
         <button
           className={`w-full p-2 mb-2 rounded ${
@@ -41,18 +41,7 @@ export default function WelcomeScreen2(props) {
         >
           Our Terms
         </button>
-        <div className="mt-4">
-          <input
-            type="checkbox"
-            id="termsCheckbox"
-            checked={termsAccepted}
-            className='accent-yellow-700'
-            onChange={handleTermsCheckboxChange}
-          />
-          <label htmlFor="termsCheckbox" className="ml-2">
-            Accept our terms and conditions
-          </label>
-        </div>
+        
       </div>
 
       {/* Right Content */}
@@ -61,14 +50,14 @@ export default function WelcomeScreen2(props) {
           <div className="text-lg">Information about {props.section}.</div>
         )}
         {selectedSection === 'howToPlay' && (
-          <div className="text-lg">Instructions on how to play go here.</div>
+          <div className="text-lg">Instructions on how to participate go here.</div>
         )}
         {selectedSection === 'terms' && (
           <div className="min-h-96 max-h-[700px] md:max-h-[500px] overflow-scroll">{props.toc}</div>
         )}
-        {termsAccepted && (
+      
           <button className="mt-4 bg-yellow-700 text-white p-2 rounded" onClick={()=>(setHidden(true))}>Continue</button>
-        )}
+       
       </div>
     </div>
   );

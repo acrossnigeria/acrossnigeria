@@ -19,6 +19,7 @@ import Image from "next/image";
 import ReviewSlider from "@/components/ReviewSlider";
 import Carousel from "@/components/Carousel";
 import Testimonials from "@/components/Testimonials";
+import Link from "next/link";
 
 
 
@@ -55,18 +56,21 @@ export default function Home() {
             { games.map((card)=>(<Cards key={card.title} title={card.title} 
             link={card.link} image={card.image}/>))}
         </div>
-   <div className="w-full border-b-2 border-yellow-600 rounded-lg overflow-hidden">
-    <div className={`container mx-auto`}>
-      <div className={`xl:max-w-[1280px] w-full`}>
+        <div className="">
+           <h2
+        className="w-full mx-auto text-center flex bg-gray-900 justify-center items-center 
+          md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
+           text-white xs:leading-[76.8px] leading-[66.8px]"
+      >Testimonials
+      </h2>
         <Testimonials/>
         </div>
-        </div>
-        </div>
-        <div className="">
-          <p className="w-full mx-auto text-center flex bg-gray-800 justify-between items-center 
+       <div className="">
+          <p className="w-full mx-auto text-center flex bg-gray-900 justify-center items-center 
           md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
-           text-white xs:leading-[76.8px] leading-[66.8px]">Model for the Week</p>
-      <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/></div>
+           text-white xs:leading-[76.8px] leading-[66.8px]">Shout Out</p>
+      <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
+      <Link href="/booking">Make a shout Out</Link></div>
 
          <div className="h-80">
            <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">

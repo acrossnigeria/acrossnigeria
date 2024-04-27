@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const PersonCard = ({ imageUrl, name, age, occupation }) => {
   return (
@@ -21,6 +22,7 @@ const PersonCard = ({ imageUrl, name, age, occupation }) => {
 </div>
 
       </div>
+      
     </div>
   );
 };

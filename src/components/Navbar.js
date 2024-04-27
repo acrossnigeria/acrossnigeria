@@ -1,130 +1,114 @@
-import React, { useState, useContext } from 'react';
+import Image from 'next/image';
+import React, { useState } from 'react';
+import logo from "../../public/images/logo1.png";
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-
-  const handleMenuToggle = () => {
-    setIsOpen(!isOpen);
-  };
-  const { status,  data: session } = useSession();
-  const user = session?.name;
-  const handleLogout = () => {
-    signOut({ callbackUrl: '/login' }); // Call logout function from UserContext
-  };
-
+  const { status, data: session } = useSession();
+const logoutClickHandler = () => {
+    
+    signOut({ callbackUrl: '/login' });
+      };
+      const[open,setOpen]=useState(false)
+const toggleMenu=()=>{
+  setOpen(!open);}
   return (
-    <nav className="bg-gray-800 flex items-center justify-between px-4 py-2 relative mb-1 top-0 w-full z-50">
+    <nav className="bg-gray-800 py-4">
       {/* Logo */}
-      <Link href="/" legacyBehavior>
-        <a className="text-white text-xl font-bold">My App</a>
-      </Link>
+      <div className="flex items-center justify-center">
+        <Image src={logo} alt="Logo" className="h-8 w-8" />
+      </div>
+      <p className='flex items-center justify-center text-white'>Across Nigeria reality show</p>
 
-      {/* Search Bar (Optional) */}
-      <div className="flex items-center rounded-md overflow-hidden w-auto">
-        <input
-          className="px-4 py-2 rounded-l-md bg-gray-700 focus:outline-none focus:ring-2 focus:ring-white"
-          type="search"
-          placeholder="Search"
-        />
-        <button className="flex items-center rounded-r-md bg-gray-600 px-4 py-2 text-white hover:bg-gray-700">
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      {/* Dropdown Button */}
+      {status === 'loading' ? (
+                <div
+                className="flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
+            justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]
+            ease-in-out hover:bg-white hover:text-yellow-600 hover:border-2 hover:border-yellow-600 hover:scale-105 hover:rounded-sm "
+              >
+               Loading...
+              </div>
+              ) : session?.user ? (<div className={`flex relative flex-1 top-0 w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
+            justify-center uppercase text-white border-2 border-green-600  transition duration-100  rounded-lg text-[10px]`}>
+                <div className="flex justify-center w-full" onClick={toggleMenu}>{session.user.name}</div>
+           {open && (
+        <div className="fixed block top-12 flex-1 mr-3 w-16 origin-top-right bg-green-600 text-[8px] lg:text-sm divide-y divide-gray-100 rounded-md shadow-lg ring-1
+         ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+          <div className="py-1 flex" role="none">
+            <a onClick={logoutClickHandler} className="text-gray-700 block px-3" role="menuitem">LogOut</a>
+            </div>
+          <div className="py-2 flex" role="none">
+            <a onClick={()=>(router.push("/profile"))} className="text-gray-700 block px-6 " role="menuitem">Profile</a>
+            </div>
+        </div>
+      )}</div>
+                  /* <div
+            className="flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
+        justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]
+        ease-in-out hover:bg-white hover:text-yellow-600 hover:border-2 hover:border-yellow-600 hover:scale-105 hover:rounded-sm "
+          > */
+        
+              ) : (
+
+                <div
+            className="flex  w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
+        justify-center uppercase text-white border-2 border-green-600  bg-green-600 transition duration-100  rounded-lg text-[10px]
+        ease-in-out hover:bg-white hover:text-yellow-600 hover:border-2 hover:border-yellow-600 hover:scale-105 hover:rounded-sm "
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </button>
+           <Link href="/login" className="p-2 cursor-pointer" legacyBehavior>
+                
+                <a>  Login</a>
+                </Link>
+          </div>
+                
+              )}
+
+      {/* Search Bar */}
+      <div className="mt-4 flex items-center justify-center">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-500"
+        />
       </div>
 
-      {/* Menu Items */}
-      <ul className="flex space-x-4 text-white">
-        <li>
-          <Link href="/" legacyBehavior>
-            <a className="hover:text-gray-400">Home</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/about" legacyBehavior>
-            <a className="hover:text-gray-400">About</a>
-          </Link>
-        </li>
-        {/* Add more menu items here */}
-      </ul>
+      {/* Menus */}
+      <div className="mt-4 flex justify-center">
+        {/* First Line Menus */}
+        <div className="space-x-4">
+          <a href="#" className="text-white border-r-2 border-yellow-700 hover:text-blue-500">
+            Menu 1
+          </a>
+          <a href="#" className="text-white border-x-2 border-yellow-700 hover:text-blue-500">
+            Menu 2
+          </a>
+          <a href="#" className="text-white border-x-2 border-yellow-700 hover:text-blue-500">
+            Menu 3
+          </a>
+          <a href="#" className="text-white hover:text-blue-500">
+            Menu 4
+          </a>
+        </div>
+      </div>
 
-      {/* User Menu (Conditional) */}
-      <div className="flex items-center">
-        {user ? (
-          <div className="relative">
-            <button
-              className="inline-flex items-center px-3 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-              type="button"
-            >
-              <span className="mr-1">{user}</span>
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.294 13.293a1 1 0 010 1.414l4 4a1 1 0 01-1.414 1.414L1.414 11.414a1 1 0 010-1.414l4-4a1 1 0 011.414 0zM17.894 5.293a1 1 0 010 1.414l4 4a1 1 0 01-1.414 1.414L13.414 3.414a1 1 0 00-1.414-1.414l4-4a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              </button>
-
-            <div
-              className={`absolute right-0 mt-2 w-56 origin-top-right rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
-                isOpen ? 'visible' : 'invisible'
-              }`}
-            >
-              <ul
-                className="py-1 divide-y divide-gray-200"
-                role="menu"
-                aria-labelledby="menu-button"
-              >
-                <li>
-                  <Link href="/profile" legacyBehavior>  
-                    <a
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      role="menuitem"
-                    >
-                      Profile
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <button onClick={handleLogout}>
-                    <a
-                      className="block px-4 py-2 text-sm text-red-500 hover:bg-red-100"
-                      role="menuitem"
-                    >
-                      Logout
-                    </a>
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        ) : (
-          <Link href="/login" legacyBehavior>
-            <a
-              className="inline-flex items-center px-3 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-            >
-              Login
-            </a>
-          </Link>
-        )}
+      <div className="mt-2 flex justify-center">
+        {/* Second Line Menus */}
+        <div className="space-x-4">
+          <a href="#" className="text-white hover:text-blue-500">
+            Menu 5
+          </a>
+          <a href="#" className="text-white hover:text-blue-500">
+            Menu 6
+          </a>
+          <a href="#" className="text-white hover:text-blue-500">
+            Menu 7
+          </a>
+          <a href="#" className="text-white hover:text-blue-500">
+            Menu 8
+          </a>
+        </div>
       </div>
     </nav>
   );

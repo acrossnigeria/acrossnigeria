@@ -36,11 +36,7 @@ const Testimonials = () => (
     className={`sm:pb-16 pb-6 px-0 flex justify-center items-center flex-col relative `}
   >
     <div className="w-full mx-auto text-center flex bg-gray-800 justify-between items-center md:flex-row flex-col sm:mb-16 mb-6 relative z-[1]">
-      <h2
-        className={`font-poppins font-semibold xs:text-[48px] text-[40px] text-white xs:leading-[76.8px] leading-[66.8px] w-full`}
-      >Testimonials
-      </h2>
-     
+         
     </div>
     <Carousel autoplay autoplayInterval={3000} wrapAround={true}>
       {feedback.map((card) => (

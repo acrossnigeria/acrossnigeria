@@ -9,7 +9,7 @@ export default function About() {
   }, []);
     return(
         <Layout title="About Us">
-            <WelcomeScreen2/>
+            <WelcomeScreen2 />
             </Layout>
         
     )

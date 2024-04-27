@@ -8,7 +8,6 @@ import Layout from "@/components/Layout";
 import { Textarea } from "@nextui-org/react";
 import PaystackBtn from "@/components/PaystackBtn";
 import { useSession } from "next-auth/react";
-import { constant } from "lodash";
 import WelcomeScreen2 from "@/components/WelcomScreen2";
 
 function reducer(state, action) {
@@ -78,9 +77,9 @@ const [description,setDescription]=useState("");
   }
    // Check file size
   const fileSize = e.target.files[0].size; // Size in bytes
-  const maxSize = 100 * 1024 * 1024; // 100 MB in bytes
+  const maxSize = 30 * 1024 * 1024; // 30 MB in bytes
   if (fileSize > maxSize) {
-    toast.error('File size exceeds 100MB limit.');
+    toast.error('File size exceeds 30MB limit.');
 
      e.target.files[0].value = "";  
        return;
@@ -169,7 +168,7 @@ const newData={name:session?.user.name?? null,
                 <label htmlFor="title">Skit Title</label>
                 <input
                   type="text"
-                  className="w-full border border-yellow-400 accent-slate-950"
+                  className="w-full border border-yellow-700 accent-slate-950"
                   id="title"
                   placeholder="Enter title of your Skit"
                   autoFocus
@@ -196,7 +195,7 @@ const newData={name:session?.user.name?? null,
                 <p>`Don&apos;t Navigate from this Page </p></div>}
               </div>
               <div className="mb-4">
-                Skits should not exceed 100MB
+                Skits should not exceed 30MB
               </div>
               <div className="mb-4">
                 <label htmlFor="description">Video Description</label>
@@ -217,7 +216,7 @@ const newData={name:session?.user.name?? null,
                 )}
               </div>
               <div className="mb-4">
-                <button disabled={loadingUpdate||loadingUpload} className="primary-button">
+                <button disabled={loadingUpdate||loadingUpload} className="">
                   {loadingUpdate||loadingUpload ? 'Loading' : 'Update'}
                 </button>
               </div>

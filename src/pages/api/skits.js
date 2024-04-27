@@ -20,7 +20,6 @@ export default async function handler(req, res) {
             referencePay,payment});
         const skit = await newSkit.save();
         await db.disconnect();
-
         res.status(201).send({
             message: "Congratulations, your Skit has been uploaded!",id:skit._id
         });

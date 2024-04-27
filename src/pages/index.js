@@ -27,7 +27,7 @@ export const games=[
 {title:"GIVE AWAY QUIZZES",
 image:image1,link:"/giveaway"},
 {title:"SKITS ACROSS NIGERIA",image:image2,link:"/skitsPage"},
-{title:"NAIJA VIBES", image:image8,link:"/soon"},
+{title:"NAIJA VIBES", image:image8,link:"/naijavibes"},
 {title:"KING AND QUEEN",image:image3,link:"/soon"},
 {title:"MYSTERY BOXES",image:image4,link:"/soon"},
 {title:"STATE TREASURE HUNT SHOW",image:image5,link:"/soon"},

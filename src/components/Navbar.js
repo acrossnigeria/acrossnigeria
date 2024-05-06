@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import logo from "../../public/images/logo1.png";
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
   const { status, data: session } = useSession();
+  const router=useRouter();
 const logoutClickHandler = () => {
-    
-    signOut({ callbackUrl: '/', redirect:true });
+        signOut();
+        router.push("/login")
       };
       const[open,setOpen]=useState(false)
 const toggleMenu=()=>{

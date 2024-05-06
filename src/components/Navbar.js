@@ -8,7 +8,7 @@ const Navbar = () => {
   const { status, data: session } = useSession();
 const logoutClickHandler = () => {
     
-    signOut({ callbackUrl: '/login' });
+    signOut();
       };
       const[open,setOpen]=useState(false)
 const toggleMenu=()=>{

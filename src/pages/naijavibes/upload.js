@@ -141,7 +141,7 @@ category:fileCategory,}
         description:description, payment: true}
       dispatch({ type: 'UPDATE_REQUEST' });
       const data= oldData;
-      const response=await axios.post(`/api/naijavibes/exchange`,data);
+      const response=await axios.post(`/api/naijavibes/postVibes`,data);
       console.log (response.data.id)
       dispatch({ type: 'UPDATE_SUCCESS' });
       toast.success(`Your NaijaVibes ${fileType} has been uploaded successfully`);
@@ -213,11 +213,11 @@ category:fileCategory,}
             value={fileCategory}
             onChange={handleFileCategoryChange}
           >
-            <option value="">Select photo category</option>
-            <option value="naijaFaces">NAIJA FACES</option>
-            <option value="sexxypix">SEXXY PIX</option>
-            <option value="naijaScenes">NAIJA SCENES</option>
-            <option value="naijaNature">NAIJA NATURE</option>
+            <option value="">Select Picture category</option>
+            <option value="naijaFaces">FACES</option>
+            <option value="showdem">SHOW DEM</option>
+            <option value="lookingood">LOOKING GOOD</option>
+            <option value="scenes">SCENES</option>
           </select>
         </div>
       )}
@@ -286,11 +286,11 @@ category:fileCategory,}
      {loadingPay&&(<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                  <div className="w-fit h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 top-20 z-50 bg-yellow-700" 
                  onClick={()=>(dispatch({type:'PAY_SUCCESS'}))}>Close</div><PaystackBtn pay={paySuccesAction} 
-            amount={1000} email={session?.user.email?? null} 
+            amount={100} email={session?.user.email?? null} 
             purpose="Payment for NaijaVibes"/></div>)} 
              {showPreview&&(<div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-200">
                  <div className="w-fit flex flex-col justify-start h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 top-20 z-50 bg-yellow-700" 
-                 onClick={()=>(router.push("/skitsPage"))}>Close</div>
+                 onClick={()=>(router.push("/naijavibes/"))}>Close</div>
                  <p className="flex w-full">Copy the Link below and send it to your friends to view and vote for your skit</p>
                   <div className="flex items-center space-x-2">
       <input

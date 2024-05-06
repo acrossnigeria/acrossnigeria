@@ -70,7 +70,7 @@ export default function Home() {
           md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
            text-white xs:leading-[76.8px] leading-[66.8px]">Shout Out</p>
       <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
-      <Link href="/booking">Make a shout Out</Link></div>
+     </div>
 
          <div className="h-80">
            <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">

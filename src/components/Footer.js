@@ -18,7 +18,7 @@ function Footer() {
   return (
     
 
-<footer className="relative bg-gray-950 backdrop-blur-3xl mb-0 bottom-0 backdrop-opacity-0 bg-opacity-100 text-white transition duration-700 
+<footer className="relative bg-green-950 backdrop-blur-3xl mb-0 bottom-0 backdrop-opacity-0 bg-opacity-100 text-white transition duration-700 
         ease-in-out border-t-4 border-yellow-600">
     <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
@@ -44,10 +44,10 @@ function Footer() {
                   <h2 className="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">Follow us</h2>
                   <ul className="text-gray-100 dark:text-gray-100 font-medium">
                       <li className="mb-4">
-                          <a href="https://github.com/themesberg/flowbite" className="hover:underline ">Github</a>
+                          <a href="https://facebook.com" className="hover:underline ">Facebook</a>
                       </li>
                       <li>
-                          <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Discord</a>
+                          <a href="https://x.com" className="hover:underline">{`X (Twitter)`}</a>
                       </li>
                   </ul>
               </div>

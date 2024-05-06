@@ -81,7 +81,7 @@ if (!vibesPhoto){
 </div><div>
             
       <form onSubmit={handleSubmit} className="border border-gray-300 p-4 max-w-md mx-auto">
-        <h1 className="text-3xl font-semibold">{vibesPhoto.title.toUpperCase()} is contesting for best Video in <span className="font-bold italic">Naijavibes Video competition </span></h1>
+        <h1 className="text-3xl font-semibold">{vibesPhoto.title.toUpperCase()} is contesting for best Photo in <span className="font-bold italic">Naijavibes Picture competition </span></h1>
         <h2 className="text-2xl font-semibold">You can help it win by voting</h2>
         <h2 className="text-2xl font-semibold mb-6">Each Vote costs &#8358;100, you can send as many Votes as possible</h2>
    <label htmlFor="email" className="block text-xl font-semibold mb-2">Kindly enter your email:</label>

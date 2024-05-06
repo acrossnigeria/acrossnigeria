@@ -2,6 +2,7 @@ import Layout from '@/components/Layout';
 import SkitDisp from '@/components/SkitDisp';
 import axios from 'axios';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 // Sample content for demonstration
@@ -23,7 +24,18 @@ export default function Home() {
   const [sortedSkits, setSortedSkits] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const skitsPerPage = 5;
-
+  const router =useRouter();
+  const {cat}=router.query;
+useEffect(() => {
+    if (cat) {
+     handleOptionClick(cat);
+      setContent(contentMap.find(item => item.slug === cat));
+      clearQueryParams();
+    }
+  }, []);
+   const clearQueryParams = () => {
+    router.replace(router.pathname); // Replace current URL with the same URL (effectively removing query parameters)
+  };
   useEffect(() => {
     // Sort the skits based on the votes property
     if (data){const sorted = data.slice().sort((a, b) => b.votes - a.votes);
@@ -45,7 +57,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("/api/naijavibes/exchange", { params: { 'fileType': "videos", 'subcategory': selectedOption } });
+        const response = await axios.get("/api/naijavibes/getVibes", { params: { 'fileType': "videos", 'subcategory': selectedOption } });
         console.log("selected option is:", selectedOption)
         setData(response.data);
         console.log(data);
@@ -63,17 +75,23 @@ export default function Home() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <Layout>
-      <div className='px-6 py-4 mt-4 font-semibold mb-6 bg-green-700 w-fit ml-10 rounded-xl'>
-        <Link href="/naijavibes/upload" >Get involved</Link>
+      <div className="flex justify-between py-4 px-20">
+      <div className="flex items-center"> {/* Div on the left */}
+      <Link className="text-white bg-yellow-700 px-4 py-2 rounded-md" href="/naijavibes/"> Back</Link>
+        
       </div>
+      <div className="flex items-center"> {/* Div on the right */}
+        <Link className="text-white bg-green-700 px-4 py-2 rounded-md" href="/naijavibes/upload" >Get involved</Link>
+      </div>
+    </div>
       <div className="flex h-screen">
         {/* Left side menu */}
         <div className="bg-gray-200 w-1/4 p-4">
-          <h1 className="text-xl font-bold mb-4">Options</h1>
+          <h1 className="text-xl font-bold mb-4">Select Video category</h1>
           <ul>
             {contentMap.map((item, index) => (
              <div key={index}>
-              <li  className="cursor-pointer mb-2" onClick={() => handleOptionClick(item.slug)}>
+              <li  className="cursor-pointer mb-2 border-b-2 border-gray-900" onClick={() => handleOptionClick(item.slug)}>
                 {item.title}
               </li></div> 
             ))}
@@ -83,14 +101,16 @@ export default function Home() {
         {/* Main content */}
         <div className="flex-1 p-4">
           <h1 className="text-xl font-bold mb-4">{content ? content.title : "Select an option"}</h1>
-          <div className="bg-gray-100 p-4">
-          {currentSkits&&currentSkits.map((item,index)=>(
+        {loading?(<div className="bg-gray-100 font-black p-4"> Loading from Database, Please wait....</div>):(<div className="bg-gray-100 p-4">
+          {currentSkits.length>1? (currentSkits.map((item,index)=>(
             <div key={index}>   <SkitDisp content={item} link={`/naijavibes/naijavideos/${item._id}`}/>
           <p >{item.title}</p>
           </div> 
-          )) }
+          ))):<p>No Content Found</p> }
             {error && <p>Error: {error.message}</p>}
-          </div>
+          </div>)}
+        
+         
         </div>
         <div className="flex justify-center my-4">
         {Array.from({ length: Math.ceil(sortedSkits.length / skitsPerPage) }, (_, i) => (

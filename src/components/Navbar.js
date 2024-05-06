@@ -16,9 +16,9 @@ const toggleMenu=()=>{
   return (
     <nav className="bg-gray-800 py-4">
       {/* Logo */}
-      <div className="flex items-center justify-center">
-        <Image src={logo} alt="Logo" className="h-8 w-8" />
-      </div>
+      <Link href="/" className="flex items-center justify-center">
+        <Image src={logo} alt="Logo"  className="h-8 w-8" />
+      </Link>
       <p className='flex items-center justify-center text-white'>Across Nigeria reality show</p>
 
       {/* Dropdown Button */}
@@ -78,36 +78,36 @@ const toggleMenu=()=>{
       <div className="mt-4 flex justify-center">
         {/* First Line Menus */}
         <div className="space-x-4">
-          <a href="#" className="text-white border-r-2 border-yellow-700 hover:text-blue-500">
-            Menu 1
-          </a>
-          <a href="#" className="text-white border-x-2 border-yellow-700 hover:text-blue-500">
-            Menu 2
-          </a>
-          <a href="#" className="text-white border-x-2 border-yellow-700 hover:text-blue-500">
-            Menu 3
-          </a>
-          <a href="#" className="text-white hover:text-blue-500">
-            Menu 4
-          </a>
+          <Link href="/" className="text-white border-r-2 border-yellow-700 hover:text-green-500">
+          Home
+          </Link>
+          <Link href="#" className="text-white border-x-2 border-yellow-700 hover:text-green-500">
+            About
+          </Link>
+          <Link href="#" className="text-white border-x-2 border-yellow-700 hover:text-green-500">
+            Our Products
+          </Link>
+          <Link href="#" className="text-white hover:text-green-500">
+            Profile
+          </Link>
         </div>
       </div>
 
       <div className="mt-2 flex justify-center">
         {/* Second Line Menus */}
         <div className="space-x-4">
-          <a href="#" className="text-white hover:text-blue-500">
-            Menu 5
-          </a>
-          <a href="#" className="text-white hover:text-blue-500">
-            Menu 6
-          </a>
-          <a href="#" className="text-white hover:text-blue-500">
-            Menu 7
-          </a>
-          <a href="#" className="text-white hover:text-blue-500">
+          <Link href="/naijavibes" className="text-white hover:text-green-500">
+            NaijaVibes
+          </Link>
+          <Link href="giveaway" className="text-white hover:text-green-500">
+            Giveaway
+          </Link>
+          <Link href="skitsPage" className="text-white hover:text-green-500">
+            Skits Across Naija
+          </Link>
+          <Link href="#" className="text-white hover:text-green-500">
             Menu 8
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

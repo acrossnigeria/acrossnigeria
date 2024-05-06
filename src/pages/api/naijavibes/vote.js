@@ -13,9 +13,9 @@ const handler =async(req,res)=>{
     vibes.votes=votes;
     await vibes.save();
     console.log("number of votes is:", vibes.votes)
-    const newVotes= await new VibesVotes({vibeId:id, votes:amount, fileType:fileType, category:category})
-    const vote= await newVotes.save();
+    VibesVotes.insertMany({vibeId:id, votes:amount, fileType:fileType, category:category})
     await db.disconnect();
-    res.send( vote);
 };
 export default handler;
+
+ Naijavibes.insertMany(data);

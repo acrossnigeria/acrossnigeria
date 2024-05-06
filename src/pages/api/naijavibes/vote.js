@@ -17,5 +17,3 @@ const handler =async(req,res)=>{
     await db.disconnect();
 };
 export default handler;
-
- Naijavibes.insertMany(data);

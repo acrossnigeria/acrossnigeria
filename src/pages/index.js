@@ -56,15 +56,7 @@ export default function Home() {
             { games.map((card)=>(<Cards key={card.title} title={card.title} 
             link={card.link} image={card.image}/>))}
         </div>
-        <div className="">
-           <h2
-        className="w-full mx-auto text-center flex bg-gray-900 justify-center items-center 
-          md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
-           text-white xs:leading-[76.8px] leading-[66.8px]"
-      >Testimonials
-      </h2>
-        <Testimonials/>
-        </div>
+        
        <div className="">
           <p className="w-full mx-auto text-center flex bg-gray-900 justify-center items-center 
           md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
@@ -84,6 +76,15 @@ export default function Home() {
               <li>Winners</li>
             </ol>
          </div>
+         <div className="">
+           <h2
+        className="w-full mx-auto text-center flex bg-gray-900 justify-center items-center 
+          md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
+           text-white xs:leading-[76.8px] leading-[66.8px]"
+      >Testimonials
+      </h2>
+        <Testimonials/>
+        </div>
       </div>
    
       </Layout>

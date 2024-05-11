@@ -175,7 +175,7 @@ Cookies.set(
           value={day}
           onChange={handleDayChange}
           placeholder="Day (DD)"
-          className="col-span-1 border text-[10px] md:text-lg md:w-40 w-16  block appearance-none bg-white border-green-300 hover:border-green-500 px-2 py-0
+          className="col-span-1 border text-[10px] md:text-lg md:w-32 w-16  block appearance-none bg-white border-green-300 hover:border-green-500 px-2 py-0
            md:px-4 md:py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
         /><span className='text-4xl'>/</span>
         <select
@@ -204,7 +204,7 @@ Cookies.set(
           value={year}
           onChange={handleYearChange}
           placeholder="Year (YYYY)"
-          className="col-span-1 border text-[10px] md:text-lg md:w-40 flex-grow max-w-[80px] appearance-none bg-white border-green-300 hover:border-green-500 px-2 
+          className="col-span-1 border text-[10px] md:text-lg md:w-40 flex-grow max-w-[80px] md:max-w-[140px] appearance-none bg-white border-green-300 hover:border-green-500 px-2 
           py-0 md:px-4 md:py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
         />
       </div></div>

@@ -6,6 +6,7 @@ import { Store } from '../../utils/Store';
 import Layout from '@/components/Layout';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
+import Checkbox from '@/components/Checkbox';
 
 const Register = () => {
    const nigeriaStates = [
@@ -105,7 +106,7 @@ setFormData({...formData,  name: userDetails[0].name,
 
   };
  const {user}= state;
-  
+  const  handleTermsCheckboxChange=(isChecked)=>{setFormData({...formData,acceptTerms:isChecked})}
   const handleSubmit = async (e) => {
     e.preventDefault();
  console.log(formData.phone)
@@ -327,18 +328,11 @@ Cookies.set(
               <p className="animate-bounce text-red-700 font-thin">Passwords don&apos;t match</p>
           )}</div>
            <div className="mb-4">
-          <input
-            type="checkbox"
-            id="acceptTerms"
-            name="acceptTerms"
-            checked={formData.acceptTerms}
-            onChange={handleChange}
-            className="mr-2"
-          />
-          <label htmlFor="acceptTerms">Accept our terms</label>
+            <Checkbox handleTermsCheckboxChange={handleTermsCheckboxChange}/>
+        
         </div><div className="flex justify-between px-4 py-2">
           {formData.name.length && formData.phone.length&&formData.surname.length&&formData.dob.length&&formData.email.length&&
-            formData.password.length&&formData.phone.length&&formData.gender.length&&formData.residence.length&&formData.password.length? (
+            formData.password.length&&formData.phone.length>11&&formData.gender.length&&formData.residence.length&&formData.password.length>5&&formData.password===formData.confirmPassword &&formData.acceptTerms? (
             <button
               type="submit"
               className="text-slate-100 px-4 py-2 rounded-full bg-green-700 hover:bg-green-800 active:bg-green-950"

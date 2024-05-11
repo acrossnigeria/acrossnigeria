@@ -16,8 +16,14 @@ const Register = () => {
   ];
     const { state, dispatch } = useContext(Store);
      const {user:{userDetails},}= state;
+   const [day, setDay] = useState('');
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
+  const [dayError, setDayError]=useState(false)
+  const [yearError, setYearError]=useState(false)
+  const [formattedDate, setFormattedDate] = useState('');
 
-  const router = useRouter();
+    const router = useRouter();
   const [value, setValue]=useState();
   const [formData, setFormData] = useState({
     name: '',
@@ -31,7 +37,42 @@ const Register = () => {
     confirmPassword: '',
      acceptTerms: false, 
   });
+  const handleDayChange = (e) => {
+    const value = e.target.value;
+    // Allow only numbers and limit to 2 characters
+    if (/^\d{0,2}$/.test(value)&&value<=31) {
+      setDay(value);
+      setDayError(false)
+    }else{setDayError(true)}
+  };
 
+  const handleYearChange = (e) => {
+    const value = e.target.value;
+    const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+    // Allow only numbers and limit to 4 characters
+    if (/^\d{0,4}$/.test(value)&&value<=(currentYear-18)) {
+      setYear(value);
+      setYearError(false)
+      if(value.length>=4&&value<1900){
+        setYearError(true)
+        setYear("")}
+          }
+    else{setYearError(true)}
+  };
+useEffect(()=>{
+  const formatEnteredDate = () => {
+    // Ensure all parts of the date are entered
+    if (day && month && year) {
+      // Format the date as YYYY-MM-DD
+      setFormattedDate(`${year}-${month}-${day.padStart(2, '0')}`);
+      setFormData({...formData, dob:formattedDate})
+    }
+  };
+  formatEnteredDate();
+},[day,month, year,formattedDate])
+
+ const today=new Date();
   useEffect(()=>{
     if(!userDetails[0]?.name){setFormData({...formData,  name: "",
         surname:"",
@@ -68,7 +109,7 @@ setFormData({...formData,  name: userDetails[0].name,
   const handleSubmit = async (e) => {
     e.preventDefault();
  console.log(formData.phone)
-    const today=new Date();
+   
     const dob=new Date(formData.dob);
      const age= today.getFullYear()-dob.getFullYear();
     if(age<18 ){
@@ -115,7 +156,7 @@ Cookies.set(
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="surname" className="block mb-2">surname</label>
+          <label htmlFor="surname" className="block mb-2">Surname</label>
           <input
             type="text"
             id="surname"
@@ -126,28 +167,51 @@ Cookies.set(
             required
           />
         </div>
+<div className='mb-4'>
+  <label htmlFor="dob" className="block mb-2">Date of Birth</label>
+           <div className="flex space-x-2 bg-white rounded-md border contain flex-shrink border-green-400">
+         <input
+          type="text"
+          value={day}
+          onChange={handleDayChange}
+          placeholder="Day (DD)"
+          className="col-span-1 border text-[10px] md:text-lg md:w-40 w-16  block appearance-none bg-white border-green-300 hover:border-green-500 px-2 py-0
+           md:px-4 md:py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+        /><span className='text-4xl'>/</span>
+        <select
+          value={month}
+          onChange={(e) => setMonth(e.target.value)}
+       className="col-span-1 border text-[10px] md:text-lg md:w-40 w-20 accent-green-400 hover:accent-green-400   block appearance-none bg-white border-green-300 hover:border-green-500 px-2 py-0
+       md:px-4 md:py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+
+        >
+          <option value="">--Select Month--</option>
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select><span className='text-4xl'>/</span>
+        <input
+          type="text"
+          value={year}
+          onChange={handleYearChange}
+          placeholder="Year (YYYY)"
+          className="col-span-1 border text-[10px] md:text-lg md:w-40 flex-grow max-w-[80px] appearance-none bg-white border-green-300 hover:border-green-500 px-2 
+          py-0 md:px-4 md:py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div></div>
+    {yearError&&<span className='text-red-600 text-sm'>Please only enter Years not Earlier than 1900 and not later than {today.getFullYear()-18}</span>}  
+    {dayError&&<span className='text-red-600 text-sm'>Please only enter days between 1-31</span>}  
         <div className="mb-4">
-          <input type="text" id="day-input" placeholder="Day (DD)" pattern="\d{1,2}" maxlength="2" />
-  <select id="month-select">
-    <option value="">--Select Month--</option>
-    <option value="01">January</option>
-    <option value="02">February</option>
-    <option value="03">March</option>
-    <option value="04">April</option>
-    <option value="05">May</option>
-    <option value="06">June</option>
-    <option value="07">July</option>
-    <option value="08">August</option>
-    <option value="09">September</option>
-    <option value="10">October</option>
-    <option value="11">November</option>
-    <option value="12">December</option>
-  </select>
-  <input type="text" id="year-input" placeholder="Year (YYYY)" pattern="\d{4}" maxlength="4" />
-  <input type="date" id="date-picker" />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="dob" className="block mb-2">Date of Birth</label>
+          
           <input
             type="date"
             id="dob"
@@ -157,6 +221,7 @@ Cookies.set(
             className="border rounded px-4 py-2 w-full"
             required
           /> 
+          {formData.dob}
         </div>
         <div className="mb-4">
           <label htmlFor="email" className="block mb-2">Email</label>
@@ -200,19 +265,7 @@ Cookies.set(
             ))}
           </select>
         </div>
-        <div className="mb-4 hidden">
-          <label htmlFor="phone" className="block mb-2">Phone Number</label>
-       <div className="border rounded px-4 py-1 focus:bg-yellow-700 w-full">  
-       <PhoneInput
-      placeholder="Enter your phone number"
-      defaultCountry="NG"
-            className="border rounded px-4 py-2 focus:bg-yellow-700 w-full"
-            name="phone"
-      value={value}
-      onChange={setValue}/>
-      
-     </div> </div>
-      <div className="mb-4">
+           <div className="mb-4">
           <label htmlFor="gender" className="block mb-2">Gender</label>
           <div className="flex">
             <label htmlFor="male" className="mr-4">

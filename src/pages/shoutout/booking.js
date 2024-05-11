@@ -63,7 +63,7 @@ const BookingPage = () => {
         setData(premiumCollections.map(doc=>doc.dateSelected));
          console.log(data); // Log response.data directly
       } catch (error) {
-        setError(error);
+        dispatch({type:'UPDATE_FAIL'});
       } finally {
         dispatch({type:'UPLOAD_SUCCESS'})
       }

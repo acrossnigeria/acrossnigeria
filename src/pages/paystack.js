@@ -57,7 +57,8 @@ useEffect(() => {
       setLoading(false)
       router.push('/success')
     } catch (err) {
-      console.log(getError(err))
+      setLoading(false)
+      console.log("Error in the page:",getError(err))
     }   };
     return (
     <Layout>

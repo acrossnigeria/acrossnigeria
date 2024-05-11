@@ -210,19 +210,7 @@ Cookies.set(
       </div></div>
     {yearError&&<span className='text-red-600 text-sm'>Please only enter Years not Earlier than 1900 and not later than {today.getFullYear()-18}</span>}  
     {dayError&&<span className='text-red-600 text-sm'>Please only enter days between 1-31</span>}  
-        <div className="mb-4">
-          
-          <input
-            type="date"
-            id="dob"
-            name="dob"
-            value={formData.dob}
-            onChange={handleChange}
-            className="border rounded px-4 py-2 w-full"
-            required
-          /> 
-          {formData.dob}
-        </div>
+    
         <div className="mb-4">
           <label htmlFor="email" className="block mb-2">Email</label>
           <input

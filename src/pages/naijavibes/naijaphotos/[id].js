@@ -74,7 +74,7 @@ if (!vibesPhoto){
   return(
     <Layout title={vibesPhoto.title}>
       <div className='px-6 py-4 mt-4 font-semibold mb-6 bg-green-700 w-fit ml-10 rounded-xl'>
-        <Link href="naijavibes/upload" >Get involved</Link>
+        <Link href="/naijavibes/upload" >Get involved</Link>
       </div>
         <div className="top-0 w-[400px] h-[300px] mt-0 mx-auto">
           <Image src={vibesPhoto.url} alt={vibesPhoto.detail} width={400}  height={300}/>

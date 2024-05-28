@@ -16,9 +16,9 @@ const logoutClickHandler = () => {
 const toggleMenu=()=>{
   setOpen(!open);}
   return (
-    <nav className="bg-gray-800 py-4">
+    <nav className="bg-gradient-to-br from-green-500 to-green-800 py-4">
       {/* Logo */}
-      <Link href="/" className="flex items-center justify-center">
+      <Link href="/" onClick={()=>(router.push("/"))} className="flex items-center justify-center">
         <Image src={logo} alt="Logo"  className="h-8 w-8" />
       </Link>
       <p className='flex items-center justify-center text-white'>Across Nigeria reality show</p>
@@ -101,10 +101,10 @@ const toggleMenu=()=>{
           <Link href="/naijavibes" className="text-white hover:text-green-500">
             NaijaVibes
           </Link>
-          <Link href="giveaway" className="text-white hover:text-green-500">
+          <Link href="/giveaway" className="text-white hover:text-green-500">
             Giveaway
           </Link>
-          <Link href="skitsPage" className="text-white hover:text-green-500">
+          <Link href="/skitsPage" className="text-white hover:text-green-500">
             Skits Across Naija
           </Link>
           <Link href="#" className="text-white hover:text-green-500">

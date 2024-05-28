@@ -9,6 +9,7 @@ import PaystackBtn from "@/components/PaystackBtn";
 import { useSession } from "next-auth/react";
 import WelcomeScreen2 from "@/components/WelcomScreen2";
 import { getError } from "../../../utils/error";
+import Checkbox from "@/components/Checkbox";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -51,10 +52,12 @@ function reducer(state, action) {
 const UploadForm = () => {
   const [fileType, setFileType] = useState('');
   const [fileCategory, setFileCategory] = useState('');
+  const [ticked, setTicked]=useState(false)
   const [{ loading, error, loadingUpdate, loadingPay, loadingUpload }, dispatch] =
     useReducer(reducer, {
       loading:false,
       error: '',
+      loadingUpload:false
     });
 const[dataUrl, setDataUrl]=useState("");
 const [title, setTitle]=useState("");
@@ -65,8 +68,9 @@ const [description,setDescription]=useState("");
     formState: { errors },
     setValue,
   } = useForm();
-  const[ postUrl, setPostUrl]=useState("")
-      const[ showPreview, setShowPreview]=useState(false)
+  const[ postUrl, setPostUrl]=useState("");
+  const[isuploaded, setIsuploaded]=useState(false);
+      const[ showPreview, setShowPreview]=useState(false);
   const router = useRouter();
  const { data: session } = useSession();
 
@@ -111,6 +115,7 @@ const [description,setDescription]=useState("");
       formData.append('api_key', process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY);
       const { data } = await axios.post(url, formData);
       dispatch({ type: 'UPLOAD_SUCCESS' });
+      setIsuploaded(true);
       setDataUrl( data.secure_url);
       toast.success('File uploaded successfully');
       
@@ -124,7 +129,7 @@ const [description,setDescription]=useState("");
    
   };
   
-  
+  const  handleTermsCheckboxChange=(isChecked)=>{setTicked(isChecked)}
  const submitHandler=({title, description})=>{
    dispatch({type:'PAY_REQUEST'})
 setTitle(title);
@@ -142,7 +147,8 @@ category:fileCategory,}
       dispatch({ type: 'UPDATE_REQUEST' });
       const data= oldData;
       const response=await axios.post(`/api/naijavibes/postVibes`,data);
-      console.log (response.data.id)
+
+      console.log (response)
       dispatch({ type: 'UPDATE_SUCCESS' });
       toast.success(`Your NaijaVibes ${fileType} has been uploaded successfully`);
       const baseUrl=window.location.origin;
@@ -242,7 +248,7 @@ category:fileCategory,}
           </div>
           
           <div className="mb-4">
-            <label className="block mb-2 font-semibold" htmlFor="imageFile">Upload image</label>
+            <label className="block mb-2 font-semibold" htmlFor="imageFile">Upload Image</label>
             <input
               type="file"
               id="imageFile"
@@ -275,15 +281,16 @@ category:fileCategory,}
                   </div>
                 )}
           </div>
-          
+           <Checkbox handleTermsCheckboxChange={handleTermsCheckboxChange}/>
+        
           <div className="mb-4">
-            <button type="submit" className="w-full bg-yellow-700 text-white font-bold py-2 px-4 rounded-md">
+           {isuploaded && ticked&&<button type="submit" className="w-full bg-yellow-700 text-white font-bold py-2 px-4 rounded-md">
               {fileType === 'videos' ? 'Upload Video' : 'Upload Picture'}
-            </button>
+            </button>}
           </div>
         </form>
       )}
-     {loadingPay&&(<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+     {loadingPay && (<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                  <div className="w-fit h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 top-20 z-50 bg-yellow-700" 
                  onClick={()=>(dispatch({type:'PAY_SUCCESS'}))}>Close</div><PaystackBtn pay={paySuccesAction} 
             amount={100} email={session?.user.email?? null} 
@@ -306,7 +313,7 @@ category:fileCategory,}
         Copy
       </button>
     </div>
-                 </div>)}
+  </div>)}
     </div></Layout>
   );
 };

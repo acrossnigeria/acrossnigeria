@@ -15,6 +15,32 @@ const handler = async (req, res) => {
             return res.status(500).json({ error: "Error fetching data" }); // Send error response
         }
     } 
+    else if (req.method === 'GET' && param === 'show') {
+    try {
+      await db.connect();
+
+      // Get today's date in the same format as `dateSelected`
+      const today = new Date().toDateString(); // Format: "Fri May 31 2024"
+        console.log("todays date",today)
+      // Find bookings with dateSelected equal to today's date
+      const bookings = await Booking.find({ dateSelected: today }).lean();
+       
+      await db.disconnect();
+
+      if (bookings.length > 0) {
+        // Send the bookings found for today
+         console.log("Bookings Found",bookings)
+        return res.status(200).json(bookings);
+      } else {
+        // No bookings found for today
+        return res.status(404).json({ message: "No bookings found for today" });
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      await db.disconnect();
+      return res.status(500).json({ error: "Error fetching data" });
+    }
+  } 
     else if(req.method==='POST' && param==='save'){
         console.log("Body of request", req.body)
         const data= req.body;

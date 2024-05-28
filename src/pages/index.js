@@ -42,32 +42,31 @@ export default function Home() {
   return (
         <Layout title={"Home Page"}>
         <ReviewSlider/>
-        <Info/>
-        
-        <div className=""> 
-            <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
-              <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
+        <div className="md:px-36 px-5">
+           <Info/>
+            <p className="grid w-full  mx-auto text-center text-2xl text-green-800 ">
+              <span className="flex text-center text-3xl font-sans font-extrabold mx-auto p-4">
                  <Image quality={10} src={flameimg} height={5} width={20} alt="hot"/> 
-                  Our Amazing Products
+                  {"Our Amazing Products".toUpperCase()}
                  <Image quality={10} src={flameimg} height={5} width={20} alt="hot"/>
               </span>
             </p>
-        <div className=" mt-6 grid left-0 grid-cols-2 gap-4  md:grid-cols-2 lg:grid-cols-3 md:gap-4 mx-auto items-center md:max-w-screen-xl px-4 sm:px-3 lg:px-20">
+        <div className=" mt-6 grid left-0 grid-cols-2 gap-4 border-b-1 border-b-gray-500 md:grid-cols-2 lg:grid-cols-3 md:gap-4 mx-auto items-center md:max-w-screen-xl px-4 sm:px-3 lg:px-20">
             { games.map((card)=>(<Cards key={card.title} title={card.title} 
             link={card.link} image={card.image}/>))}
         </div>
         
-       <div className="">
-          <p className="w-full mx-auto text-center flex bg-gray-900 justify-center items-center 
-          md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
-           text-white xs:leading-[76.8px] leading-[66.8px]">Shout Out</p>
+       <div className="mb-4">
+          <p className="w-full mx-auto text-center flex justify-center items-center 
+          md:flex-row flex-col sm:mb-16 mb-1 mt-8 font-poppins text-3xl font-sans font-extrabold
+           text-green-800 ">{"Shout Out".toUpperCase()}</p>
       <PersonCard name="Amina Yusuf" age={23} occupation="Dancer" imageUrl="/images/model/model2.jpg"/>
      </div>
 
-         <div className="h-80">
-           <p className="grid w-full  mx-auto text-center bg-gray-800 text-2xl text-gray-300 font-sans">
-              <span className="flex text-center text-2xl font-serif font-semibold mx-auto p-8">
-                Winners for the Week  
+         <div className="h-80 mt-6">
+           <p className="grid w-full  mx-auto text-center text-2xl text-green-800 font-sans">
+              <span className="flex text-center text-3xl font-sans font-extrabold mx-auto ">
+                {"Winners for the Week".toUpperCase()}  
               </span>
             </p>
             <ol className="h-80 pl-8">
@@ -78,10 +77,10 @@ export default function Home() {
          </div>
          <div className="">
            <h2
-        className="w-full mx-auto text-center flex bg-gray-900 justify-center items-center 
+        className="w-full mx-auto text-center flex justify-center items-center 
           md:flex-row flex-col sm:mb-16 mb-6 font-poppins font-semibold xs:text-[48px] text-[40px]
-           text-white xs:leading-[76.8px] leading-[66.8px]"
-      >Testimonials
+           text-green-800 xs:leading-[76.8px] leading-[66.8px]"
+      >{"Testimonials".toUpperCase()}
       </h2>
         <Testimonials/>
         </div>

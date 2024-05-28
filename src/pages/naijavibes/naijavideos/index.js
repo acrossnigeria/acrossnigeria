@@ -33,9 +33,6 @@ useEffect(() => {
       clearQueryParams();
     }
   }, []);
-   const clearQueryParams = () => {
-    router.replace(router.pathname); // Replace current URL with the same URL (effectively removing query parameters)
-  };
   useEffect(() => {
     // Sort the skits based on the votes property
     if (data){const sorted = data.slice().sort((a, b) => b.votes - a.votes);
@@ -50,10 +47,15 @@ useEffect(() => {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setContent(contentMap.find(item => item.slug === option));
+    setCurrentPage(1)
+  };
+  const clearQueryParams = () => {
+    router.replace(router.pathname); // Replace current URL with the same URL (effectively removing query parameters)
   };
 
   useEffect(() => {
     setData(null)
+    
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -74,7 +76,7 @@ useEffect(() => {
   }, [selectedOption]);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
-    <Layout>
+    <Layout><div className='flex-1'>
       <div className="flex justify-between py-4 px-20">
       <div className="flex items-center"> {/* Div on the left */}
       <Link className="text-white bg-yellow-700 px-4 py-2 rounded-md" href="/naijavibes/"> Back</Link>
@@ -91,7 +93,7 @@ useEffect(() => {
           <ul>
             {contentMap.map((item, index) => (
              <div key={index}>
-              <li  className="cursor-pointer mb-2 border-b-2 border-gray-900" onClick={() => handleOptionClick(item.slug)}>
+              <li  className="cursor-pointer mb-2" onClick={() => handleOptionClick(item.slug)}>
                 {item.title}
               </li></div> 
             ))}
@@ -102,8 +104,8 @@ useEffect(() => {
         <div className="flex-1 p-4">
           <h1 className="text-xl font-bold mb-4">{content ? content.title : "Select an option"}</h1>
         {loading?(<div className="bg-gray-100 font-black p-4"> Loading from Database, Please wait....</div>):(<div className="bg-gray-100 p-4">
-          {currentSkits.length>1? (currentSkits.map((item,index)=>(
-            <div key={index}>   <SkitDisp content={item} link={`/naijavibes/naijavideos/${item._id}`}/>
+          {currentSkits.length>0?(currentSkits.map((item,index)=>(
+            <div key={index}> <SkitDisp content={item} link={`/naijavibes/naijavideos/${item._id}`}/>
           <p >{item.title}</p>
           </div> 
           ))):<p>No Content Found</p> }
@@ -112,12 +114,12 @@ useEffect(() => {
         
          
         </div>
-        <div className="flex justify-center my-4">
+        
+      </div><div className="flex justify-center my-4">
         {Array.from({ length: Math.ceil(sortedSkits.length / skitsPerPage) }, (_, i) => (
           <button key={i} onClick={() => paginate(i + 1)} className={`mx-1 py-1 px-3 ${currentPage === i + 1 ? 'bg-gray-500 text-white' : 'bg-gray-200'}`}>{i + 1}</button>
         ))}
-      </div>
-      </div>
+      </div></div>
     </Layout>
   );
 }

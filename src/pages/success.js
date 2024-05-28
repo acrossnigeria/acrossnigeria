@@ -10,10 +10,11 @@ export default function Success() {
   const {user:{userDetails},}= state;
   const name=userDetails[0]?.name?? 'Unknown';
   return (
-    <Layout><div className="bg-gray-300">
-     <div >Congratulations {name}</div>
-     <div>You can now enjoy our Products</div>
-     <div className="primary-button" onClick={()=>(router.push('/'))}>Click here to see our products</div>
+    <Layout><div className="p-14">
+     <div className="font-semibold mb-6" >Congratulations {name}</div>
+     <div className="font-semibold mb-6" >Welcome to Across Nigeria</div>
+     <div className="mb-4">You can now enjoy our Products</div>
+     <div className="w-fit font-semibold text-white px-8 py-2 mt-9 text-center rounded-md bg-green-800 hover:bg-green-900 active:bg-green-950" onClick={()=>(router.push('/'))}>Click to go Home</div>
      </div>
     </Layout>
   )

@@ -30,10 +30,11 @@ const CustomBanner = () => {
   },[isMobile])
   return (
     <BearCarousel
-    className="z-10"
+    className=""
       data={bearSlideItemData}
       isEnableLoop
       autoPlayTime={3000}
+      
       isEnableAutoPlay
       isEnablePagination
       height={ isMobile?{ widthRatio: 12, heightRatio: 11 }:{widthRatio:16, heightRatio:7}}

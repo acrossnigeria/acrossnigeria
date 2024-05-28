@@ -56,8 +56,8 @@ const isSameDay = (date1, date2) => {
     calendarCells.push(
       <div
         key={`day-${i}`}
-        className={`w-12 h-12 flex items-center justify-center border border-yellow-700 cursor-pointer ${
-          isToday||!isDateAvailable(date) ? 'bg-red-200 cursor-not-allowed' : 'bg-green-500 hover:bg-slate-100'
+        className={`w-12 h-12 flex items-center justify-center border border-gray-700 cursor-pointer ${
+          isToday||!isDateAvailable(date) ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-500 hover:bg-slate-100'
         }`}
         onClick={() => handleSelectDate(date)}
       >
@@ -81,11 +81,11 @@ const isSameDay = (date1, date2) => {
   return (
     <div className=' sm:w-96 mx-auto'>
       <div className="flex justify-between mb-2">
-        <button onClick={handlePrevMonth}>previous Month</button>
+        <button className='border border-green-400 rounded-full p-1' onClick={handlePrevMonth}>Prev Month</button>
        
         <h2 className="text-lg font-semibold">{currentDate.toLocaleString('default', { month: 'long' })}</h2>
         <h2 className="text-lg font-semibold">{currentDate.toLocaleString('default', { year: 'numeric' })}</h2> 
-        <button onClick={handleNextMonth}>Next Month</button>
+        <button className='border border-green-400 rounded-full p-1'  onClick={handleNextMonth}>Next Month</button>
       </div>
       <div className="mx-auto grid grid-cols-7 gap-1">
         {generateCalendarCells()}

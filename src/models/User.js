@@ -14,6 +14,9 @@ const userSchema = new mongoose.Schema(
     referencePay: { type: String, default:""},
     regPayment:{type:Boolean, default:false},
     isAdmin: { type: Boolean, required: true, default: false },
+    resetCodeUrl:{type:String, required:false},
+    resetCode:{type:String, required:false},
+    resetTime:{type: Date, required: false},
   },
   {
     timestamps: true,

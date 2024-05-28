@@ -42,7 +42,7 @@ const toggleMenu=()=>{
   return (
     <header className={`top-0 w-full  z-[9999] overflow-x-hidden px-0`}>
           <nav
-        className={`w-full pt-3 top-0 flex ${open?"h-32":"h-20"} left-0 right-0 py-0 bg-gray-950 backdrop-blur-3xl 
+        className={`w-full pt-3 top-0 flex ${open?"h-32":"h-20"} left-0 right-0 py-0 bg-gradient-to-br from-green-500 to-green-800 backdrop-blur-3xl 
         backdrop-opacity-5 bg-opacity-95 text-white border-b-4 border-yellow-600 px-1`}
       >
         <div className="flex mt-0 top-0 py-0 px-1

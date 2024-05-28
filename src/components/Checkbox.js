@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState } from 'react'
 
 const Checkbox = ({handleTermsCheckboxChange}) => {
@@ -14,11 +15,11 @@ const Checkbox = ({handleTermsCheckboxChange}) => {
             type="checkbox"
             id="termsCheckbox"
             checked={termsAccepted}
-            className='accent-yellow-700'
+            className='accent-green-700'
             onChange={handleChange}
           />
           <label htmlFor="termsCheckbox" className="ml-2">
-            Accept our terms and conditions
+            Accept our <Link className='text-green-800 hover:text-green-300' href="#">Terms and Conditions</Link>
           </label>
         </div>
   )

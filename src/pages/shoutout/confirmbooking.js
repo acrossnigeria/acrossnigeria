@@ -48,19 +48,24 @@ router.push('/shoutout/booking')
 
   return (
     <Layout>
-        <div className="bg-red-300 w-fit text-black font-semibold py-2 cursor-pointer px-4  rounded" onClick={()=>(router.back())}>back</div>
+       <div className='py-5 px-16'> <div className="bg-red-300 w-fit mb-8 text-black font-semibold py-2 cursor-pointer px-4  rounded"
+         onClick={()=>(router.back())}>back
+         </div>
       
-      <div className='text-center mx-auto'> <button className="bg-yellow-300 text-black font-semibold py-2 cursor-pointer px-4 text-center mx-auto rounded" 
-          onClick={()=>(setLoadPay(true))}
-          >Pay &#8358;{localePayment} Naira
-    </button></div> 
+      <div className='text-center mx-auto'> <button className="bg-yellow-300 text-black 
+      font-semibold py-2 cursor-pointer px-4 text-center mx-auto rounded" 
+          onClick={()=>(setLoadPay(true))}>
+            Pay &#8358;{localePayment} Naira
+    </button>
+    </div> 
          {loadPay&&(<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                 <div className="w-fit h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 top-20 z-50 bg-yellow-700" 
+                 <div className="w-fit h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 
+                 top-20 z-50 bg-yellow-700" 
                 onClick={()=>(setLoadPay(false))}>Close</div>
     <PaystackBtn pay={dateHandler} 
             amount={payment} email={session?.user.email}
-            purpose={`Booking for a Shout-Out ${category==='general'?'Lottery':'Premium'}`}/></div>)}
-{dateData}
+            purpose={`Booking for a Shout-Out ${category==='general'?'Lottery':'Premium'} Edition`}/></div>)}
+</div>
     </Layout>
   )
 }

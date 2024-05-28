@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 // Sample content for demonstration
 const contentMap = [
  {
-  slug:"naijafaces",
+  slug:"naijaFaces",
   title:"Faces"},
 {slug:"showdem",title:"Show Dem"},
 {slug:"lookingood", title: "Looking Good"},

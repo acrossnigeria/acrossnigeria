@@ -7,6 +7,7 @@ import Layout from '@/components/Layout';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import Checkbox from '@/components/Checkbox';
+import Link from 'next/link';
 
 const Register = () => {
    const nigeriaStates = [
@@ -100,6 +101,7 @@ setFormData({...formData,  name: userDetails[0].name,
 
   }, [])
  const [showPassword, setShowPassword] = useState(false);
+ const [showPassword2, setShowPassword2] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -109,8 +111,6 @@ setFormData({...formData,  name: userDetails[0].name,
   const  handleTermsCheckboxChange=(isChecked)=>{setFormData({...formData,acceptTerms:isChecked})}
   const handleSubmit = async (e) => {
     e.preventDefault();
- console.log(formData.phone)
-   
     const dob=new Date(formData.dob);
      const age= today.getFullYear()-dob.getFullYear();
     if(age<18 ){
@@ -133,17 +133,21 @@ Cookies.set(
       console.error('Error submitting form:', error);
     }}
   };
-  const togglePasswordVisibility = () => {
+  const togglePasswordVisibility1 = () => {
     setShowPassword(!showPassword);
+  };
+  const togglePasswordVisibility2 = () => {
+    setShowPassword2(!showPassword2);
   };
 
   const passwordFieldType = showPassword ? 'text' : 'password';
 
   return (
     <Layout>
-    <div className="max-w-4xl mx-auto bg-gray-200">
-      <h1 className="text-2xl text-center font-bold mb-4">Register</h1>
-      <form onSubmit={handleSubmit} className="max-w-xl mx-auto  m-4  border border-yellow-500 p-10 rounded-md">
+    <div className="max-w-[90%] mx-auto">
+      
+      <form onSubmit={handleSubmit} className="md:max-w-xl max-w-full mx-auto  m-4 p-10 rounded-md ">
+        <h1 className="text-2xl text-left font-bold mb-9">Register</h1>
         <div className="mb-4">
           <label htmlFor="name" className="block mb-2">Name</label>
           <input
@@ -152,7 +156,7 @@ Cookies.set(
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="border rounded px-4 py-2 w-full"
+            className="rounded px-4 py-2 w-full focus:outline-gray-600 bg-gray-200"
             required
           />
         </div>
@@ -164,48 +168,48 @@ Cookies.set(
             name="surname"
             value={formData.surname}
             onChange={handleChange}
-            className="border rounded px-4 py-2 w-full"
+            className="bg-gray-200 rounded px-4 py-2 w-full focus:outline-gray-600"
             required
           />
         </div>
 <div className='mb-4'>
   <label htmlFor="dob" className="block mb-2">Date of Birth</label>
-           <div className="flex space-x-2 bg-white rounded-md border contain flex-shrink border-green-400">
+           <div className="flex space-x-2 bg-gray-200 rounded-md border contain flex-shrink">
          <input
           type="text"
           value={day}
           onChange={handleDayChange}
           placeholder="Day (DD)"
-          className="col-span-1 border text-[10px] md:text-lg md:w-32 w-16  block appearance-none bg-white border-green-300 hover:border-green-500 px-2 py-0
+          className="col-span-1 border text-[10px] md:text-lg w-12 sm:w-32 md:w-32  block appearance-none bg-white pl-1 py-0
            md:px-4 md:py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-        /><span className='text-4xl'>/</span>
+        /><span className='text-3xl font-thin'>/</span>
         <select
           value={month}
           onChange={(e) => setMonth(e.target.value)}
-       className="col-span-1 border text-[10px] md:text-lg md:w-40 w-20 accent-green-400 hover:accent-green-400   block appearance-none bg-white border-green-300 hover:border-green-500 px-2 py-0
+       className="col-span-1 border text-[10px] text-gray-500 md:text-lg md:w-40 w-20  checked:bg-green-700 block appearance-none bg-white pl-1 py-0
        md:px-4 md:py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
 
         >
-          <option value="">--Select Month--</option>
-          <option value="01">January</option>
-          <option value="02">February</option>
-          <option value="03">March</option>
-          <option value="04">April</option>
-          <option value="05">May</option>
-          <option value="06">June</option>
-          <option value="07">July</option>
-          <option value="08">August</option>
-          <option value="09">September</option>
-          <option value="10">October</option>
-          <option value="11">November</option>
-          <option value="12">December</option>
-        </select><span className='text-4xl'>/</span>
+          <option className='focus:bg-green-700 checked:bg-green-700' value="" disabled>-Select Month-</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="01">January</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="02">February</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="03">March</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="04">April</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="05">May</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="06">June</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="07">July</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="08">August</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="09">September</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="10">October</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="11">November</option>
+          <option className='focus:bg-green-700 checked:bg-green-700 hover:bg-green-500 accent-green-700' value="12">December</option>
+        </select><span className='text-3xl font-thin'>/</span>
         <input
           type="text"
           value={year}
           onChange={handleYearChange}
           placeholder="Year (YYYY)"
-          className="col-span-1 border text-[10px] md:text-lg md:w-40 flex-grow max-w-[80px] md:max-w-[140px] appearance-none bg-white border-green-300 hover:border-green-500 px-2 
+          className="col-span-1 border text-[10px] md:text-lg md:w-40 flex-grow max-w-[80px] md:max-w-[140px] appearance-none bg-white px-2 
           py-0 md:px-4 md:py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
         />
       </div></div>
@@ -220,17 +224,17 @@ Cookies.set(
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="border rounded px-4 py-2 w-full"
+            className="border bg-gray-200 rounded px-4 py-2 w-full"
             required
           />
         </div>
         
         <div className="mb-4">
           <label htmlFor="phone" className="block mb-2">Phone Number</label>
-          <div className='w-full'>
+          <div className='w-full '>
           <PhoneInput 
           defaultCountry='ng'
-          className="border rounded px-0 py-0 h-fit w-fit"
+          className="border bg-gray-200 rounded px-0 py-0 h-fit w-fit"
           required
           onChange={(phone)=>{
     setFormData((prevFormData) => ({ ...prevFormData, phone: phone }));
@@ -245,7 +249,7 @@ Cookies.set(
             name="residence"
             value={formData.residence}
             onChange={handleChange}
-            className="border rounded px-4 py-2 w-full"
+            className="border rounded px-4 bg-gray-200 py-2 w-full"
             required
           >
             <option value="">Select State</option>
@@ -254,9 +258,10 @@ Cookies.set(
             ))}
           </select>
         </div>
+        <div className='mb-4'></div>
            <div className="mb-4">
           <label htmlFor="gender" className="block mb-2">Gender</label>
-          <div className="flex">
+          <div className="flex ">
             <label htmlFor="male" className="mr-4">
               <input
                 type="radio"
@@ -265,7 +270,7 @@ Cookies.set(
                 value="male"
                 onChange={handleChange}
                 checked={formData.gender === 'male'}
-                className="mr-2"
+                className="mr-2 accent-green-700"
               />
               Male
             </label>
@@ -277,26 +282,33 @@ Cookies.set(
                 value="female"
                 onChange={handleChange}
                 checked={formData.gender === 'female'}
-                className="mr-2"
+                className="mr-2 accent-green-700"
               />
               Female
             </label>
           </div>
         </div>
+        <div className='mb-4'>
+          <label className='mb-2 block mr-4' htmlFor='referalCode'>Referal Code</label>
+          <input
+          className='w-full rounded px-4 py-2 focus:outline-gray-600 bg-gray-200'
+          type='text' 
+          placeholder='Input Referal code if you have one'/>
+        </div>
         <div className="mb-4">
           <label htmlFor="password" className="block mb-2">Password</label>
           <input
-            type={passwordFieldType}
+            type={showPassword?'text':'password'}
             id="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className="border rounded px-4 py-2"
+            className="border w-[83%] bg-gray-200 rounded px-4 py-2"
             required
           />  <button
               type="button"
-              className="inset-y-0 right-0"
-              onClick={togglePasswordVisibility}
+             className={`right-0 w-fit ${showPassword?"bg-red-600 opacity-90 px-1":"bg-green-600 px-[2px]"} rounded-r-md py-2 ` }
+              onClick={togglePasswordVisibility1}
             >
               {showPassword ? 'Hide' : 'Show'}
             </button>
@@ -308,19 +320,19 @@ Cookies.set(
          <div className="mb-4">
           <label htmlFor="confirmPassword" className="block mb-2">Confirm Password</label>
           <input
-            type={passwordFieldType}
+            type={showPassword2?'text':'password'}
             id="confirmPassword"
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
-            className="border rounded px-4 py-2"
+            className="w-[83%] bg-gray-200 rounded px-4 py-2"
             required
           />  <button
               type="button"
-              className="inset-y-0 right-0 "
-              onClick={togglePasswordVisibility}
+              className={`right-0 w-fit ${showPassword2?"bg-red-600 opacity-90 px-1":"bg-green-600 px-[2px]"} rounded-r-md py-2` }
+              onClick={togglePasswordVisibility2}
             >
-              {showPassword ? 'Hide' : 'Show'}
+              {showPassword2 ? 'Hide' : 'Show'}
             </button>
         </div>
         <div> {formData.confirmPassword &&
@@ -335,21 +347,22 @@ Cookies.set(
             formData.password.length&&formData.phone.length>11&&formData.gender.length&&formData.residence.length&&formData.password.length>5&&formData.password===formData.confirmPassword &&formData.acceptTerms? (
             <button
               type="submit"
-              className="text-slate-100 px-4 py-2 rounded-full bg-green-700 hover:bg-green-800 active:bg-green-950"
+              className="font-semibold text-white px-8 py-2 rounded-md bg-green-800 hover:bg-green-900 active:bg-green-950"
             >
               {' '}
-              Register
+              REGISTER
             </button>
           ) : (
             <button
               type="submit"
               disabled={true}
-              className="text-slate-100 text-3xl px-4 py-2 rounded-full bg-slate-400"
+              className="font-semibold text-white  px-8 py-2 rounded-md bg-green-500"
             >
-              Register
+              REGISTER
             </button>
           )}
         </div>
+       <div>Already have an Account? <Link className="text-green-700 font-semibold" href="#" onClick={()=>router.push("/login")}>Login</Link></div> 
       </form>
     </div></Layout>
   );

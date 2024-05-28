@@ -13,6 +13,7 @@
     "@cloudinary/url-gen": "^1.19.0",
     "@heroicons/react": "^2.1.1",
     "@nextui-org/react": "^2.2.10",
+    "aws-sdk": "^2.1628.0",
     "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
     "bear-react-carousel": "^4.0.26",
@@ -27,6 +28,7 @@
     "next-auth": "^4.24.6",
     "next-cloudinary": "^6.3.0",
     "next-video": "^0.17.3",
+    "nodemailer": "^6.9.13",
     "nuka-carousel": "^7.0.0",
     "react": "^18",
     "react-calendar": "^4.8.0",
@@ -39,6 +41,7 @@
     "react-social-icons": "^6.15.0",
     "react-swipeable": "^7.0.1",
     "react-toastify": "^10.0.4",
+    "resend": "^3.2.0",
     "sharp": "^0.33.2"
   },
   "devDependencies": {

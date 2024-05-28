@@ -47,17 +47,17 @@ export default function LoginScreen() {
     setLoading(false)
     if (session) {
       console.log(session)
-      router.push(redirect || '/'); // Replace "/dashboard" with your desired page
+      router.push(redirect || '/'); // Replace "/" with your desired page
     }
   };
   return (
     <Layout title="Login">
      
-      <div className="h-screen w-screen mb-4 mx-auto p-24 bg-gray-200 border border-yellow-500 rounded-md">
-      <form className=" mx-auto border sm:w-full md:w-[600px] lg:w-[600px] xl:w-[600px] 2xl:w-[600px] border-yellow-500 p-3 rounded-md" onSubmit={handleSubmit(submitHandler)}>
-        <h1 className="mb-4 font-bold text-xl">Login</h1>
+      <div className="h-screen w-screen pt-11 mx-auto px-10 text-black ">
+      <form className="mt-10 mx-auto rounded-md md:max-w-[500px]" onSubmit={handleSubmit(submitHandler)}>
+        <h1 className="mb-8 font-bold text-xl">Login</h1>
         <div className="mb-4">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="font-semibold text-sm">Email</label>
           <input
             type="email"
             {...register('email', {
@@ -67,35 +67,36 @@ export default function LoginScreen() {
                 message: 'Please enter valid email',
               },
             })}
-            className="w-full text-black"
+            className="w-full focus:outline-gray-600 h-10 px-2 rounded-md bg-gray-200 text-black"
             id="email"
             autoFocus
-          ></input>
+          ></input> 
           {errors.email && (
             <div className="text-red-500">{errors.email.message}</div>
           )}
         </div>
-        <div className="mb-4">
-          <label htmlFor="password">Password</label>
+        <div className="mb-6">
+          <label htmlFor="password" className="font-semibold text-sm ">  Password</label>
           <input
             type="password"
             {...register('password', {
               required: 'Please enter password',
               minLength: { value: 6, message: 'password is more than 5 chars' },
             })}
-            className="w-full text-black"
+            className="w-full h-10 focus:outline-gray-600 px-2 rounded-md bg-gray-200 text-black"
             id="password"
           ></input>
           {errors.password && (
             <div className="text-red-500 ">{errors.password.message}</div>
           )}
         </div>
-        <div className="mb-4 ">
-         {loading?(<button disabled className="primary-button">Please Wait</button>):(<button className="primary-button">Login</button>)} 
-        </div>
-        <div className="mb-4 font-semibold ">
+        <div className="mb-6 p-0">
+         {loading?(<button disabled className="text-slate-100 text-3xl px-8 py-1 rounded-sm bg-green-500">Please Wait</button>):(<button className="text-slate-100 px-8 py-1 rounded-sm bg-green-800 hover:bg-green-900 active:bg-green-950">Login</button>)} 
+         <span className="text-sm mx-8 mb-0 mt-8"><Link href="/passreset" className="mt-3">Forgot Password?</Link></span>
+         </div> 
+        <div className="mb-4 mt-6 text-sm font-semibold ">
           Don&apos;t have an account? &nbsp;
-          <Link className="text-yellow-300 cursor-pointer hover:text-green-500"  href={`/reg?redirect=${redirect || '/'}`}>Register</Link>
+          <Link className="text-green-700 cursor-pointer hover:text-green-500"  href={`/reg?redirect=${redirect || '/'}`}>Register</Link>
         </div>
       </form></div>
     </Layout>

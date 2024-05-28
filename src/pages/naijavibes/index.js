@@ -12,7 +12,7 @@ const vids=[{
 {slug:"skitsPranks",title:"Skits & Pranks",description:"Some Description"
 },];
 const pics=[{
-  slug:"faces",
+  slug:"naijaFaces",
   title:"FACES",},
 {slug:"showdem",
  title:"SHOW DEM"},
@@ -38,8 +38,8 @@ const Index = () => {
   return (
     <Layout>
       <div className='mx-5 lg:mx-10 py-4 my-0 bg-gray-400 h-screen'>
-      <div className='px-6 py-4 mt-4 font-semibold mb-6 bg-green-700 w-fit ml-10 rounded-xl'>
-        <Link href="naijavibes/upload" >Get involved</Link>
+      <div className='cursor-pointer px-6 py-4 mt-4 font-semibold mb-6 bg-green-700 w-fit ml-10 rounded-xl'>
+        <Link href="naijavibes/upload" >Get Involved</Link>
       </div>
       <div
         className={`font-bold text-lg px-4 py-4 text-center mx-auto rounded-md mb-2 
@@ -66,11 +66,11 @@ const Index = () => {
         </div>
       )}</div>
       <div
-        className={`font-bold text-lg px-4 py-4 mx-auto rounded-md text-center mb-2 w-60
+        className={`cursor-pointer font-bold text-lg px-4 py-4 mx-auto rounded-md text-center mb-2 w-60
         transition-transform transform hover:scale-105 ${selectedSection === 'pictures' ? 'bg-yellow-700' : 'bg-gray-200'}`}
         onClick={handlePictureClick}
       >
-        {selectedSection === 'pictures'?(<Link className=' cursor-pointer' href="naijavibes/naijaphotos/">NaijaVibes Pictures</Link>):(<p> NaijaVibes Pictures</p>)}
+        {selectedSection === 'pictures'?(<Link className=' cursor-pointer' href="naijavibes/naijaphotos/">NaijaVibes Pictures</Link>):(<p className=' cursor-pointer'> NaijaVibes Pictures</p>)}
 
       
       {/* Render respective lists based on selected section */}

@@ -157,7 +157,7 @@ const [selectedFile, setSelectedFile]=useState(false);
   const confirm=(e)=>{
     e.preventDefault();
     localStorage.setItem('selectedDate', selectedDate?.toDateString());
-    localStorage.setItem('amount',selectedCategory==='general'?(1000):(50000));
+    localStorage.setItem('amount',selectedCategory==='general'?(1000):(10000));
     localStorage.setItem('category',selectedCategory);
     localStorage.setItem('displayName',displayName);
     localStorage.setItem('shoutout',shoutout );
@@ -166,15 +166,16 @@ const [selectedFile, setSelectedFile]=useState(false);
 
   return (
     <Layout>
-    <div  className='p-0 m-0 left-0 top-0 mx-auto '>
-      <Link href="/shoutout/confirmbooking" legacyBehavior>
-  <a>Go to Shoutout Page</a>
-</Link>
-      <h1>Book a Date</h1>
+    <div  className=' m-0 left-0 top-0 mx-auto px-12 pt-10'>
+      <div className='md:ml-[30%]'><Link href="/" className=' mb-4 mx-auto text-center ' legacyBehavior>
+  <a className='font-bold cursor-pointer bg-gray-400 rounded-md p-2 mb-4'>Go to Shoutout Page</a>
+</Link></div> 
+      <h1 className='my-8 font-bold text-2xl text-center underline'>Book a Date</h1>
       <Calendar unavailableDates={updatedUnavailableDates} selectedDate={selectedDate} onSelectDate={handleSelectDate} />
-      <p>You have Selected <span className='font-bold'>{selectedDate?.toDateString()}</span> for your SHOUTOUT</p>
+ 
           {selectedDate && ( 
-            <div className="max-w-lg mx-auto mt-8 mb-8 p-6 bg-gray-100 rounded-lg">
+            <div className="max-w-lg mx-auto mt-8 mb-8 p-6 rounded-lg">     
+            <p className='mb-10'>You have Selected <span className='font-bold'>{selectedDate?.toDateString()}</span> for your SHOUTOUT</p>
       <h2 className="text-2xl font-semibold mb-4">Booking Form</h2>
       <form onSubmit={confirm}>
         <div className="mb-4">
@@ -182,7 +183,7 @@ const [selectedFile, setSelectedFile]=useState(false);
           <input
             type="text"
             id="displayName"
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full bg-gray-300 px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
             placeholder="Input Desired Name"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
@@ -193,7 +194,7 @@ const [selectedFile, setSelectedFile]=useState(false);
           <textarea
             type="text"
             id="shoutOut"
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full bg-gray-300 px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-green-500"
             placeholder="Make your Shout-Out (max 200 characters)"
             value={shoutout}
             rows={4}
@@ -219,11 +220,11 @@ const [selectedFile, setSelectedFile]=useState(false);
           <label className="block text-gray-700 font-semibold mb-2" htmlFor="category">Category</label>
           <select
             id="category"
-            className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-2 rounded border bg-gray-300 border-gray-300 focus:outline-none focus:border-green-500"
             value={selectedCategory}
             onChange={handleCategoryChange}
           >
-            <option value="">Select Category</option>
+            <option disabled value="">Select Category</option>
             <option value="premium">Premium</option>
             <option value="general">General</option>
           </select>
@@ -232,16 +233,17 @@ const [selectedFile, setSelectedFile]=useState(false);
           <div className="mb-4">
             {selectedCategory === 'premium' ? (
               <p className="text-green-700">
-                Cost: Fifty Thousand Naira. Your booking date is locked in.
+                Cost: Ten Thousand Naira. Your booking date is locked in.
               </p>
             ) : (
-              <p className="text-blue-700">
-                Cost: One Thousand Naira. Your shout-out will be entered into the draw.
+              <p className="text-green-700">
+                Cost: One Thousand Naira. Your shout-out will be entered into the daily draw.
               </p>
             )}
           </div>
         
-        )}{selectedCategory}<Checkbox handleTermsCheckboxChange={()=>{setAgree(!agree)}}/>
+        )}
+        <Checkbox handleTermsCheckboxChange={()=>{setAgree(!agree)}}/>
         {agree && (selectedCategory==="premium"||selectedCategory==="general") &&selectedFile&&(<button
           type="submit" onClick={confirm}
           className="bg-green-500 text-white font-semibold px-4 py-2 rounded hover:bg-green-700 focus:outline-none focus:bg-green-700"

@@ -5,9 +5,6 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import logo from "../../public/images/logo1.png";
 import SearchIcon from "@heroicons/react/24/outline/MagnifyingGlassIcon";
-import Bars from "../../public/images/barsImage.svg"
-import { CiUser } from "react-icons/ci";
-import DropdownLink from "./Dropdownlink";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
@@ -28,7 +25,7 @@ const toggleMenu=()=>{
   const [query, setQuery] = useState("");
    const logoutClickHandler = () => {
     
-    signOut({ callbackUrl: '/login' });
+    signOut({ callbackUrl: `/login` });
       };
 
 

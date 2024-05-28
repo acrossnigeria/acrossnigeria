@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import 'next-cloudinary/dist/cld-video-player.css';
 import { useState } from "react";
-import ReactPlayer from "react-player";
 import PaystackBtn from "@/components/PaystackBtn";
 import { getError } from "../../../../utils/error";
 import Naijavibes from "@/models/Naijavibes";

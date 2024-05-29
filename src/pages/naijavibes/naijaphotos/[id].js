@@ -75,8 +75,8 @@ if (!vibesPhoto){
       <div className='px-6 py-4 mt-4 font-semibold mb-6 bg-green-700 w-fit ml-10 rounded-xl'>
         <Link href="/naijavibes/upload" >Get involved</Link>
       </div>
-        <div className="top-0 w-fit h-fit mt-0 mb-4 mx-auto">
-          <Image src={vibesPhoto.url} alt={vibesPhoto.detail} width={400}  height={300}/>
+        <div className="top-0 px-5 w-fit h-fit mt-0 mb-4 mx-auto">
+          <Image src={vibesPhoto.url} alt={vibesPhoto.detail} width={400}height={300} loading="eager" />
 </div><div>
             
       <form onSubmit={handleSubmit} className="border border-gray-300 p-4 max-w-md mx-auto">

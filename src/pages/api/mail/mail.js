@@ -6,12 +6,12 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async (req, res) => {
   console.log("from mail api:",req.body);
-  const{outgoing, recepient, subject, content}=req.body;
+  const{outgoing, recepient, subject, content, heading}=req.body;
   const { data, error } = await resend.emails.send({
     from: outgoing,
     to: [recepient],
     subject: subject,
-    react: EmailTemplate({content:content}),
+    react: EmailTemplate({content:content,heading:heading}),
   });
 
   if (error) {

@@ -16,13 +16,13 @@ const logoutClickHandler = () => {
 const toggleMenu=()=>{
   setOpen(!open);}
   return (
-    <nav className="bg-gradient-to-br from-green-400 to-green-800 bg-gradient-to-b from-green-500 to-green-950  py-4 px-4" onClick={()=>{open&&setOpen(false)}}>
+    <nav className="bg-gradient-to-br from-green-400 to-green-800 bg-gradient-to-b from-green-500 to-green-950 overflow-hidden  py-4 px-2" onClick={()=>{open&&setOpen(false)}}>
       {/* Logo */}
       <Link href="/" onClick={()=>(router.push("/"))} className="flex items-center justify-center">
         <Image src={logo} alt="Logo"  className="h-8 w-8" />
       </Link>
-      <p className='flex items-center justify-center text-white'>Across Nigeria reality show</p>
-         <div className="flex items-center space-x-4">
+      <p className='flex items-center font-thin justify-center mb-2 text-white'>Across Nigeria reality show</p>
+         <div className="flex justify-start">
       {/* Dropdown Button */}
       {status === 'loading' ? (
         <div className="flex w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
@@ -32,7 +32,7 @@ const toggleMenu=()=>{
         </div>
       ) : session?.user ? (
         <div className="relative">
-          <div className="flex w-[fit-content] p-1 h-9 cursor-pointer font-semibold 
+          <div className="flex left-0 py-3 cursor-pointer font-semibold 
           uppercase text-white border-2 border-green-600 bg-green-500 transition duration-100 rounded-lg text-[10px]"
           onClick={toggleMenu}>
             {session.user.name}
@@ -60,11 +60,11 @@ const toggleMenu=()=>{
       )}
 
       {/* Search Bar */}
-      <div className="flex-grow">
+      <div className="flex-grow mx-0">
         <input
           type="text"
           placeholder="Search..."
-          className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-500"
+          className="px-4 py-2 mx-0 rounded-md border border-gray-300 focus:outline-none focus:ring focus:border-blue-500"
         />
       </div>
     </div>

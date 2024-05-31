@@ -53,12 +53,13 @@ const UploadForm = () => {
   const [fileType, setFileType] = useState('');
   const [fileCategory, setFileCategory] = useState('');
   const [ticked, setTicked]=useState(false)
-  const [{ loading, error, loadingUpdate, loadingPay, loadingUpload }, dispatch] =
+    const [{ loading, error, loadingUpdate, loadingPay, loadingUpload }, dispatch] =
     useReducer(reducer, {
       loading:false,
       error: '',
       loadingUpload:false
     });
+
 const[dataUrl, setDataUrl]=useState("");
 const [title, setTitle]=useState("");
 const [description,setDescription]=useState("");
@@ -68,9 +69,8 @@ const [description,setDescription]=useState("");
     formState: { errors },
     setValue,
   } = useForm();
-  const[ postUrl, setPostUrl]=useState("");
+
   const[isuploaded, setIsuploaded]=useState(false);
-      const[ showPreview, setShowPreview]=useState(false);
   const router = useRouter();
  const { data: session } = useSession();
 
@@ -117,6 +117,7 @@ const [description,setDescription]=useState("");
       dispatch({ type: 'UPLOAD_SUCCESS' });
       setIsuploaded(true);
       setDataUrl( data.secure_url);
+      localStorage.setItem('dataUrl', data.secure_url)
       toast.success('File uploaded successfully');
       
     } catch (err) {
@@ -139,6 +140,7 @@ setDescription(description)
   userId:session?.user._id?? null, 
   email:session?.user.email?? null, url: dataUrl,fileType:fileType,
 category:fileCategory,}
+
  const paySuccesAction = async (ref,) => {
     dispatch({type:'PAY_SUCCESS'})
     try {
@@ -147,28 +149,24 @@ category:fileCategory,}
       dispatch({ type: 'UPDATE_REQUEST' });
       const data= oldData;
       const response=await axios.post(`/api/naijavibes/postVibes`,data);
-
       console.log (response)
       dispatch({ type: 'UPDATE_SUCCESS' });
       toast.success(`Your NaijaVibes ${fileType} has been uploaded successfully`);
       const baseUrl=window.location.origin;
       const url=baseUrl+`/naijavibes/${fileType==='videos'?'naijavideos':'naijaphotos'}/`+response.data.id;
-      setPostUrl(url)
-      setShowPreview(true);
-    } catch (err) {
+      localStorage.setItem('postUrl',url);
+      localStorage.setItem('name',newData.name);
+     localStorage.setItem('email',newData.email);
+     localStorage.setItem('filetype',fileType);
+     localStorage.setItem("mediaTitle", title);
+      localStorage.setItem("mediaDesc", description);
+     router.push("/naijavibes/preview")
+       } catch (err) {
       dispatch({ type: 'UPDATE_FAIL', payload: getError(err) });
       toast.error(getError(err));
     }
   };
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(postUrl)
-      .then(() => {
-       toast.success('Link copied to clipboard!');
-      })
-      .catch((error) => {
-        console.error('Unable to copy link: ', error);
-      });
-  };
+  
 
 
   return (
@@ -295,25 +293,7 @@ category:fileCategory,}
                  onClick={()=>(dispatch({type:'PAY_SUCCESS'}))}>Close</div><PaystackBtn pay={paySuccesAction} 
             amount={100} email={session?.user.email?? null} 
             purpose="Payment for NaijaVibes"/></div>)} 
-             {showPreview&&(<div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-200">
-                 <div className="w-fit flex flex-col justify-start h-fit p-2 font-semibold text-lg rounded-md cursor-pointer absolute left-2 top-20 z-50 bg-yellow-700" 
-                 onClick={()=>(router.push("/naijavibes/"))}>Close</div>
-                 <p className="flex w-full">Copy the Link below and send it to your friends to view and vote for your skit</p>
-                  <div className="flex items-center space-x-2">
-      <input
-        type="text"
-        value={postUrl}
-        readOnly
-        className="border border-gray-300 rounded-md px-2 py-1 w-48"
-      />
-      <button
-        onClick={copyToClipboard}
-        className="bg-yellow-700 text-white px-4 py-1 rounded-md"
-      >
-        Copy
-      </button>
-    </div>
-  </div>)}
+            
     </div></Layout>
   );
 };

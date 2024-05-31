@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import Layout from "@/components/Layout";
 import Cards from "@/components/Cards"
-import Hero from "@/components/Hero";
 import Info from "@/components/Info";
 import image1 from "../../public/images/giveaway_quiz.jpg";
 import image2 from "../../public/images/skits_across.jpg";
@@ -17,7 +16,6 @@ import PersonCard from "@/components/ModelCard";
 import flameimg from "../../public/images/flame2.png"
 import Image from "next/image";
 import ReviewSlider from "@/components/ReviewSlider";
-import Carousel from "@/components/Carousel";
 import Testimonials from "@/components/Testimonials";
 import Link from "next/link";
 

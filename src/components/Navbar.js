@@ -21,7 +21,7 @@ const toggleMenu=()=>{
       <Link href="/" onClick={()=>(router.push("/"))} className="flex items-center justify-center">
         <Image src={logo} alt="Logo"  className="h-8 w-8" />
       </Link>
-      <p className='flex items-center font-thin justify-center mb-2 text-white'>Across Nigeria reality show</p>
+      <p className='flex items-center text-[10px] justify-center mb-2 font-thin text-white'> Across Nigeria Reality Show</p>
          <div className="flex justify-start">
       {/* Dropdown Button */}
       {status === 'loading' ? (
@@ -33,7 +33,7 @@ const toggleMenu=()=>{
       ) : session?.user ? (
         <div className="relative">
           <div className="flex left-0 py-3 cursor-pointer font-semibold 
-          uppercase text-white border-2 border-green-600 bg-green-500 transition duration-100 rounded-lg text-[10px]"
+          uppercase text-white border-2 border-green-300 bg-green-600 transition duration-100 rounded-lg text-[10px]"
           onClick={toggleMenu}>
             {session.user.name}
           </div>
@@ -51,7 +51,7 @@ const toggleMenu=()=>{
         </div>
       ) : (
         <div className="flex w-[fit-content] p-1 h-9 cursor-pointer items-center font-semibold 
-        justify-center uppercase text-white border-2 border-green-600 bg-green-600 transition duration-100 rounded-lg text-[10px]
+        justify-center uppercase text-white border-2 border-green-300 bg-green-600 transition duration-100 rounded-lg text-[10px]
         ease-in-out hover:bg-white hover:text-yellow-600 hover:border-2 hover:border-yellow-600 hover:scale-105 hover:rounded-sm">
           <Link href="/login" className="p-2 cursor-pointer" legacyBehavior>
             <a>Login</a>
@@ -60,7 +60,7 @@ const toggleMenu=()=>{
       )}
 
       {/* Search Bar */}
-      <div className="flex-grow mx-0">
+      <div className="flex-grow mx-1">
         <input
           type="text"
           placeholder="Search..."
@@ -75,31 +75,31 @@ const toggleMenu=()=>{
           <Link href="/" className="text-white  hover:text-green-500">
           Home
           </Link>
-          <Link href="#" className="text-white hover:text-green-500">
+          <Link href="/about" className="text-white hover:text-green-500">
             About
           </Link>
-          <Link href="#" className="text-white  hover:text-green-500">
+          <Link href="" className="text-white  hover:text-green-500">
             Our Products
           </Link>
-          <Link href="#" className="text-white hover:text-green-500">
+          <Link href="/profile" className="text-white hover:text-green-500">
             Profile
           </Link>
         </div>
       </div>
 
-      <div className="mt-2 flex justify-center">
+      <div className="mt-2 flex font-sans font-thin text-[11px] justify-center">
         {/* Second Line Menus */}
-        <div className="space-x-4">
-          <Link href="/naijavibes" className="text-white hover:text-green-500">
+        <div className="space-x-2">
+          <Link href="/naijavibes" className="text-white border rounded p-[2px] hover:bg-green-800">
             NaijaVibes
           </Link>
-          <Link href="/giveaway" className="text-white hover:text-green-500">
+          <Link href="/giveaway" className="text-white border rounded p-[2px] hover:bg-green-800">
             Giveaway
           </Link>
-          <Link href="/skitsPage" className="text-white hover:text-green-500">
+          <Link href="/skitsPage" className="text-white border rounded p-[2px] hover:bg-green-800">
             Skits Across Naija
           </Link>
-          <Link href="/shoutout/booking" className="text-white hover:text-green-500">
+          <Link href="/shoutout/booking" className="text-white border rounded p-[2px] hover:bg-green-800">
           Shout Out!
           </Link>
         </div>

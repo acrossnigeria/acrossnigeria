@@ -6,6 +6,10 @@ import tiktok from "../../public/images/soc_media/icons8-tiktok-188.png";
 import youtube from "../../public/images/soc_media/icons8-youtube-188.png";
 import linkedin from "../../public/images/soc_media/icons8-linkedin-188.png";
 import instagram from "../../public/images/soc_media/icons8-instagram-94.png";
+import facebook from "../../public/images/soc_media/icons8-facebook-144.png";
+import x from "../../public/images/soc_media/icons8-x-240.png";
+import whatsapp  from "../../public/images/soc_media/icons8-whatsapp.gif";
+import telegram from "../../public/images/soc_media/icons8-telegram.gif";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
@@ -24,7 +28,7 @@ const Info = ()=>{
         
          <div className="flex lg:w-full text-green-950  w-full font-bold text-6xl 
           right-0 pt-8  text-pretty">
-        <span className="w-full font-extrabold tracking-widest">HOWFA?</span> 
+        <span className="w-full font-extrabold tracking-wider">HOWFA?</span> 
         </div>
             <p className="font-semibold text-left mt-4 text-xl mb-4 text-gray-700">{data.paragraph}</p>
        
@@ -33,13 +37,22 @@ const Info = ()=>{
           {"Register to get Involved".toUpperCase()}
           </Link>
    <div className="text-8xl mt-6 mb-6 mx-auto rounded-md justify-between bg-gray-100 flex">
-     <SocialIcon className="mx-auto  w-9 h-7 px-0" bgColor="transparent"  fgColor="blue" network="facebook"/>
-     <SocialIcon className="mx-auto w-9 h-7 px-0" bgColor="transparent"  fgColor="green" network="whatsapp"/>
-    <SocialIcon className="mx-auto w-9 h-7 px-0" fgColor="black" bgColor="transparent" network="x"/>
- <Image  quality={100}  className="mx-4" src={tiktok} height={20} width={30} alt="tiktok"/>
- <Image quality={100} className="mx-4"  src={instagram} height={20} width={30} alt="Instagram"/>
- <Image  quality={100} className="mx-4" src={youtube} height={20} width={30} alt="youtube"/>
- <Image  quality={100} className="mx-4" src={linkedin} height={20} width={30} alt="linkedin"/>
+    <Link href=''>
+   <Image  quality={100}  className="cursor-pointer" src={facebook} height={20} width={30} alt="tiktok"/></Link>
+ <Link href=''> <Image  quality={100}  className="cursor-pointer" src={x} height={20} width={30} alt="tiktok"/>  
+</Link>
+ <Link href='https://t.me/+2349040440983'>
+<Image  quality={100}  className="cursor-pointer" src={telegram} height={20} width={30} alt="tiktok"/></Link>
+ <Link href='https://wa.me/+2349040440983'><Image  quality={100}  className="cursor-pointer" src={whatsapp} height={20} width={30} alt="tiktok"/>
+</Link>
+ <Link href="https://www.tiktok.com/@across_nigeria_show"><Image  quality={100}  className="cursor-pointer" src={tiktok} height={20} width={30} alt="tiktok"/>
+</Link>
+ <Link href='https://www.instagram.com/across_nigeria_reality_show?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=='>
+<Image quality={100} className="cursor-pointer"  src={instagram} height={20} width={30} alt="Instagram"/></Link>
+ <Link href=''>
+<Image  quality={100} className="cursor-pointer" src={youtube} height={20} width={30} alt="youtube"/></Link>
+ <Link href=''>
+<Image  quality={100} className="cursor-pointer" src={linkedin} height={20} width={30} alt="linkedin"/></Link>
    
    </div>
         

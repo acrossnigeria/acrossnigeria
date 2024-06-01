@@ -23,7 +23,7 @@ const[isMobile, setIsMobile]=useState(false);
     return(
 <div className="h-screen p-0 m-0 bottom-0">
       <Head>
-        <title>{title ? title + "-Across Nigeria TV" : "Across Nigeria TV show"}</title>
+        <title>{title ? title + "-Across Nigeria TV" : "Across Nigeria Reality Show"}</title>
         <meta name="description" content="App Description" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

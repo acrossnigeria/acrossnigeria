@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player';
+import { toast } from 'react-toastify';
 
 function Preview() {
 const [fileType,setFileType]=useState('');
@@ -15,15 +16,6 @@ const [dataUrl,setDataUrl]=useState('');
 const [mediaTitle, setMediaTitle]=useState('')
 const [mediaDescription, setMediaDescription]= useState('');
 const router=useRouter();
-    const copyToClipboard = () => {
-    navigator.clipboard.writeText(postUrl)
-      .then(() => {
-       toast.success('Link copied to clipboard!');
-      })
-      .catch((error) => {
-        console.error('Unable to copy link: ', error);
-      });
-  };
   useEffect(()=>{
     setFileType(localStorage.getItem('filetype'))
     console.log("filetype",fileType)
@@ -47,9 +39,17 @@ const router=useRouter();
       console.log(fileType)}
     sendMail();
     },[])
- 
+ const copyToClipboard = () => {
+ navigator.clipboard.writeText(url).then(() => {
+       toast.success('Link copied to clipboard!');
+      })
+      .catch((error) => {
+        console.error('Unable to copy link: ', error);
+      });
+  };
   return (
-    <Layout><div className='flex flex-col container p-5'> 
+    <Layout><div className='flex flex-col mx-auto md:px-80 mb-6 container px-5'> 
+    <p className='font-bold text-xl mt-2 mb-6'>Preview and share</p>
     
         {fileType==="videos"&&<div className="top-0 gap-4 w-[400px] h-[300px] mt-0 mx-auto">
                       <ReactPlayer
@@ -63,15 +63,15 @@ const router=useRouter();
                       {fileType==="photos"&& <div className=" gap-4 top-0 px-5 w-fit h-fit mt-0 mb-4 mx-auto">
           <Image src={dataUrl} alt={mediaTitle} width={400} height={300} loading="eager" />
 </div>}
-            <div className='border border-gray-500 p-5'>
-              <p className='text-3xl font-semibold'>{mediaTitle.toLocaleUpperCase()}</p>
-              <p className='text-lg'>By {name}</p>
+            <div className='border mb-4 border-gray-500 px-5 py-2'>
+              <p className='text-3xl mb-2 font-semibold'>{mediaTitle.toLocaleUpperCase()}</p>
+              <p className='text-sm'>By {name}</p>
             </div>
-            <div className='border border-gray-500'>
+            <div className='border mb-4 px-5 py-2 font-semibold font-sans border-gray-500'>
               {mediaDescription}
             </div>
-  <div className="p-4 gap-4 items-center justify-center">
-  <p className="gap-4 mb-4 mx-auto text-center w-full">Copy the Link below and send it to your friends to view and vote for your skit</p>
+  <div className="gap-4 items-center justify-center">
+  <p className="gap-4 mb-4 mx-auto font-semibold w-full">Copy the Link below and send it to your friends to view and vote for your skit</p>
                   <div className="items-center justify-center mx-auto text-center block mb-4">
       <input
         type="text"
@@ -87,24 +87,21 @@ const router=useRouter();
         Copy
       </button>
     </div>
-  </div>
+  </div><p className='text-center font-semibold font-sans'>Share to your social Media</p>
   {/* <Share title={mediaTitle} url={url}/> */}
-  <div>
-    <FacebookShareButton url={url} quote={''}>
+  <div className='mx-auto space-x-2 mb-3'>
+    <FacebookShareButton url={url} quote={'Share to Facebook'}>
       <FacebookIcon size={32}  />
     </FacebookShareButton>
-    <WhatsappShareButton url={url}><WhatsappIcon size={32}/></WhatsappShareButton>
+    <WhatsappShareButton url={url}><WhatsappIcon size={32}  quote={'Share to your whatsapp contacts'}/></WhatsappShareButton>
     <TwitterShareButton url={url}><TwitterIcon size={32}/></TwitterShareButton>
     <TelegramShareButton url={url}><TelegramIcon size={32}/></TelegramShareButton>
   </div>
+  <div className="" ><div ><p className='rounded-md p-2 w-fit mx-auto cursor-pointer
+   text-center bg-green-800 text-white font-semibold font-sans' onClick={()=>(router.push("/naijavibes/"))}>Done</p></div></div>
+   
   </div>
-  <div className="w-fit justify-center place-self-center 
-  block flex-col text-white h-fit text-xs 
-  font-bold md:text-lg md:font-semibold p-1  mb-4
-   mxauto rounded-md cursor-pointer
-   text-center bg-green-700" 
-                 onClick={()=>(router.push("/naijavibes/"))}>Done</div>
-    </Layout>
+   </Layout>
   )
 }
 

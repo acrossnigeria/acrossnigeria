@@ -288,13 +288,13 @@ Cookies.set(
             </label>
           </div>
         </div>
-        <div className='mb-4'>
+        {/* <div className='mb-4'>
           <label className='mb-2 block mr-4' htmlFor='referalCode'>Referal Code</label>
           <input
           className='w-full rounded px-4 py-2 focus:outline-gray-600 bg-gray-200'
           type='text' 
           placeholder='Input Referal code if you have one'/>
-        </div>
+        </div> */}
         <div className="mb-4">
           <label htmlFor="password" className="block mb-2">Password</label>
           <input

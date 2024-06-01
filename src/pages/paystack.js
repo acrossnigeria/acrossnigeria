@@ -47,6 +47,7 @@ useEffect(() => {
       });
       console.log(regData.data)
       const id= regData.data._id;
+      const refId=name+id.slice(-7);
       const result = await signIn('credentials', {
         redirect: false,
         email,

@@ -26,6 +26,7 @@ const Register = () => {
   const [formattedDate, setFormattedDate] = useState('');
 
     const router = useRouter();
+    const { ref } = router.query; // Get the referrer from the URL query
   const [value, setValue]=useState();
   const [formData, setFormData] = useState({
     name: '',

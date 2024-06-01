@@ -62,7 +62,23 @@ async function handler(req, res) {
     });  
      console.log("Progress");
     const user = await newUser.save();
-    const checkRef=await User.find(refCode)
+    const checkRef=await User.find({refCode:refCode});
+    if(checkRef.length===0){
+   await db.disconnect();
+    console.log("Success");
+    res.status(201).send({
+      message: `Congratulations ${user.name}!`,
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+    }
+    const refs= checkRef[0].references;
+    const references= refs+1;
+    checkRef.references=references;
+    await checkRef.save();
+
     await db.disconnect();
     console.log("Success");
     res.status(201).send({

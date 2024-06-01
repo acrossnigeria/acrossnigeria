@@ -43,7 +43,7 @@ useEffect(() => {
      const refInfo=ref.transaction
      const regData=await axios.post('/api/auth/signup', {
         name,
-       surname, email, phone, residence, dob, gender, password, refInfo
+       surname, email, phone, residence, dob, gender, password, refInfo, refCode
       });
       console.log(regData.data)
       const id= regData.data._id;

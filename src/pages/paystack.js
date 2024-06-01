@@ -39,6 +39,19 @@ useEffect(() => {
  }
   setLoading(true);
  try {
+        function generateRandomCode() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let result = '';
+        const charactersLength = characters.length;
+        for (let i = 0; i < 7; i++) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+      }
+
+const randomCode = generateRandomCode();
+const refCode= name+randomCode
+console.log(randomCode); // Outputs something like: '4J8QKLP'
 
      const refInfo=ref.transaction
      const regData=await axios.post('/api/auth/signup', {
@@ -46,9 +59,7 @@ useEffect(() => {
        surname, email, phone, residence, dob, gender, password, refInfo, refCode
       });
       console.log(regData.data)
-      const id= regData.data._id;
-      const refId=name+id.slice(-7);
-      const result = await signIn('credentials', {
+        const result = await signIn('credentials', {
         redirect: false,
         email,
         password,

@@ -16,7 +16,7 @@ async function handler(req, res) {
   dob,
   gender,
   password,
-  refInfo}=detail;
+  refInfo, refCode}=detail;
 
    const slug=name+surname+residence;
     if (

@@ -41,11 +41,12 @@ useEffect(() => {
  try {
 
      const refInfo=ref.transaction
-      await axios.post('/api/auth/signup', {
+     const regData=await axios.post('/api/auth/signup', {
         name,
        surname, email, phone, residence, dob, gender, password, refInfo
       });
-
+      console.log(regData.data)
+      const id= regData.data._id;
       const result = await signIn('credentials', {
         redirect: false,
         email,

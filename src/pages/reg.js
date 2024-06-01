@@ -24,10 +24,9 @@ const Register = () => {
   const [dayError, setDayError]=useState(false)
   const [yearError, setYearError]=useState(false)
   const [formattedDate, setFormattedDate] = useState('');
-
     const router = useRouter();
     const { ref } = router.query; // Get the referrer from the URL query
-  const [value, setValue]=useState();
+  
   const [formData, setFormData] = useState({
     name: '',
     surname:"",
@@ -122,7 +121,7 @@ setFormData({...formData,  name: userDetails[0].name,
  dispatch({type:'RESET'})
 dispatch({type:'ADD_USER', payload: formData })
 Cookies.set(
-  'user', JSON.stringify({...user,userDetails:formData})
+  'user', JSON.stringify({...user,userDetails:formData, refId:ref})
   );
  
   router.push('/confirm')

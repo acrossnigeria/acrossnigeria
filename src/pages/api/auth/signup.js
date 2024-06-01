@@ -57,11 +57,12 @@ async function handler(req, res) {
     const newUser = new User({
       name,
        surname, email, slug, phone, residence, dob, gender,
-      password: bcryptjs.hashSync(password),referencePay, regPayment,
+      password: bcryptjs.hashSync(password),referencePay, regPayment, refCode,
       isAdmin: false,
     });  
      console.log("Progress");
     const user = await newUser.save();
+    const checkRef=await User.find(refCode)
     await db.disconnect();
     console.log("Success");
     res.status(201).send({

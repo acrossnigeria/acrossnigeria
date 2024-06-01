@@ -37,7 +37,7 @@ async function handler(req, res) {
     }
   
   await db.connect();
-     const existingUser = await User.findOne({ email: email }).maxTimeMS(20000);
+     const existingUser = await User.findOne({ email: email, refCode:refCode}).maxTimeMS(20000);
     console.log("progress one")
      if (existingUser ) {
       console.log("user exists")

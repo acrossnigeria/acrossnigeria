@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Store } from '../../utils/Store';
+import Cookies from 'js-cookie';
 
 const Confirm = () => {
   const { state, dispatch } = useContext(Store);

@@ -121,9 +121,9 @@ setFormData({...formData,  name: userDetails[0].name,
  dispatch({type:'RESET'})
 dispatch({type:'ADD_USER', payload: formData })
 Cookies.set(
-  'user', JSON.stringify({...user,userDetails:formData, refId:ref})
+  'user', JSON.stringify({...user,userDetails:formData,})
   );
- 
+ Cookies.set('refCode',ref)
   router.push('/confirm')
       // Post data to confirmation page
       await router.push({

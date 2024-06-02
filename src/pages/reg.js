@@ -26,7 +26,9 @@ const Register = () => {
   const [formattedDate, setFormattedDate] = useState('');
     const router = useRouter();
     const { ref } = router.query; // Get the referrer from the URL query
-  
+  if(ref.length>0){
+    localStorage.setItem("refId",ref)
+  }
   const [formData, setFormData] = useState({
     name: '',
     surname:"",
@@ -121,7 +123,7 @@ setFormData({...formData,  name: userDetails[0].name,
  dispatch({type:'RESET'})
 dispatch({type:'ADD_USER', payload: formData })
 Cookies.set(
-  'user', JSON.stringify({...user,userDetails:formData, refId:ref})
+  'user', JSON.stringify({...user,userDetails:formData,})
   );
  
   router.push('/confirm')

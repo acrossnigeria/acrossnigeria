@@ -13,7 +13,7 @@ export default function Success() {
     const{data:session}=useSession();
     const [url, setUrl]=useState('https://acrossnig.com/reg')
      useSession(()=>{
-      const refCode=JSON.parse(localStorage.getItem('refCode'))
+      const refCode=localStorage.getItem('refCode');
       console.log("The refcode is:", refCode)
       setUrl(`${window.location.origin}/reg?ref=${refCode}` )
       const sendMail=async()=>{

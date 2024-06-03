@@ -26,7 +26,7 @@ const Register = () => {
   const [formattedDate, setFormattedDate] = useState('');
     const router = useRouter();
     const { ref } = router.query; // Get the referrer from the URL query
-  if(ref.length>0){
+  if(ref!==undefined){
     localStorage.setItem("refId",ref)
   }
   const [formData, setFormData] = useState({

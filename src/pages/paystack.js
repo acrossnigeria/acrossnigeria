@@ -48,19 +48,19 @@ useEffect(() => {
         }
         return result;
       }
-const referee=localStorage.getItem('referee')
+const referee=localStorage.getItem('refId')
 const randomCode = generateRandomCode();
 const refCode= name+randomCode;
 localStorage.setItem("refCode",refCode)
-console.log(randomCode); // Outputs something like: '4J8QKLP'
+ // Outputs something like: '4J8QKLP'
 
      const refInfo=ref.transaction
      const regData=await axios.post('/api/auth/signup', {
       name,surname, email, phone, residence, dob,
       gender, password, refInfo, refCode,referee
       });
-      console.log(regData.data)
-        const result = await signIn('credentials', {
+  console.log(localStorage.getItem('refCode'))
+    const result = await signIn('credentials', {
         redirect: false,
         email,
         password,

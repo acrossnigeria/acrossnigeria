@@ -11,7 +11,11 @@ import { toast } from "react-toastify";
 export default function Success() { 
     const router =useRouter()
     const{data:session}=useSession();
-    const[refCode, setRefCode]=useState(()=>(localStorage.getItem("refCode")))
+    const[refCode, setRefCode]=useState("")
+    useEffect(()=>{
+      const code= localStorage.getItem("refCode")
+      setRefCode (code)
+    },[])
     const [url, setUrl]=useState('https://acrossnig.com/reg')
    useEffect(()=>{
     console.log("THE REFCODE",refCode)

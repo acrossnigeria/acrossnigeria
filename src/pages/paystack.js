@@ -50,7 +50,7 @@ useEffect(() => {
       }
 const referee=localStorage.getItem('refId')
 const randomCode = generateRandomCode();
-const refCode= name+randomCode;
+const refCode= name.trim()+randomCode;
 localStorage.setItem("refCode",refCode)
  // Outputs something like: '4J8QKLP'
 

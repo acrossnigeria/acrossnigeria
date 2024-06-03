@@ -43,13 +43,18 @@ async function handler(req, res) {
       isAdmin: false,
     });  
      console.log("Progress");
-     db.disconnect();
-     if(referee !== undefined){
-      const user = await newUser.save();
-    const checkRef=await User.find({refCode:referee});
-    console.log("Success in checking referee");
-    const refs= checkRef[0].references;
-    const references= refs+1;
+     const user = await newUser.save();
+     console.log("saved to database");
+     console.log(referee)
+     if(referee !== null|| referee!= undefined){
+    const checkRef=await User.findOne({refCode:referee});
+    if (!checkRef) {
+      console.log("Referee not found");
+      await db.disconnect();
+      return;
+    }
+    console.log("Success in checking referee",checkRef);
+    const references=checkRef.references+1;
     checkRef.references=references;
     await checkRef.save();
     await db.disconnect();
@@ -65,11 +70,11 @@ async function handler(req, res) {
   db.disconnect();
    console.log("Final Success");
     res.status(201).send({
-      message: `Congratulations ${newUser.name}!`,
-      _id: newUser._id,
-      name: newUser.name,
-      email: newUser.email,
-      isAdmin: newUser.isAdmin,
+      message: `Congratulations ${user.name}!`,
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
     });
     }
   

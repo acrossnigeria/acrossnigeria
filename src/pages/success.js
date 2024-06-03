@@ -1,4 +1,4 @@
-import { useContext, } from "react";
+import { useContext, useState, } from "react";
 import { Store } from '../../utils/Store';
 import Layout from '@/components/Layout'
 import { useRouter } from "next/router";
@@ -11,12 +11,12 @@ import { toast } from "react-toastify";
 export default function Success() { 
     const router =useRouter()
     const{data:session}=useSession();
-    const url="www.acrossnig.com"
-
-    const { state, dispatch } = useContext(Store);
-  const {user:{userDetails},}= state;
-  const name=userDetails[0]?.name?? session?.user.name?? 'unknown';
-  const sendMail=async()=>{
+    const [url, setUrl]=useState('https://acrossnig.com/reg')
+     useSession(()=>{
+      const refCode=JSON.parse(localStorage.getItem('refCode'))
+      console.log("The refcode is:", refCode)
+      setUrl(`${window.location.origin}/reg?ref=${refCode}` )
+      const sendMail=async()=>{
   const outgoing="Across Nigeria <no-reply@acrossnig.com>";
         const recepient=userDetails[0]?.email?? session?.user.email?? 'unknown';;
         const subject=`NaijaVibes Upload Success`;
@@ -26,7 +26,14 @@ export default function Success() {
         recepient, subject, content,heading
       });
       console.log(mailResult)
-      toast("Email was sent Successfully")}
+        toast("Email was sent Successfully")}
+        sendMail();
+    },[])
+
+  const { state, dispatch } = useContext(Store);
+  const {user:{userDetails},}= state;
+  const name=userDetails[0]?.name?? session?.user.name?? 'unknown';
+ 
   return (
     <Layout><div className="p-14 justify-center">
       <div className="mx-auto justify-center origin-center object-center text-center">

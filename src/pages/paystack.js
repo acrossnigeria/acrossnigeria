@@ -40,7 +40,7 @@ useEffect(() => {
   setLoading(true);
  try {
         function generateRandomCode() {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const characters = 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789';
         let result = '';
         const charactersLength = characters.length;
         for (let i = 0; i < 7; i++) {
@@ -48,18 +48,19 @@ useEffect(() => {
         }
         return result;
       }
-
+const referee=localStorage.getItem('refId')
 const randomCode = generateRandomCode();
-const refCode= name+randomCode
-console.log(randomCode); // Outputs something like: '4J8QKLP'
+const refCode= name.trim()+randomCode;
+localStorage.setItem("refCode",refCode)
+ // Outputs something like: '4J8QKLP'
 
      const refInfo=ref.transaction
      const regData=await axios.post('/api/auth/signup', {
-        name,
-       surname, email, phone, residence, dob, gender, password, refInfo, refCode
+      name,surname, email, phone, residence, dob,
+      gender, password, refInfo, refCode,referee
       });
-      console.log(regData.data)
-        const result = await signIn('credentials', {
+  console.log(localStorage.getItem('refCode'))
+    const result = await signIn('credentials', {
         redirect: false,
         email,
         password,

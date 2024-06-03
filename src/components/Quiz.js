@@ -7,14 +7,12 @@ import { useRouter } from 'next/router';
 
 const questions = [
   {
-    question: `What is the nickname given to Nigeria's men national football team?`,
-    options: ['A) Green Eagles', 'B) Lions', 'C) Super Eagles', 'D) Falcons'],
-    answer: 2, // Index of the correct answer option
+    question: `What is the name of the Nigerian movie industry?`,
+    options: ['A) Bollywood', 'B) Hollywood', 'C) Nollywood', 'D) Ghollywood'],
+    answer: 3, // Index of the correct answer option
   },
   // ... add more questions here
 ];
-
-
 const Quiz = () => {
    const router=useRouter();
   const { data: session } = useSession();

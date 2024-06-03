@@ -24,9 +24,12 @@ const Register = () => {
   const [dayError, setDayError]=useState(false)
   const [yearError, setYearError]=useState(false)
   const [formattedDate, setFormattedDate] = useState('');
-
     const router = useRouter();
-  const [value, setValue]=useState();
+    const { ref } = router.query; // Get the referrer from the URL query
+    console.log(ref)
+  if(ref!==undefined){
+    localStorage.setItem("refId",ref)
+  }
   const [formData, setFormData] = useState({
     name: '',
     surname:"",
@@ -121,9 +124,9 @@ setFormData({...formData,  name: userDetails[0].name,
  dispatch({type:'RESET'})
 dispatch({type:'ADD_USER', payload: formData })
 Cookies.set(
-  'user', JSON.stringify({...user,userDetails:formData})
+  'user', JSON.stringify({...user,userDetails:formData,})
   );
- 
+ localStorage.setItem('referee',ref)
   router.push('/confirm')
       // Post data to confirmation page
       await router.push({
@@ -288,13 +291,13 @@ Cookies.set(
             </label>
           </div>
         </div>
-        <div className='mb-4'>
+        {/* <div className='mb-4'>
           <label className='mb-2 block mr-4' htmlFor='referalCode'>Referal Code</label>
           <input
           className='w-full rounded px-4 py-2 focus:outline-gray-600 bg-gray-200'
           type='text' 
           placeholder='Input Referal code if you have one'/>
-        </div>
+        </div> */}
         <div className="mb-4">
           <label htmlFor="password" className="block mb-2">Password</label>
           <input

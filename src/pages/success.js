@@ -1,4 +1,4 @@
-import { useContext, } from "react";
+import { useContext, useEffect, useState, } from "react";
 import { Store } from '../../utils/Store';
 import Layout from '@/components/Layout'
 import { useRouter } from "next/router";
@@ -11,22 +11,31 @@ import { toast } from "react-toastify";
 export default function Success() { 
     const router =useRouter()
     const{data:session}=useSession();
-    const url="www.acrossnig.com"
-
-    const { state, dispatch } = useContext(Store);
-  const {user:{userDetails},}= state;
-  const name=userDetails[0]?.name?? session?.user.name?? 'unknown';
-  const sendMail=async()=>{
+    const[refCode, setRefCode]=useState(()=>(localStorage.getItem("refCode")))
+    const [url, setUrl]=useState('https://acrossnig.com/reg')
+   useEffect(()=>{
+    console.log("THE REFCODE",refCode)
+    const baseUrl=`${window.location.origin}/reg?ref=`
+   setUrl(()=>(baseUrl+refCode))
+   console.log("NEW URL", url)
+   const sendMail=async()=>{
   const outgoing="Across Nigeria <no-reply@acrossnig.com>";
         const recepient=userDetails[0]?.email?? session?.user.email?? 'unknown';;
-        const subject=`NaijaVibes Upload Success`;
+        const subject=`Welcome to Across Nigeria Reality Show`;
         const heading=`Congratulations ${name} your Registration was Succesfull!`
-        const content= `Dear ${name} kindly share the following link with your friends ${url} to for a chance to win our mega prize as well as show them the way to financial success`;
+        const content= `Dear ${name} kindly share the link with your friends ${url} for a chance to win our mega prize as well as show them the way to financial freedom`;
         const mailResult= await axios.post('/api/mail/mail',{outgoing,
         recepient, subject, content,heading
       });
       console.log(mailResult)
-      toast("Email was sent Successfully")}
+        toast("Email was sent Successfully")}
+        sendMail();
+    },[])
+
+  const { state, dispatch } = useContext(Store);
+  const {user:{userDetails},}= state;
+  const name=userDetails[0]?.name?? session?.user.name?? 'unknown';
+ 
   return (
     <Layout><div className="p-14 justify-center">
       <div className="mx-auto justify-center origin-center object-center text-center">

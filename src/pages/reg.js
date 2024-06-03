@@ -125,7 +125,7 @@ dispatch({type:'ADD_USER', payload: formData })
 Cookies.set(
   'user', JSON.stringify({...user,userDetails:formData,})
   );
- 
+ localStorage.setItem('referee',ref)
   router.push('/confirm')
       // Post data to confirmation page
       await router.push({

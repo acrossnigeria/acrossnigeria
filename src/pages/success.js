@@ -19,11 +19,10 @@ export default function Success() {
       }
      else{ setRefCode (code)}
     },[])
-    const [url, setUrl]=useState('https://acrossnig.com/reg')
    useEffect(()=>{
    const baseUrl=`${window.location.origin}/reg?ref=`
-   setUrl(()=>(baseUrl+refCode))
-   console.log("NEW URL", url)
+   const url=baseUrl+refCode;
+
    const sendMail=async()=>{
   const outgoing="Across Nigeria <no-reply@acrossnig.com>";
         const recepient=userDetails[0]?.email?? session?.user.email?? 'unknown';;

@@ -14,12 +14,14 @@ export default function Success() {
     const[refCode, setRefCode]=useState("")
     useEffect(()=>{
       const code= localStorage.getItem("refCode")
-      setRefCode (code)
+       if(code===""){
+        setRefCode(()=>(localStorage.getItem("refCode")))
+      }
+     else{ setRefCode (code)}
     },[])
     const [url, setUrl]=useState('https://acrossnig.com/reg')
    useEffect(()=>{
-    console.log("THE REFCODE",refCode)
-    const baseUrl=`${window.location.origin}/reg?ref=`
+   const baseUrl=`${window.location.origin}/reg?ref=`
    setUrl(()=>(baseUrl+refCode))
    console.log("NEW URL", url)
    const sendMail=async()=>{

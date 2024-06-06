@@ -19,7 +19,7 @@ export default function Success() {
         setRefCode(()=>(localStorage.getItem("refCode")))
       }
      else{ setRefCode (code)}
-    },[localStorage])
+    },[])
    useEffect(()=>{
    const baseUrl=`${window.location.origin}/reg?ref=`
   setUrl(baseUrl+refCode);

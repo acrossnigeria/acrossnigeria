@@ -44,7 +44,7 @@ function Footer() {
                   <h2 className="mb-6 text-sm font-semibold text-gray-100 uppercase dark:text-white">Follow us</h2>
                   <ul className="text-gray-100 dark:text-gray-100 font-medium">
                       <li className="mb-4">
-                          <a href="https://facebook.com" className="hover:underline ">Facebook</a>
+                          <a href="https://www.facebook.com/profile.php?id=61560087734551" className="hover:underline ">Facebook</a>
                       </li>
                       <li>
                           <a href="https://x.com" className="hover:underline">{`X (Twitter)`}</a>

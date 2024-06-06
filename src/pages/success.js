@@ -12,17 +12,17 @@ export default function Success() {
     const router =useRouter()
     const{data:session}=useSession();
     const[refCode, setRefCode]=useState("")
+    const [url, setUrl]=useState();
     useEffect(()=>{
       const code= localStorage.getItem("refCode")
        if(code===""){
         setRefCode(()=>(localStorage.getItem("refCode")))
       }
      else{ setRefCode (code)}
-    },[])
+    },[localStorage])
    useEffect(()=>{
    const baseUrl=`${window.location.origin}/reg?ref=`
-   const url=baseUrl+refCode;
-
+  setUrl(baseUrl+refCode);
    const sendMail=async()=>{
   const outgoing="Across Nigeria <no-reply@acrossnig.com>";
         const recepient=userDetails[0]?.email?? session?.user.email?? 'unknown';;
@@ -49,6 +49,7 @@ export default function Success() {
      <div className="mb-4">You can now enjoy our Products</div>
      <div className='mx-auto justify-center object-center space-x-2 mb-3'>
       <p>Invite your friends with your Referal link below </p>
+      <p>{}</p>
       <div><p className="font-semibold mb-4">Or share via Social Media</p></div>
     <FacebookShareButton url={url} quote={'Share to Facebook'}>
       <FacebookIcon size={30}  />

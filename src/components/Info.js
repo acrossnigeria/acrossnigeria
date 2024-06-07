@@ -38,11 +38,11 @@ const Info = ()=>{
           </Link>
    <div className="text-8xl mt-6 mb-6 mx-auto rounded-md justify-between bg-gray-100 flex">
     <Link href=''>
-   <Image  quality={100}  className="cursor-pointer" src={facebook} height={20} width={30} alt="tiktok"/></Link>
- <Link href=''> <Image  quality={100}  className="cursor-pointer" src={x} height={20} width={30} alt="tiktok"/>  
+   <Image  quality={100}  className="cursor-pointer" src={facebook} height={20} width={30} alt="facebook"/></Link>
+ <Link href='https://www.facebook.com/profile.php?id=61560087734551'> <Image  quality={100}  className="cursor-pointer" src={x} height={20} width={30} alt="tiktok"/>  
 </Link>
  <Link href='https://t.me/+2349040440983'>
-<Image  quality={100}  className="cursor-pointer" src={telegram} height={20} width={30} alt="tiktok"/></Link>
+<Image  quality={100}  className="cursor-pointer" src={telegram} height={20} width={30} alt="telegram"/></Link>
  <Link href='https://wa.me/+2349040440983'><Image  quality={100}  className="cursor-pointer" src={whatsapp} height={20} width={30} alt="tiktok"/>
 </Link>
  <Link href="https://www.tiktok.com/@across_nigeria_show"><Image  quality={100}  className="cursor-pointer" src={tiktok} height={20} width={30} alt="tiktok"/>

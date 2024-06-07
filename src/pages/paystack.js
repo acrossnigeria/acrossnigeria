@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useContext,useEffect, useState } from "react";
 import { Store } from '../../utils/Store';
 import { signIn } from "next-auth/react";
+import Cookies from "js-cookie";
 export default function PayScreen (){
   const paystackLiveKey=process.env.PAYSTACK;
    const { state, dispatch } = useContext(Store);
@@ -51,7 +52,8 @@ useEffect(() => {
 const referee=localStorage.getItem('refId')
 const randomCode = generateRandomCode();
 const refCode= name.trim()+randomCode;
-localStorage.setItem("refCode",refCode)
+Cookies.set('refCode',refCode, {expires:1});
+localStorage.setItem("refCode",refCode);
  // Outputs something like: '4J8QKLP'
 
      const refInfo=ref.transaction

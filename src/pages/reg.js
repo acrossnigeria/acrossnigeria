@@ -161,6 +161,7 @@ Cookies.set(
             onChange={handleChange}
             className="rounded px-4 py-2 w-full focus:outline-gray-600 bg-gray-200"
             required
+            autoFocus
           />
         </div>
         <div className="mb-4">
